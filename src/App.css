@@ -2,37 +2,333 @@
   text-align: center;
 }
 
-.App-logo {
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.Hospital {
+  display: flex;
+  gap: 5px;
+}
+
+.Navigation {
+  display: flex;
+  gap: 10px;
+}
+
+.box {
+  height: 769px;
+  width: 752px;
+  position: relative;
+}
+
+.box .ellipse {
+  background-color: #ff004c1f;
+  border-radius: 50%;
+  filter: blur(100px);
+  height: 769px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 752px;
+}
+
+
+.Buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.Header-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.LogoAndTitle {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.Hospital {
+  display: flex;
+  gap: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.box {
+  position: relative;
 }
+
+.ellipse {
+  background-color: #ff004c1f;
+  border-radius: 50%;
+  filter: blur(200px);
+  height: 769px;
+  width: 752px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.label {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.label .text-wrapper {
+  color: #333333;
+  font-family: "Poppins-Bold", Helvetica;
+  font-size: 96px;
+  font-weight: 700;
+  letter-spacing: 4.8px;
+  line-height: 61px;
+  white-space: nowrap;
+}
+
+.label {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.label .text-wrapper {
+  color: #333333;
+  font-family: "Poppins-Bold", Helvetica;
+  font-size: 96px;
+  font-weight: 700;
+  letter-spacing: 4.8px;
+  line-height: 61px;
+  white-space: nowrap;
+}
+
+.label .subtext-wrapper {
+  color: #999999;
+  font-family: "Poppins-Medium", Helvetica;
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: 1.3px;
+  line-height: 40.6px;
+  margin-top: 10px; 
+  white-space: nowrap;
+  width: 900px;
+}
+
+.box {
+  position: relative;
+}
+
+.labels-and-circle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ellipse {
+  height: 438px;
+  width: 438px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.blooddrop-image {
+  position: absolute;
+  top: 50%;
+  left: 130%; 
+  transform: translate(-50%, -50%);
+  max-width: 400%;
+  max-height: 400%;
+}
+
+.App {
+  text-align: center;
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.Hospital {
+  display: flex;
+  gap: 5px;
+}
+
+.Navigation {
+  display: flex;
+  gap: 10px;
+}
+
+.box {
+  height: 769px;
+  width: 752px;
+  position: relative;
+}
+
+.box .ellipse {
+  background-color: #ff004c1f;
+  border-radius: 50%;
+  filter: blur(100px);
+  height: 769px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 752px;
+}
+
+
+.Buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.Header-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.LogoAndTitle {
+  display: flex;
+  align-items: center;
+}
+
+.Hospital {
+  display: flex;
+  gap: 5px;
+}
+
+.box {
+  position: relative;
+}
+
+.ellipse {
+  background-color: #ff004c1f;
+  border-radius: 50%;
+  filter: blur(200px);
+  height: 769px;
+  width: 752px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.label {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.label .text-wrapper {
+  color: #333333;
+  font-family: "Poppins-Bold", Helvetica;
+  font-size: 96px;
+  font-weight: 700;
+  letter-spacing: 4.8px;
+  line-height: 61px;
+  white-space: nowrap;
+}
+
+.label {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.label .text-wrapper {
+  color: #333333;
+  font-family: "Poppins-Bold", Helvetica;
+  font-size: 96px;
+  font-weight: 700;
+  letter-spacing: 4.8px;
+  line-height: 61px;
+  margin-top: 150px;
+  white-space: nowrap;
+}
+
+.label .subtext-wrapper {
+  color: #999999;
+  font-family: "Poppins-Medium", Helvetica;
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: 1.3px;
+  line-height: 40.6px;
+  margin-top: 10px; 
+  margin-left: 300px;
+  white-space: nowrap;
+  width: 900px;
+}
+
+.box {
+  position: relative;
+}
+
+.labels-and-circle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ellipse {
+  height: 438px;
+  width: 438px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.blooddrop-image {
+  position: absolute;
+  top: 60%;
+  left: 100%; 
+  transform: translate(-50%, -50%);
+  max-width: 200%;
+  max-height: 200%;
+}
+.blooddrop-background {
+  background-color: #FFE4E4; 
+  border-radius: 50%;
+  height: 300px;
+  width: 300px; 
+  position: absolute;
+  top: 60%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+}
+
+.polygon-image {
+  position: absolute;
+  top: 70%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  z-index: 1; 
+}
+
+.polygon-above-image {
+  position: absolute;
+  top: 5%; 
+  left: 35%;
+  transform: translate(-50%, -50%);
+  z-index: 1; 
+}
+
