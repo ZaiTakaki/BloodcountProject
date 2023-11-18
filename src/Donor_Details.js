@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import heroLogo from './Image Hero.svg';
-import circleWithBlood from './circlewithblood.png';
 import featuredIcon from './Featured icon.png';
 import otherImage from './Image11.png';
 
