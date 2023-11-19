@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Paper, Button } from '@mui/material';
 import heroLogo from './Image Hero.svg';
 import featuredIcon from './Featured icon.png';
 import otherImage from './Image11.png';
@@ -45,18 +46,111 @@ const Service = () => {
 
   const Label = () => {
     return (
-      <div className="label" style={{ position: 'absolute', left: '100%', top: '6%', transform: 'translate(-50%, -50%)', textAlign: 'center' }}>
+      <div className="label" style={{ position: 'absolute', left: '100%', top: '6%', transform: 'translateX(-50%)', textAlign: 'center' }}>
         {/* Adjusted styling to move Donor Details more to the right */}
-        <div className="Hospital" style={{ width: 300, height: 70, marginLeft: '10%', textAlign: 'left' }}>
+        <div className="Hospital" style={{ width: 300, height: 70, marginLeft: '38%', textAlign: 'left' }}>
           <span style={{ color: '#FF0000', fontSize: 40, fontFamily: 'Poppins', fontWeight: '700', letterSpacing: 2, wordWrap: 'break-word' }}>Donor</span>
           <span style={{ color: 'black', fontSize: 40, fontFamily: 'Poppins', fontWeight: '700', letterSpacing: 2, wordWrap: 'break-word' }}> </span>
           <span style={{ color: '#861530', fontSize: 40, fontFamily: 'Poppins', fontWeight: '700', letterSpacing: 2, wordWrap: 'break-word' }}>Details</span>
         </div>
-        {/* Image circle-with-blood removed */}
+    
+        {/* Adjust the size of the Paper component */}
+        <div className="Dialog" style={{ width: 900, height: 576, marginTop: '20px' }}>
+          {/* Use Material-UI Paper component for the dialog container */}
+          <Paper elevation={3} style={{ width: '100%', height: '90%', padding: 40, borderRadius: 12, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            {/* Add the "Blood Group" text above the rest of the content */}
+            <div className="BloodGroup" style={{ width: 229, height: 49, color: 'black', fontSize: 32, fontFamily: 'Poppins', fontWeight: '700', letterSpacing: 1.60, wordWrap: 'break-word', textAlign: 'right' }}>
+              Blood Group
+            </div>
+  
+            {/* Add the buttons below the "Blood Group" text */}
+            <div style={{ display: 'flex', marginTop: '10px' }}>
+              <div
+                className="Rectangle24"
+                style={{
+                  width: 58.99,
+                  height: 56.57,
+                  borderRadius: 3,
+                  border: '1px #EB3738 solid',
+                  color: '#EB3738',
+                  fontSize: 24,
+                  fontFamily: 'Roboto',
+                  fontWeight: '400',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginRight: '10px',
+                }}
+              >
+                A+
+              </div>
+              {['B+', 'AB+', 'O+'].map((bloodType, index) => (
+                <div
+                  key={index}
+                  className="Rectangle24"
+                  style={{
+                    width: 58.99,
+                    height: 56.57,
+                    borderRadius: 3,
+                    border: '1px #EB3738 solid',
+                    color: '#EB3738',
+                    fontSize: 24,
+                    fontFamily: 'Roboto',
+                    fontWeight: '400',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom: '100px',
+                    marginRight: '10px',
+                  }}
+                >
+                  {bloodType}
+                </div>
+              ))}
+            </div>
+
+            {/* Add the second set of buttons */}
+            <div style={{ display: 'flex', marginTop: '10px' }}>
+              {['A-', 'B-', 'AB-', 'O-'].map((bloodType, index) => (
+                <div
+                  key={index}
+                  className="Rectangle24"
+                  style={{
+                    width: 58.99,
+                    height: 56.57,
+                    borderRadius: 3,
+                    border: '1px #EB3738 solid',
+                    color: '#EB3738',
+                    fontSize: 24,
+                    fontFamily: 'Roboto',
+                    fontWeight: '400',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom: '60px',
+                    marginRight: '10px',
+                  }}
+                >
+                  {bloodType}
+                </div>
+              ))}
+            </div>
+
+            {/* Add the "I don't know" button using Material-UI Button */}
+            <Button variant="contained" sx={{ width: 154, height: 36, marginTop: '10px', background: '#FFE4E4', color: '#861530', fontSize: 14, fontFamily: 'Inter', fontWeight: '600', lineHeight: 20 }}>
+              I don’t know
+            </Button>
+  
+            {/* Add the content of your dialog here */}
+            <div className="DialogClose" style={{ width: '100%', display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+              {/* ... (rest of the content) */}
+            </div>
+          </Paper>
+          {/* Image circle-with-blood removed */}
+        </div>
       </div>
     );
-  };
-    
+  };          
 
   const Box = () => {
     return (
