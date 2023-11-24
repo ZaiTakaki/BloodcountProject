@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, TextField } from '@mui/material';
+import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import heroLogo from './Image Hero.svg';
 import circleWithBlood from './circlewithblood.png';
@@ -20,25 +20,44 @@ const Service = () => {
             </div>
           </div>
 
-          {/* TextField with increased marginRight */}
-          <TextField
-            id="outlined-basic"
-            label="Search"
-            variant="outlined"
-            style={{ width: 288, height: 55, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginLeft: 20, marginRight: 20 }}
-          />
-        </div>
+          {/* Rectangle style input */}
+          <div style={{
+            width: 288,
+            height: 55,
+            background: 'white',
+            borderRadius: 100,
+            border: '3px #FFC3C3 solid',
+            marginLeft: 20,
+            marginRight: 20,
+            display: 'flex',
+            alignItems: 'center',
+            paddingLeft: 15,
+          }}>
+            <input
+              type="text"
+              placeholder="Search"
+              style={{
+                width: '100%',
+                height: '100%',
+                border: 'none',
+                outline: 'none',
+                borderRadius: 100,
+                paddingLeft: 15,
+              }}
+            />
+          </div>
 
-        {/* Navigation with increased marginRight and aligned to circle-with-blood */}
-        <div className="Navigation" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', top: '20%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '20px' }}>
-          <div className="Home">Home</div>
-          <div className="Service">Service</div>
-          <div className="About">About</div>
-        </div>
+          {/* Navigation with increased marginRight and aligned to circle-with-blood */}
+          <div className="Navigation" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', top: '20%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '20px' }}>
+            <div className="Home">Home</div>
+            <div className="Service">Service</div>
+            <div className="About">About</div>
+          </div>
 
-        {/* Buttons with increased marginRight */}
-        <div className="Buttons" style={{ gap: '30px', marginRight: '50px', marginTop: '5px' }}>
-          <Button variant="outlined" onClick={() => navigate("/Register_User")} style={{ color: '#861530', fontSize: 18, fontFamily: 'Poppins', fontWeight: '800', textTransform: 'capitalize', letterSpacing: 0.90, wordWrap: 'break-word', borderRadius: '10px', border: '2px solid #861530' }}>Logout</Button>
+          {/* Buttons with increased marginRight */}
+          <div className="Buttons" style={{ gap: '30px', marginLeft: '600px', marginTop: '5px' }}>
+            <Button variant="outlined" onClick={() => navigate("/Register_User")} style={{ color: '#861530', fontSize: 18, fontFamily: 'Poppins', fontWeight: '800', textTransform: 'capitalize', letterSpacing: 0.90, wordWrap: 'break-word', borderRadius: '10px', border: '2px solid #861530' }}>Logout</Button>
+          </div>
         </div>
       </div>
     );
