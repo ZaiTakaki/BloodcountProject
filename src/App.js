@@ -13,6 +13,8 @@ import Service from './Service';
 import DonorDetails from './Donor_Details';
 import RecipientDashboard from './Recipient_Dashboard';
 import BloodbankDashboard from './Bloodbank_Dashboard';
+import DonorDashboard from './Donor_Dashboard';
+import Details from './Details';
 
 const Box = () => {
   return (
@@ -63,7 +65,7 @@ function Home() {
         {/* Navigation */}
         <div className="Navigation">
           <div className="Home">Home</div>
-          <div className="Service">Service</div>
+          <div className="Service" onClick={() => navigate("/Service")}>Service</div>
           <div className="About">About</div>
         </div>
 
@@ -98,6 +100,8 @@ function App() {
         <Route path="/Recipient_Dashboard" element={<RecipientDashboard />} />
         <Route path="/Bloodbank_Dashboard" element={<BloodbankDashboard />} />
         <Route path="/Donor_Details" element={<DonorDetails />} />
+        <Route path="/Details" element={<Details />} />
+        <Route path="/Donor_Dashboard" element={<DonorDashboard />} />
         <Route path="/Register_User" element={<RegisterUser />} />
         <Route path="/Login_User" element={<LoginUser />} />
       </Routes>
