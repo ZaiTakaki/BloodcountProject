@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Paper, Button, Slider, Typography, TextField } from '@mui/material';
+import { Paper, Button, Slider, Typography, TextField, selectClasses } from '@mui/material';
 import heroLogo from './Image Hero.svg';
 import featuredIcon from './Featured icon.png';
 import otherImage from './Image11.png';
@@ -21,6 +21,9 @@ const DonorDetails = () => {
   const [bloodTypeButtonClicked, setBloodTypeButtonClicked] = useState(false);
   const [dontKnowButtonHovered, setDontKnowButtonHovered] = useState(false);
   const weightSliderLabelRef = useRef(null);
+  const [selectedBloodType, setSelectedBloodType] = useState(null);
+
+
 
  
 
@@ -96,6 +99,14 @@ const handleSave = () => {
       </div>
     );
   };
+
+  const handleBloodTypeChoiceClick = (bloodType) => {
+    if (selectedBloodType === bloodType) {
+      setSelectedBloodType(null);
+    }else{
+      setSelectedBloodType(bloodType);
+    }
+  }
 
   const Label = () => {
     return (
@@ -214,7 +225,7 @@ const handleSave = () => {
                   marginRight: '10px',
                 }}
               >
-                A+
+                B+
               </div>
               {['B+', 'AB+', 'O+'].map((bloodType, index) => (
                 <div key={index} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '20px', marginRight: '10px' }}>
@@ -238,6 +249,7 @@ const handleSave = () => {
                   </div>
                 </div>
               ))}
+              
             </div>
 
             <div style={{ display: 'flex', marginTop: '10px' }}>
@@ -335,14 +347,13 @@ const handleSave = () => {
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginLeft: 900, marginRight: 20, flexDirection: 'column' }}>
         <div style={{ textAlign: 'right', marginRight: 10 }}>
-          {/* Your Service content can go here */}
         </div>
 
         <Box />
       </div>
 
       <div className="Content">
-        {/* Add your content specific to the Service page here */}
+        
       </div>
     </div>
   );
