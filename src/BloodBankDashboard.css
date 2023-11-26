@@ -1,0 +1,153 @@
+.blood-bank-hospi {
+    color: #861530;
+    font-family: "Poppins-SemiBold", Helvetica;
+    font-size: 24px;
+    font-weight: 600;
+    left: 110px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    text-shadow: 0px 4px 4px #00000040;
+    top: 213px;
+  }
+
+.Hospital-set {
+    display: flex;
+    position: absolute;
+    top: 70px;
+    left: 40px;
+}
+
+.hospital1-group {
+    background-position: 50% 50%;
+    background-color: #ffffff;
+    background-size: cover;
+    height: 170px;
+    left: 60px;
+    position: absolute;
+    top: 201px;
+    width: 500px;
+}
+
+
+.hospi1-image {
+    height:170px;
+    left: 0px;
+    border-radius: 20px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 600px;
+}
+
+.overlap-hospi {
+    height: 769px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1224px;
+}
+
+.overlap-wrapper-hospi {
+    height: 145px;
+    left: 0;
+    position: absolute;
+    top: 179px;
+    width: 552px;
+}
+
+.subnational-blood-wrapper-hospi {
+    background-position: 50% 50%;
+    background-size: cover;
+    height: 148px;
+    left: -4px;
+    position: relative;
+    width: 558px;
+}
+
+.hospital2-group {
+    background-position: 50% 50%;
+    background-color: #ffffff;
+    background-size: cover;
+    height: 170px;
+    left: 57px;
+    position: absolute;
+    top: 390px;
+    width: 500px;
+}
+  
+.hospi2-image {
+    height:170px;
+    border-radius: 20px;
+    left: 0px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 600px;
+}
+
+.group-1-hospi {
+    height: 140px;
+    left: 3px;
+    position: absolute;
+    top: 350px;
+    width: 752px;
+}
+  
+.redcross-wrapper-hospi {
+    background-position: 50% 50%;
+    background-size: cover;
+    height: 148px;
+    left: -4px;
+    position: relative;
+    width: 558px;
+}
+
+.hospital3-group {
+    background-position: 50% 50%;
+    background-color: #ffffff;
+    background-size: cover;
+    height: 170px;
+    left: 57px;
+    position: absolute;
+    top: 580px;
+    width: 500px;
+}
+  
+.hospi3-image {
+    height:170px;
+    left: 0px;
+    border-radius: 20px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 600px;
+}
+
+.group-2-hospi {
+    height: 140px;
+    left: 3px;
+    position: absolute;
+    top: 500px;
+    width: 552px;
+}
+
+.vicente-sotto-wrapper-hospi {
+    background-position: 50% 50%;
+    background-size: cover;
+    height: 148px;
+    left: -4px;
+    position: relative;
+    width: 558px;
+}
+
+.search-donor {
+    border-radius: 20px;
+    height: 58px;
+    position: absolute;
+    top: 51px;
+    left: 70px;
+    width: 500px;
+}
+
