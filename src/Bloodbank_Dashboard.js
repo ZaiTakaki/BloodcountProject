@@ -6,7 +6,7 @@ import circleWithBlood from './circlewithblood.png';
 import { InputAdornment, Input, IconButton } from '@mui/material';
 import { useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
-
+import './BloodBankDashboard.css';
 
 const BloodBankDashboard = () => {
   const navigate = useNavigate();
