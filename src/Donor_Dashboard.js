@@ -11,6 +11,7 @@ const DonorDashboard = () => {
   const navigate = useNavigate();
   const [showOtherImage, setShowOtherImage] = useState(false);
   const [location] = useState('');
+  const [selectedBloodType, setSelectedBloodType] = useState(null);
   const [openAlert, setOpenAlert] = useState(false);
 
   const handleAlertClose = (event, reason) => {
@@ -25,6 +26,17 @@ const DonorDashboard = () => {
     console.log('Location saved:', location);
     setOpenAlert(true);
   };
+
+  const handleBloodTypeButtonClick = (bloodType) => {
+    setSelectedBloodType((prevSelectedBloodType) =>
+      prevSelectedBloodType === bloodType ? null : bloodType
+    );
+  };
+  
+    // Function to check if a blood type button is selected
+    const isBloodTypeSelected = (bloodType) => {
+      return selectedBloodType === bloodType;
+    };
 
   const Header = () => {
     return (
@@ -293,74 +305,62 @@ const DonorDashboard = () => {
             </div>
 
             <div style={{ display: 'flex', marginTop: '10px' }}>
-              <div
-                className="Rectangle24"
-                style={{
-                  width: 58.99,
-                  height: 56.57,
-                  borderRadius: 3,
-                  border: '1px #EB3738 solid',
-                  color: '#EB3738',
-                  fontSize: 24,
-                  fontFamily: 'Roboto',
-                  fontWeight: '400',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginRight: '10px',
-                }}
-              >
-                A+
-              </div>
-              {['B+', 'AB+', 'O+'].map((bloodType, index) => (
-                <div key={index} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '20px', marginRight: '10px' }}>
-                  <div
-                    className="Rectangle24"
-                    style={{
-                      width: 58.99,
-                      height: 56.57,
-                      borderRadius: 3,
-                      border: '1px #EB3738 solid',
-                      color: '#EB3738',
-                      fontSize: 24,
-                      fontFamily: 'Roboto',
-                      fontWeight: '400',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    {bloodType}
-                  </div>
-                </div>
-              ))}
-            </div>
+        {['A+', 'B+', 'AB+', 'O+'].map((bloodType, index) => (
+          <div
+            key={index}
+            className="Rectangle24"
+            style={{
+              width: 58.99,
+              height: 56.57,
+              borderRadius: 3,
+              border: isBloodTypeSelected(bloodType) ? '1px #FFFFFF solid' : '1px #EB3738 solid',
+              color: isBloodTypeSelected(bloodType) ? '#FFFFFF' : '#EB3738',
+              fontSize: 24,
+              fontFamily: 'Roboto',
+              fontWeight: '400',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginBottom: '20px',
+              marginRight: '10px',
+              cursor: 'pointer',
+              background: isBloodTypeSelected(bloodType) ? '#FF1C1C' : 'transparent',
+            }}
+            onClick={() => handleBloodTypeButtonClick(bloodType)}
+          >
+            {bloodType}
+          </div>
+        ))}
+      </div>
 
-            <div style={{ display: 'flex', marginTop: '10px' }}>
-              {['A-', 'B-', 'AB-', 'O-'].map((bloodType, index) => (
-                <div
-                  key={index}
-                  className="Rectangle24"
-                  style={{
-                    width: 58.99,
-                    height: 56.57,
-                    borderRadius: 3,
-                    border: '1px #EB3738 solid',
-                    color: '#EB3738',
-                    fontSize: 24,
-                    fontFamily: 'Roboto',
-                    fontWeight: '400',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginBottom: '300px',
-                    marginRight: '10px',
-                  }}
-                >
-                  {bloodType}
-                </div>
-              ))}
-            </div>
+      <div style={{ display: 'flex', marginTop: '10px' }}>
+        {['A-', 'B-', 'AB-', 'O-'].map((bloodType, index) => (
+          <div
+            key={index}
+            className="Rectangle24"
+            style={{
+              width: 58.99,
+              height: 56.57,
+              borderRadius: 3,
+              border: isBloodTypeSelected(bloodType) ? '1px #FFFFFF solid' : '1px #EB3738 solid',
+              color: isBloodTypeSelected(bloodType) ? '#FFFFFF' : '#EB3738',
+              fontSize: 24,
+              fontFamily: 'Roboto',
+              fontWeight: '400',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginBottom: '300px',
+              marginRight: '10px',
+              cursor: 'pointer',
+              background: isBloodTypeSelected(bloodType) ? '#FF1C1C' : 'transparent',
+            }}
+            onClick={() => handleBloodTypeButtonClick(bloodType)}
+          >
+            {bloodType}
+          </div>
+        ))}
+      </div>
 
             <div className="DialogClose" style={{ width: '100%', display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
            

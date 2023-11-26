@@ -15,22 +15,7 @@ import './App.css';
 const Details = () => {
   const navigate = useNavigate();
   const [showOtherImage, setShowOtherImage] = useState(false);
-  const [location] = useState('');
-  const [openAlert, setOpenAlert] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
-
-  const handleAlertClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-    setOpenAlert(false);
-    navigate('/Donor_Dashboard');
-  };
-
-  const handleSave = () => {
-    console.log('Location saved:', location);
-    setOpenAlert(true);
-  };
 
   const handleAcceptRequest = () => {
     // Handle your logic for accepting the request

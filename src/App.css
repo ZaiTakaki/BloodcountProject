@@ -339,3 +339,17 @@
     top: 220px;
     height: 60px;
 }
+
+.BloodTypeChoices {
+  position: absolute;
+  display: flex;
+  left: 100px;
+  top: 100px;
+}
+
+.slider-blood {
+  position: absolute;
+  display: flex;
+  left: 100px;
+  top: 300px;
+}

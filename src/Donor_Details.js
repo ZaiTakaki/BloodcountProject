@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Paper, Button, Slider, Typography, TextField, selectClasses } from '@mui/material';
+import { Paper, Button, Slider, Typography, TextField } from '@mui/material';
 import heroLogo from './Image Hero.svg';
 import featuredIcon from './Featured icon.png';
 import otherImage from './Image11.png';
@@ -17,15 +17,14 @@ const DonorDetails = () => {
   const [showOtherImage, setShowOtherImage] = useState(false);
   const [weight, setWeight] = useState(65);
   const [location, setLocation] = useState('');
-  const [isSliderMounted, setIsSliderMounted] = useState(false);
-  const [bloodTypeButtonClicked, setBloodTypeButtonClicked] = useState(false);
-  const [dontKnowButtonHovered, setDontKnowButtonHovered] = useState(false);
-  const weightSliderLabelRef = useRef(null);
   const [selectedBloodType, setSelectedBloodType] = useState(null);
+  const [isSliderMounted, setIsSliderMounted] = useState(false);
+  const weightSliderLabelRef = useRef(null);
 
-
-
- 
+  useEffect(() => {
+    // Update isSliderMounted after the component mounts
+    setIsSliderMounted(true);
+  }, []);
 
   const handleSliderChange = (_, newValue) => {
     console.log('Slider changed:', newValue);
@@ -60,12 +59,15 @@ const handleSave = () => {
   setOpenAlert(true);
 };
 
-  const handleBloodTypeButtonClick = () => {
-    setBloodTypeButtonClicked(!bloodTypeButtonClicked);
-  };
+const handleBloodTypeButtonClick = (bloodType) => {
+  setSelectedBloodType((prevSelectedBloodType) =>
+    prevSelectedBloodType === bloodType ? null : bloodType
+  );
+};
 
-  const handleDontKnowButtonHover = () => {
-    setDontKnowButtonHovered(true);
+  // Function to check if a blood type button is selected
+  const isBloodTypeSelected = (bloodType) => {
+    return selectedBloodType === bloodType;
   };
 
   const Header = () => {
@@ -99,14 +101,6 @@ const handleSave = () => {
       </div>
     );
   };
-
-  const handleBloodTypeChoiceClick = (bloodType) => {
-    if (selectedBloodType === bloodType) {
-      setSelectedBloodType(null);
-    }else{
-      setSelectedBloodType(bloodType);
-    }
-  }
 
   const Label = () => {
     return (
@@ -208,75 +202,62 @@ const handleSave = () => {
             </div>
 
             <div style={{ display: 'flex', marginTop: '10px' }}>
-              <div
-                className="Rectangle24"
-                style={{
-                  width: 58.99,
-                  height: 56.57,
-                  borderRadius: 3,
-                  border: '1px #EB3738 solid',
-                  color: '#EB3738',
-                  fontSize: 24,
-                  fontFamily: 'Roboto',
-                  fontWeight: '400',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginRight: '10px',
-                }}
-              >
-                B+
-              </div>
-              {['B+', 'AB+', 'O+'].map((bloodType, index) => (
-                <div key={index} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '20px', marginRight: '10px' }}>
-                  <div
-                    className="Rectangle24"
-                    style={{
-                      width: 58.99,
-                      height: 56.57,
-                      borderRadius: 3,
-                      border: '1px #EB3738 solid',
-                      color: '#EB3738',
-                      fontSize: 24,
-                      fontFamily: 'Roboto',
-                      fontWeight: '400',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    {bloodType}
-                  </div>
-                </div>
-              ))}
-              
-            </div>
+        {['A+', 'B+', 'AB+', 'O+'].map((bloodType, index) => (
+          <div
+            key={index}
+            className="Rectangle24"
+            style={{
+              width: 58.99,
+              height: 56.57,
+              borderRadius: 3,
+              border: isBloodTypeSelected(bloodType) ? '1px #FFFFFF solid' : '1px #EB3738 solid',
+              color: isBloodTypeSelected(bloodType) ? '#FFFFFF' : '#EB3738',
+              fontSize: 24,
+              fontFamily: 'Roboto',
+              fontWeight: '400',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginBottom: '20px',
+              marginRight: '10px',
+              cursor: 'pointer',
+              background: isBloodTypeSelected(bloodType) ? '#FF1C1C' : 'transparent',
+            }}
+            onClick={() => handleBloodTypeButtonClick(bloodType)}
+          >
+            {bloodType}
+          </div>
+        ))}
+      </div>
 
-            <div style={{ display: 'flex', marginTop: '10px' }}>
-              {['A-', 'B-', 'AB-', 'O-'].map((bloodType, index) => (
-                <div
-                  key={index}
-                  className="Rectangle24"
-                  style={{
-                    width: 58.99,
-                    height: 56.57,
-                    borderRadius: 3,
-                    border: '1px #EB3738 solid',
-                    color: '#EB3738',
-                    fontSize: 24,
-                    fontFamily: 'Roboto',
-                    fontWeight: '400',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginBottom: '300px',
-                    marginRight: '10px',
-                  }}
-                >
-                  {bloodType}
-                </div>
-              ))}
-            </div>
+      <div style={{ display: 'flex', marginTop: '10px' }}>
+        {['A-', 'B-', 'AB-', 'O-'].map((bloodType, index) => (
+          <div
+            key={index}
+            className="Rectangle24"
+            style={{
+              width: 58.99,
+              height: 56.57,
+              borderRadius: 3,
+              border: isBloodTypeSelected(bloodType) ? '1px #FFFFFF solid' : '1px #EB3738 solid',
+              color: isBloodTypeSelected(bloodType) ? '#FFFFFF' : '#EB3738',
+              fontSize: 24,
+              fontFamily: 'Roboto',
+              fontWeight: '400',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginBottom: '300px',
+              marginRight: '10px',
+              cursor: 'pointer',
+              background: isBloodTypeSelected(bloodType) ? '#FF1C1C' : 'transparent',
+            }}
+            onClick={() => handleBloodTypeButtonClick(bloodType)}
+          >
+            {bloodType}
+          </div>
+        ))}
+      </div>
 
             <Button
               variant="contained"
@@ -292,7 +273,7 @@ const handleSave = () => {
                 lineHeight: 20,
                 position: 'absolute',
                 left: '16%',
-                top: '350px',
+                top: '360px',
                 transform: 'translateX(-50%)',
               }}
             >
@@ -319,7 +300,6 @@ const handleSave = () => {
             step={5}
             sx={{ color: '#FF3737', width: 377 }}
             aria-labelledby="weight-slider-label"
-            disabled={false}
           />
         </div>
 
@@ -347,13 +327,14 @@ const handleSave = () => {
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginLeft: 900, marginRight: 20, flexDirection: 'column' }}>
         <div style={{ textAlign: 'right', marginRight: 10 }}>
+          {/* Your Service content can go here */}
         </div>
 
         <Box />
       </div>
 
       <div className="Content">
-        
+        {/* Add your content specific to the Service page here */}
       </div>
     </div>
   );
