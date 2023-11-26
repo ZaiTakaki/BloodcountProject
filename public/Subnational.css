@@ -1,0 +1,426 @@
+.Hospital-set1 {
+    display: flex;
+    position: absolute;
+    top: -90px;
+    left: 40px;
+}
+  
+.hospital1-group-set1 {
+    background-position: 50% 50%;
+    background-color: #ffffff;
+    background-size: cover;
+    height: 170px;
+    left: 60px;
+    position: absolute;
+    top: 201px;
+    width: 500px;
+}
+  
+.hospi1-image-set1 {
+    height:170px;
+    left: 0px;
+    border-radius: 20px;
+    object-fit: cover;
+    position: absolute;
+    top: 0px;
+    width: 600px;
+}
+  
+.overlap-hospi-set1 {
+    height: 769px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1224px;
+}
+  
+.overlap-wrapper-hospi-set1 {
+    height: 145px;
+    left: 0;
+    position: absolute;
+    top: 179px;
+    width: 552px;
+}
+  
+.subnational-blood-wrapper-hospi-set1 {
+    background-position: 50% 50%;
+    background-size: cover;
+    height: 148px;
+    left: -4px;
+    position: relative;
+    width: 558px;
+}
+  
+.subnational-blood-hospi-set1 {
+    -webkit-text-stroke: 0.2px #c47272;
+    color: #ffffff;
+    font-family: "Poppins-SemiBold", Helvetica;
+    font-size: 19px;
+    font-weight: 600;
+    left: 210px;
+    letter-spacing: 0;
+    line-height: 16.1px;
+    position: absolute;
+    text-align: center;
+    text-shadow: 0px 4px 4px #00000040;
+    top: 130px;
+    width: 290px;
+}
+  
+.infos-hospi-set1 {
+    display: flex;
+    position: absolute;
+    top: 0px;
+    left: 40px;
+}
+  
+.blood-bank-hospi-set1 {
+    color: #861530;
+    font-family: "Poppins-SemiBold", Helvetica;
+    font-size: 19px;
+    font-weight: 600;
+    left: 70px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    text-shadow: 0px 4px 4px #00000040;
+    top: 393px;
+    width: 200px;
+}
+  
+.details-set1 {
+    color: #861530;
+    font-family: "Poppins-SemiBold", Helvetica;
+    font-size: 19px;
+    font-weight: 600;
+    left: 70px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    text-shadow: 0px 4px 4px #00000040;
+    top: 443px;
+    width: 200px;
+}
+  
+.details-info-set1 {
+    color: #000000;
+    font-family: "Poppins-SemiBold", Helvetica;
+    font-size: 19px;
+    font-weight: 500;
+    left: 185px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 443px;
+    width: 400px;
+}
+  
+.hours-set1 {
+    color: #861530;
+    font-family: "Poppins-SemiBold", Helvetica;
+    font-size: 19px;
+    font-weight: 600;
+    left: 70px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    text-shadow: 0px 4px 4px #00000040;
+    top: 483px;
+    width: 200px;
+}
+  
+.days {
+    display: flex;
+    position: absolute;
+    top: 0px;
+    right: 330px;
+}
+  
+.day-info1-set1 {
+    color: #000000;
+    font-family: "Poppins-SemiBold", Helvetica;
+    font-size: 19px;
+    font-weight: 500;
+    left: 228px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: right;
+    top: 483px;
+    width: 400px;
+}
+
+.hours {
+    display: flex;
+    position: absolute;
+    top: 0px;
+    right: 230px;
+    content: left;
+
+}
+
+.hour-info1-set1 {
+    color: #f46262;
+    font-family: "Poppins-SemiBold", Helvetica;
+    font-size: 19px;
+    font-weight: 500;
+    left: 545px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: justify;
+    top: 483px;
+    width: 400px;
+}
+
+.hour-info2-set1 {
+    color: #f46262;
+    font-family: "Poppins-SemiBold", Helvetica;
+    font-size: 19px;
+    font-weight: 500;
+    left: 270px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: right;
+    top: 508px;
+    width: 400px;
+}
+
+.hour-info3-set1 {
+    color: #f46262;
+    font-family: "Poppins-SemiBold", Helvetica;
+    font-size: 19px;
+    font-weight: 500;
+    left: 270px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: right;
+    top: 533px;
+    width: 400px;
+}
+.hour-info4-set1 {
+    color: #f46262;
+    font-family: "Poppins-SemiBold", Helvetica;
+    font-size: 19px;
+    font-weight: 500;
+    left: 270px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: right;
+    top: 558px;
+    width: 400px;
+}
+
+.hour-info5-set1 {
+    color: #f46262;
+    font-family: "Poppins-SemiBold", Helvetica;
+    font-size: 19px;
+    font-weight: 500;
+    left: 270px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: right;
+    top: 583px;
+    width: 400px;
+}
+
+.hour-info6-set1 {
+    color: #f46262;
+    font-family: "Poppins-SemiBold", Helvetica;
+    font-size: 19px;
+    font-weight: 500;
+    left: 270px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: right;
+    top: 608px;
+    width: 400px;
+}
+
+.hour-info7-set1 {
+    color: #f46262;
+    font-family: "Poppins-SemiBold", Helvetica;
+    font-size: 19px;
+    font-weight: 500;
+    left: 270px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: right;
+    top: 633px;
+    width: 400px;
+}
+
+.phone-set1 {
+    color: #861530;
+    font-family: "Poppins-SemiBold", Helvetica;
+    font-size: 19px;
+    font-weight: 600;
+    left: 70px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    text-shadow: 0px 4px 4px #00000040;
+    text-decoration: underline;
+    top: 683px;
+    width: 200px;
+}
+
+.phone {
+    display: flex;
+    text-decoration: underline;
+    position: absolute;
+    top: 200px;
+    right: 330px;
+    content: left;
+}
+
+.phone-info1-set1 {
+    color: #f46262;
+    font-family: "Poppins-SemiBold", Helvetica;
+    font-size: 19px;
+    font-weight: 500;
+    left: 545px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: justify;
+    top: 483px;
+    width: 400px;
+    text-decoration: underline #000000;
+}
+
+.map-set1 {
+    color: #861530;
+    font-family: "Poppins-SemiBold", Helvetica;
+    font-size: 19px;
+    font-weight: 600;
+    left: 70px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    text-shadow: 0px 4px 4px #00000040;
+    top: 743px;
+    width: 200px;
+}
+
+.map-group-set1 {
+    background-position: 50% 50%;
+    background-color: #ffffff;
+    background-size: cover;
+    height: 270px;
+    left: 90px;
+    position: absolute;
+    top: 701px;
+    width: 900px;
+}
+
+.map-image {
+    height:270px;
+    left: 60px;
+    border-radius: 20px;
+    object-fit: cover;
+    position: absolute;
+    top: 790px;
+    width: 900px;
+}
+
+.box77 {
+    background-position: 50% 50%;
+    background-color: #ffffff;
+    background-size: cover;
+    height: 100px;
+    left: 90px;
+    position: absolute;
+    top: 1101px;
+    width: 100px;
+}
+
+.box-gray {
+    background-position: 50% 50%;
+    background-color: #f8eded;
+    background-size: cover;
+    height: 300px;
+    left: 990px;
+    position: absolute;
+    border-radius: 20px;
+    top: 101px;
+    width: 600px;
+}
+
+.box-pgray-set1 {
+    color: #ef1212;
+    font-family: "Poppins-SemiBold", Helvetica;
+    font-size: 28px;
+    font-weight: 700;
+    left: 30px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: left;
+    top: 23px;
+    width: 400px;
+}
+
+.request {
+    display: flex;
+    position: absolute;
+    top: -410px;
+    left: -170px;
+}
+
+.request-info1-set1 {
+    color: #000000;
+    font-family: "Poppins-SemiBold", Helvetica;
+    font-size: 24px;
+    font-weight: 500;
+    left: 228px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: left;
+    top: 483px;
+    width: 400px;
+}
+
+.request-info2-set1 {
+    color: #000000;
+    font-family: "Poppins-SemiBold", Helvetica;
+    font-size: 24px;
+    font-weight: 500;
+    left: 228px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: left;
+    top: 548px;
+    width: 400px;
+}
+
+.choose-blood {
+    display: flex;
+    position: absolute;
+    top: 155px;
+    left: 1230px;
+}
+
+.enter-unit {
+    border-radius: 20px;
+    height: 38px;
+    position: absolute;
+    text-decoration: underline;
+    top: 233px;
+    left: 1120px;
+    width: 1450px;
+}
