@@ -1,0 +1,235 @@
+.recipient-request-br {
+    position: absolute;
+    display: flex;
+    left: 120px;
+    top: 120px;
+}
+
+.red-boxes-br {
+    position: absolute;
+    display: flex;
+    left: 90px;
+    top: 120px;
+}
+
+.patient-name-br {
+    position: absolute;
+    display: flex;
+    background-color: #ef1212;
+    height: 60px;
+    width: 230px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    left: -50px;
+    top: 50px;
+}
+
+.patient-age-br {
+    position: absolute;
+    display: flex;
+    background-color: #ef1212;
+    height: 60px;
+    width: 90px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    left: 180px;
+    top: 50px;
+}
+
+.patient-reason-br {
+    position: absolute;
+    display: flex;
+    background-color: #ef1212;
+    height: 60px;
+    width: 150px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    left: 270px;
+    top: 50px;
+}
+
+.patient-bloodgroup-br {
+    position: absolute;
+    display: flex;
+    background-color: #ef1212;
+    height: 60px;
+    width: 250px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    left: 420px;
+    top: 50px;
+}
+
+.patient-unit-br {
+    position: absolute;
+    display: flex;
+    background-color: #ef1212;
+    height: 60px;
+    width: 110px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    left: 670px;
+    top: 50px;
+}
+
+.patient-date-br {
+    position: absolute;
+    display: flex;
+    background-color: #ef1212;
+    height: 60px;
+    width: 210px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    left: 780px;
+    top: 50px;
+}
+.patient-contactnumber-br {
+    position: absolute;
+    display: flex;
+    background-color: #ef1212;
+    height: 60px;
+    width: 310px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    left: 990px;
+    top: 50px;
+}
+
+.patient-status-br {
+    position: absolute;
+    display: flex;
+    background-color: #ef1212;
+    height: 60px;
+    width: 260px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    left: 1300px;
+    top: 50px;
+}
+
+.white1-boxes-br {
+    position: absolute;
+    display: flex;
+    left: 90px;
+    top: 180px;
+}
+
+.w-patient-name-br {
+    position: absolute;
+    display: flex;
+    left: 120px;
+    top: 120px;
+    border: 1px solid #ef1212;
+    height: 60px;
+    width: 230px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    left: -50px;
+    top: 50px;
+}
+
+.w-patient-age-br {
+    position: absolute;
+    display: flex;
+    border: 1px solid #ef1212;  height: 60px;
+    width: 90px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    left: 180px;
+    top: 50px;
+}
+
+.w-patient-reason-br {
+    position: absolute;
+    display: flex;
+    border: 1px solid #ef1212;  height: 60px;
+    width: 150px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    left: 270px;
+    top: 50px;
+}
+
+.w-patient-bloodgroup-br {
+    position: absolute;
+    display: flex;
+    border: 1px solid #ef1212;  height: 60px;
+    width: 250px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    left: 420px;
+    top: 50px;
+}
+
+.w-patient-unit-br {
+    position: absolute;
+    display: flex;
+    border: 1px solid #ef1212;  height: 60px;
+    width: 110px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    left: 670px;
+    top: 50px;
+}
+
+.w-patient-date-br {
+    position: absolute;
+    display: flex;
+    border: 1px solid #ef1212;  height: 60px;
+    width: 210px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    left: 780px;
+    top: 50px;
+}
+.w-patient-contactnumber-br {
+    position: absolute;
+    display: flex;
+    border: 1px solid #ef1212;  height: 60px;
+    width: 310px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    left: 990px;
+    top: 50px;
+}
+
+.w-patient-status-br {
+    position: absolute;
+    display: flex;
+    border: 1px solid #ef1212;  height: 60px;
+    width: 260px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    left: 1300px;
+    top: 50px;
+}
+
+.white2-boxes-br {
+    position: absolute;
+    display: flex;
+    left: 90px;
+    top: 240px;
+}
+
+.white3-boxes-br {
+    position: absolute;
+    display: flex;
+    left: 90px;
+    top: 300px;
+}
