@@ -45,7 +45,7 @@ const BloodBankDashboard = () => {
 
   const Label = () => {
     return (
-      <div className="label" style={{ position: 'absolute', left: '170%', top: '55%', transform: 'translate(-50%, -50%)', textAlign: 'center' }}>
+      <div className="label" style={{ position: 'absolute', left: '170%', top: '60%', transform: 'translate(-50%, -50%)', textAlign: 'center' }}>
         <img className="circle-with-blood" src={circleWithBlood} alt="Circle with Blood" style={{ width: '400px', height: '400px' }} />
         <img className="polygon-above-image" src={require('./Polygon 1.svg').default} alt="Polygon 1" />
         <div className="text-wrapper" style={{ position: 'absolute', top: '20%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 1 }}>
