@@ -16,10 +16,7 @@ import BloodbankDashboard from './Bloodbank_Dashboard';
 import DonorDashboard from './Donor_Dashboard';
 import Details from './Details';
 import Admin_Homepage from './Admin_Homepage.tsx';
-<<<<<<< HEAD
 import Admin_Homepage from './Admin_Homepage.tsx';
-=======
->>>>>>> 7e424718379781f17ec943f7b8eeb0698de2761a
 
 const Box = () => {
   return (
@@ -107,10 +104,7 @@ function App() {
         <Route path="/Donor_Details" element={<DonorDetails />} />
         <Route path="/Details" element={<Details />} />
         <Route path="/HosInfo1" element={<HosInfo1 />} />
-<<<<<<< HEAD
         <Route path="/Admin_Homepage" element={<Admin_Homepage />} />
-=======
->>>>>>> 7e424718379781f17ec943f7b8eeb0698de2761a
         <Route path="/Donor_Dashboard" element={<DonorDashboard />} />
         <Route path="/Register_User" element={<RegisterUser />} />
         <Route path="/Login_User" element={<LoginUser />} />
