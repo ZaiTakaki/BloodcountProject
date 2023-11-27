@@ -15,7 +15,7 @@ import RecipientDashboard from './Recipient_Dashboard';
 import BloodbankDashboard from './Bloodbank_Dashboard';
 import DonorDashboard from './Donor_Dashboard';
 import Details from './Details';
-import Admin_Homepage from './Admin_Homepage.tsx';
+import HosInfo1 from './HosInfo1';
 import Admin_Homepage from './Admin_Homepage.tsx';
 
 const Box = () => {

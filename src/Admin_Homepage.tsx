@@ -1,9 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Box, AppBar, Toolbar, IconButton, Typography, Button, MenuList, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import heroLogo from './Image Hero.svg';
 
 const Admin_Homepage: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ backgroundColor: '#FFE4E4' }}>
@@ -27,7 +29,7 @@ const Admin_Homepage: React.FC = () => {
               </div>
             </div>
           </Typography>
-          <Button variant="outlined" style={{ color: '#861530' }}>Logout</Button>
+          <Button variant="outlined" onClick={() => navigate("/Register_User")} style={{ color: '#861530', fontSize: 18, fontFamily: 'Poppins', fontWeight: '800', textTransform: 'capitalize', letterSpacing: 0.90, wordWrap: 'break-word', borderRadius: '10px', border: '2px solid #861530' }}>Logout</Button>
         </Toolbar>
       </AppBar>
       <MenuList sx={{ width: 260, height: 200, background: 'rgba(255, 0, 0, 0.75)', border: '1px rgba(255, 255, 255, 0.50) solid' }}>
