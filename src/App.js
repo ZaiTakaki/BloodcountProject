@@ -15,6 +15,7 @@ import RecipientDashboard from './Recipient_Dashboard';
 import BloodbankDashboard from './Bloodbank_Dashboard';
 import DonorDashboard from './Donor_Dashboard';
 import Details from './Details';
+import HosInfo1 from './HosInfo1';
 
 const Box = () => {
   return (
@@ -101,6 +102,7 @@ function App() {
         <Route path="/Bloodbank_Dashboard" element={<BloodbankDashboard />} />
         <Route path="/Donor_Details" element={<DonorDetails />} />
         <Route path="/Details" element={<Details />} />
+        <Route path="/HosInfo1" element={<HosInfo1 />} />
         <Route path="/Donor_Dashboard" element={<DonorDashboard />} />
         <Route path="/Register_User" element={<RegisterUser />} />
         <Route path="/Login_User" element={<LoginUser />} />
