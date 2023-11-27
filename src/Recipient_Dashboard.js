@@ -93,7 +93,7 @@ const RecipientDashboard = () => {
 
       {/* Rest of the content */}
       <div className="Content" style={{ marginTop: '20px',marginLeft: '-100px' }}>
-      <img className="image5" style={{ width: 550, height: 140, boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 5, position: 'relative', zIndex: 2 }} src={image5} alt="Blood donation event" />
+      <img className="image5" onClick={() => navigate('/HosInfo1')} style={{ width: 550, height: 140, boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 5, position: 'relative', zIndex: 2 }} src={image5} alt="Blood donation event" />
       <img className="rectangle53" style={{ width: 'auto', height: 140, boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 5, position: 'relative', zIndex: 2, marginLeft: '100px' }} src={rectangle53} alt="Rectangle 53" />
       <div className="SubnationalBloodCenterForVisayas" style={{ width: 290, height: 45, textAlign: 'center', color: 'white', fontSize: 14, fontFamily: 'Poppins', fontWeight: '600', lineHeight: 16.10, wordWrap: 'break-word', position: 'absolute', top: '39%', left: '69%', transform: 'translate(-50%, -50%)', zIndex: 4 }}>
               Subnational Blood Center for Visayas
