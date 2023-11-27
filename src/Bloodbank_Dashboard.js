@@ -1,11 +1,16 @@
 import React from 'react';
-import { Button, TextField } from '@mui/material';
+import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import heroLogo from './Image Hero.svg';
 import circleWithBlood from './circlewithblood.png';
+import { InputAdornment, Input, IconButton } from '@mui/material';
+import { useState } from 'react';
+import SearchIcon from '@mui/icons-material/Search';
+import './BloodBankDashboard.css';
 
-const BloodbankDashboard = () => {
+const BloodBankDashboard = () => {
   const navigate = useNavigate();
+  const [content, setContent] = useState ('');
 
   const Header = () => {
     return (
@@ -20,13 +25,7 @@ const BloodbankDashboard = () => {
             </div>
           </div>
 
-          {/* TextField with increased marginRight */}
-          <TextField
-            id="outlined-basic"
-            label="Search"
-            variant="outlined"
-            style={{ width: 288, height: 55, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginLeft: 20, marginRight: 20 }}
-          />
+         
         </div>
 
         {/* Navigation with increased marginRight and aligned to circle-with-blood */}
@@ -46,7 +45,7 @@ const BloodbankDashboard = () => {
 
   const Label = () => {
     return (
-      <div className="label" style={{ position: 'absolute', left: '100%', top: '40%', transform: 'translate(-50%, -50%)', textAlign: 'center' }}>
+      <div className="label" style={{ position: 'absolute', left: '170%', top: '60%', transform: 'translate(-50%, -50%)', textAlign: 'center' }}>
         <img className="circle-with-blood" src={circleWithBlood} alt="Circle with Blood" style={{ width: '400px', height: '400px' }} />
         <img className="polygon-above-image" src={require('./Polygon 1.svg').default} alt="Polygon 1" />
         <div className="text-wrapper" style={{ position: 'absolute', top: '20%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 1 }}>
@@ -61,7 +60,7 @@ const BloodbankDashboard = () => {
     return (
       <div className="box" style={{ position: 'absolute', left: 0 }}>
         <Label />
-        <div className="ellipse" />
+        <div className="ellipse" style={{left: 700, top: 100}} />
         <img className="polygon-image" src={require('./Polygon 2.svg').default} alt="Polygon 2" />
       </div>
     );
@@ -84,10 +83,117 @@ const BloodbankDashboard = () => {
 
       {/* Rest of the content */}
       <div className="Content">
-        {/* Add your content specific to the Bloodbank Dashboard page here */}
+
+        <div className='blood-bank-hospi'> Blood Bank</div>
+
+       <div className='Hospital-set'>
+          <div className='hospital1-group'>
+              <img className='hospi1-image' alt='Hospi1' src='Subdiv.png'></img>
+          </div>
+
+          <div className="overlap-hospi">
+              <div className="overlap-wrapper-hospi">
+                <div className="subnational-blood-wrapper-hospi">
+                    
+                <Button variant="outlined" onClick={() => navigate("/Subnational")}
+                    style={{ 
+                      WebkitTextStroke: '0.2px #f46262',
+                      color: '#ffffff', 
+                      fontSize: 22, 
+                      fontFamily: 'sans-serif', 
+                      fontWeight: '600', 
+                      textTransform: 'capitalize', 
+                      letterSpacing: 0.90, 
+                      wordWrap: 'break-word',  
+                      borderColor: 'transparent' , 
+                      left: 100, 
+                      top: 150
+                      }}>
+                        Subnational Blood Center for Visayas
+                  </Button>
+
+                </div>
+            </div>
+
+            <div className='hospital2-group'>
+              <img className='hospi2-image' alt='Hospi2' src='RedCross.png' />
+          </div>
+
+              <div className="group-1-hospi">
+                  <div className="redcross-wrapper-hospi">
+                  
+                  <Button variant="outlined" onClick={() => navigate("/PhiRedCross")}
+                    style={{ 
+                      WebkitTextStroke: '0.2px #f46262',
+                      color: '#ffffff', 
+                      fontSize: 22, 
+                      fontFamily: 'sans-serif', 
+                      fontWeight: '600', 
+                      textTransform: 'capitalize', 
+                      letterSpacing: 0.90, 
+                      wordWrap: 'break-word',  
+                      borderColor: 'transparent' , 
+                      left: 100, 
+                      top: 150
+                      }}>
+                        Philippine Red Cross, Cebu Chapter
+                  </Button>
+
+                  </div>
+              </div>
+
+            <div className='hospital3-group'>
+              <img className='hospi3-image' alt='Hospi3' src='VicenteSotto.png' />
+          </div>
+
+            <div className="group-2-hospi">
+                <div className="vicente-sotto-wrapper-hospi">
+                    <Button variant="outlined" onClick={() => navigate("/VicenteSotto")}
+                    style={{ 
+                      WebkitTextStroke: '0.2px #f46262',
+                      color: '#ffffff', 
+                      fontSize: 22, 
+                      fontFamily: 'sans-serif', 
+                      fontWeight: '600', 
+                      textTransform: 'capitalize', 
+                      letterSpacing: 0.90, 
+                      wordWrap: 'break-word',  
+                      borderColor: 'transparent' , 
+                      left: 70, 
+                      top: 170
+                      }}>
+                        Vicente Sotto Medical Memorial Medical Center (VSMMC) Blood Services Unit
+                  </Button>
+                </div>
+            </div>
+
+          </div>
+
+          <div className="search-donor" style={{display: 'flex', marginRight: 20, border: '1px solid #c47272', borderRadius: '50px', padding: '5px'   }}>
+                <Input
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
+                    placeholder="Search for Blood Banks."
+                    disableUnderline={true}
+                    style={{
+                        width: 400,
+                        fontSize: 20,
+                    }}
+                    startAdornment={
+                        <InputAdornment position="start">
+                          <IconButton>
+                            <SearchIcon />
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                /> 
+          </div>
+
+        </div>
+
       </div>
     </div>
   );
 };
 
-export default BloodbankDashboard;
+export default BloodBankDashboard;
