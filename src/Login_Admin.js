@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import heroLogo from './Image Hero.svg';
@@ -27,6 +28,7 @@ const Box = () => {
 };
 
 const LoginAdmin = () => {
+  const navigate = useNavigate();
 
   const handleSignIn = () => {
     // Add your sign-in logic for admin
@@ -91,7 +93,7 @@ const LoginAdmin = () => {
             marginLeft: 20,
             marginBottom: 20,
           }}
-          onClick={handleSignIn}
+          onClick={() => navigate("/Admin_Homepage")}
         >
           Sign in
         </Button>
