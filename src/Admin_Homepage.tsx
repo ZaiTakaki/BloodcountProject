@@ -33,14 +33,14 @@ const Admin_Homepage: React.FC = () => {
           <Button variant="outlined" onClick={() => navigate("/Register_User")} style={{ color: '#861530', fontSize: 18, fontFamily: 'Poppins', fontWeight: '800', textTransform: 'capitalize', letterSpacing: 0.90, wordWrap: 'break-word', borderRadius: '10px', border: '2px solid #861530' }}>Logout</Button>
         </Toolbar>
       </AppBar>
-      <MenuList sx={{ width: 260, height: 200, background: 'rgba(255, 0, 0, 0.75)', border: '1px rgba(255, 255, 255, 0.50) solid' }}>
-        <MenuItem>Dashboard</MenuItem>
-        <MenuItem>Donor</MenuItem>
-        <MenuItem>Donation</MenuItem>
-        <MenuItem>Recipient</MenuItem>
-        <MenuItem>Request History</MenuItem>
-        <MenuItem>Reports</MenuItem>
-      </MenuList>
+      <MenuList sx={{ width: 260, height: 220, background: 'rgba(255, 0, 0, 0.75)', border: '1px rgba(255, 255, 255, 0.50)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+  <MenuItem style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Dashboard</MenuItem>
+  <MenuItem style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Donor</MenuItem>
+  <MenuItem style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Donation</MenuItem>
+  <MenuItem style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Recipient</MenuItem>
+  <MenuItem style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Request History</MenuItem>
+  <MenuItem style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Reports</MenuItem>
+</MenuList>
     </Box>
   );
 };
