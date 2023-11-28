@@ -6,6 +6,7 @@ import heroLogo from './Image Hero.svg';
 
 const Admin_Homepage: React.FC = () => {
   const navigate = useNavigate();
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ backgroundColor: '#FFE4E4' }}>
@@ -21,7 +22,7 @@ const Admin_Homepage: React.FC = () => {
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <div className="LogoAndTitle">
-              <img className="Header-logo" src={heroLogo} alt="Logo" style={{ width: 26, height: 26 }} />
+              <img className="Header-logo" src={heroLogo.toString()} alt="Logo" style={{ width: 26, height: 26 }} />
               <div className="Hospital">
                 <span style={{ color: '#FF0000', fontSize: 20, fontFamily: 'Poppins', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>Blood</span>
                 <span style={{ color: 'black', fontSize: 20, fontFamily: 'Poppins', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}> </span>
