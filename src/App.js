@@ -16,6 +16,7 @@ import BloodbankDashboard from './Bloodbank_Dashboard';
 import DonorDashboard from './Donor_Dashboard';
 import Details from './Details';
 import HosInfo1 from './HosInfo1';
+import HospitalDashboard from './Hospital_Dashboard';
 
 const Box = () => {
   return (
@@ -106,6 +107,7 @@ function App() {
         <Route path="/Donor_Dashboard" element={<DonorDashboard />} />
         <Route path="/Register_User" element={<RegisterUser />} />
         <Route path="/Login_User" element={<LoginUser />} />
+        <Route path="/Hospital_Dashboard" element={<HospitalDashboard />} />
       </Routes>
     </Router>
   );
