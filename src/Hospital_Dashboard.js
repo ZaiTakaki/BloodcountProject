@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Button, TextField } from '@mui/material';
+import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import heroLogo from './Image Hero.svg';
 import circleWithBlood from './circlewithblood.png';
@@ -7,16 +7,18 @@ import Image5 from  './Image5.png';
 import rectangle11 from './rectangle11.png';
 import rectangle12 from './rectangle12.png';
 import Vector from './Vector.png';
+import Input from '@material-ui/core/Input';
+import InputAdornment from '@material-ui/core/InputAdornment';
+
+
 
 const HospitalDashboard = () => {
   const navigate = useNavigate();
 
   const Header = () => {
-    const [query, setQuery] = useState('');
   
-    const handleSearchChange = (event) => {
-      setQuery(event.target.value);
-    };
+    const [content, setContent] = useState('');
+
     return (
       <div className="Header" style={{ position: 'relative' }}>
         <div className="LogoAndTitle" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -30,28 +32,37 @@ const HospitalDashboard = () => {
           </div>
           
           {/* TextField with increased marginRight */}
-          <TextField
-          id="outlined-basic"
-          label="Search for Blood Banks"
-          variant="outlined"
-          style={{ marginLeft: -160, marginRight: 20, marginTop: 100, border: '1px #FFC3C3 solid', borderRadius: 100, }}
-          InputProps={{
-            endAdornment: (
-              <img
-                src={Vector}
-                alt="Search Icon"
-                style={{ width: 17, height: 18, marginLeft: 8, }}
-              />
-            ),
-            style: {
-              width: 325,
-              height: 55,
-              display: 'flex', // Align icon at the end
-              justifyContent: 'flex-end', // Align icon at the end
-            },
-          }}
-          onChange={handleSearchChange}
-        />
+          <div className="search-donor" style={{ backgroundColor: 'white', display: 'flex', marginRight: 20, }}>
+      <Input
+        id="outlined-basic"
+        label=" Search for Blood Banks"
+        variant="outlined"
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
+        placeholder="Search for Blood Donor."
+        disableUnderline={true}
+        style={{
+          marginLeft: -160,
+          marginRight: 20,
+          marginTop: 100,
+          border: '1px #FFC3C3 solid',
+          borderRadius: 100,
+          width: 355,
+          height: 55,
+          display: 'flex', // Align icon at the end
+          justifyContent: 'flex-end', // Align icon at the end
+        }}
+        endAdornment={
+          <InputAdornment position="end">
+            <img
+              src={Vector} // Replace 'Vector' with the actual path to your vector image
+              alt="Search Icon"
+              style={{ width: 17, height: 18, marginLeft: -35 }}
+            />
+          </InputAdornment>
+        }
+      />
+    </div>
 
 
         </div>
