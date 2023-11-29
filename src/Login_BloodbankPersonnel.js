@@ -87,7 +87,7 @@ const LoginBloodbankPersonnel = () => {
             marginLeft: 20,
             marginBottom: 20,
           }}
-          onClick={() => navigate("/Bloodbank_Dashboard")}
+          onClick={() => navigate("/Hospital_Dashboard")}
         >
           Sign in
         </Button>
