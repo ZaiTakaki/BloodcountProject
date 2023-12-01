@@ -8,6 +8,7 @@ import { useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import './BloodBankDashboard.css';
 
+
 const BloodBankDashboard = () => {
   const navigate = useNavigate();
   const [content, setContent] = useState ('');
@@ -29,10 +30,10 @@ const BloodBankDashboard = () => {
         </div>
 
         {/* Navigation with increased marginRight and aligned to circle-with-blood */}
-        <div className="Navigation" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', top: '20%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '20px' }}>
-          <div className="Home">Home</div>
-          <div className="Service">Service</div>
-          <div className="About">About</div>
+        <div className="Navigation" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', top: '20%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Button color="secondary" onClick={() => navigate("/BloodBankDashboard")} style={{ color: '#ef1212', fontSize: 28, fontFamily: 'Poppins', fontWeight: '500', textTransform: 'capitalize', letterSpacing: 0.90, wordWrap: 'break-word' }}>Home</Button>
+          <Button color="secondary" onClick={() => navigate("/AvailableDonor")} style={{ color: '#000000', fontSize: 28, fontFamily: 'Poppins', fontWeight: '500', textTransform: 'capitalize', letterSpacing: 0.90, wordWrap: 'break-word' }}>Available Donors</Button>
+          <Button color="secondary" onClick={() => navigate("/BloodRequest")} style={{ color: '#000000', fontSize: 28, fontFamily: 'Poppins', fontWeight: '500', textTransform: 'capitalize', letterSpacing: 0.90, wordWrap: 'break-word' }}>Blood Request</Button>
         </div>
 
         {/* Buttons with increased marginRight */}
@@ -87,85 +88,82 @@ const BloodBankDashboard = () => {
         <div className='blood-bank-hospi'> Blood Bank</div>
 
        <div className='Hospital-set'>
-          <div className='hospital1-group'>
-              <img className='hospi1-image' alt='Hospi1' src='Subdiv.png'></img>
+        <div className='hospital1-group'>
+            <div style={{ position: 'relative', zIndex: 2 }}>
+              <img className='hospi1-image' onClick={() => navigate('/Subnational')} style={{ width: 600, height: 170, boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 20 }} alt='Hospi1' src='Subdiv.png' />
+              <Button variant="outlined" onClick={() => navigate("/Subnational")} style={{
+                WebkitTextStroke: '0.2px #f46262',
+                color: '#ffffff',
+                fontSize: 22,
+                fontFamily: 'sans-serif',
+                fontWeight: '600',
+                textTransform: 'capitalize',
+                letterSpacing: 0.90,
+                wordWrap: 'break-word',
+                borderColor: 'transparent',
+                position: 'absolute',
+                bottom: -3,
+                left: '63%',
+                transform: 'translateX(-50%)',
+                zIndex: 3,
+                width: '500px'
+              }}>
+                Subnational Blood Center for Visayas
+              </Button>
+            </div>
           </div>
 
           <div className="overlap-hospi">
-              <div className="overlap-wrapper-hospi">
-                <div className="subnational-blood-wrapper-hospi">
-                    
-                <Button variant="outlined" onClick={() => navigate("/Subnational")}
-                    style={{ 
-                      WebkitTextStroke: '0.2px #f46262',
-                      color: '#ffffff', 
-                      fontSize: 22, 
-                      fontFamily: 'sans-serif', 
-                      fontWeight: '600', 
-                      textTransform: 'capitalize', 
-                      letterSpacing: 0.90, 
-                      wordWrap: 'break-word',  
-                      borderColor: 'transparent' , 
-                      left: 100, 
-                      top: 150
-                      }}>
-                        Subnational Blood Center for Visayas
-                  </Button>
-
-                </div>
+              
+          <div className='hospital2-group'>
+            <div style={{ position: 'relative', zIndex: 2 }}>
+              <img className='hospi2-image' onClick={() => navigate('/PhiRedCross')} style={{ width: 600, height: 170, boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 20 }} alt='Hospi2' src='RedCross.png' />
+              <Button variant="outlined" onClick={() => navigate("/PhiRedCross")} style={{
+                WebkitTextStroke: '0.2px #f46262',
+                color: '#ffffff',
+                fontSize: 22,
+                fontFamily: 'sans-serif',
+                fontWeight: '600',
+                textTransform: 'capitalize',
+                letterSpacing: 0.90,
+                wordWrap: 'break-word',
+                borderColor: 'transparent',
+                position: 'absolute',
+                top: 130,
+                left: '63%',
+                transform: 'translateX(-50%)',
+                zIndex: 3,
+                width: '500px'
+              }}>
+                Philippine Red Cross, Cebu Chapter
+              </Button>
             </div>
-
-            <div className='hospital2-group'>
-              <img className='hospi2-image' alt='Hospi2' src='RedCross.png' />
           </div>
 
-              <div className="group-1-hospi">
-                  <div className="redcross-wrapper-hospi">
-                  
-                  <Button variant="outlined" onClick={() => navigate("/PhiRedCross")}
-                    style={{ 
-                      WebkitTextStroke: '0.2px #f46262',
-                      color: '#ffffff', 
-                      fontSize: 22, 
-                      fontFamily: 'sans-serif', 
-                      fontWeight: '600', 
-                      textTransform: 'capitalize', 
-                      letterSpacing: 0.90, 
-                      wordWrap: 'break-word',  
-                      borderColor: 'transparent' , 
-                      left: 100, 
-                      top: 150
-                      }}>
-                        Philippine Red Cross, Cebu Chapter
-                  </Button>
-
-                  </div>
-              </div>
-
-            <div className='hospital3-group'>
-              <img className='hospi3-image' alt='Hospi3' src='VicenteSotto.png' />
-          </div>
-
-            <div className="group-2-hospi">
-                <div className="vicente-sotto-wrapper-hospi">
-                    <Button variant="outlined" onClick={() => navigate("/VicenteSotto")}
-                    style={{ 
-                      WebkitTextStroke: '0.2px #f46262',
-                      color: '#ffffff', 
-                      fontSize: 22, 
-                      fontFamily: 'sans-serif', 
-                      fontWeight: '600', 
-                      textTransform: 'capitalize', 
-                      letterSpacing: 0.90, 
-                      wordWrap: 'break-word',  
-                      borderColor: 'transparent' , 
-                      left: 70, 
-                      top: 170
-                      }}>
-                        Vicente Sotto Medical Memorial Medical Center (VSMMC) Blood Services Unit
-                  </Button>
-                </div>
+          <div className='hospital3-group'>
+            <div style={{ position: 'relative', zIndex: 2 }}>
+              <img className='hospi3-image' onClick={() => navigate('/VicenteSotto')} style={{ width: 600, height: 170, boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 20 }} alt='Hospi3' src='VicenteSotto.png' />
+              <Button variant="outlined" onClick={() => navigate("/VicenteSotto")} style={{
+                WebkitTextStroke: '0.2px #f46262',
+                color: '#ffffff',
+                fontSize: 22,
+                fontFamily: 'sans-serif',
+                fontWeight: '600',
+                textTransform: 'capitalize',
+                letterSpacing: 0.90,
+                wordWrap: 'break-word',
+                borderColor: 'transparent',
+                position: 'absolute',
+                top: 95,
+                left: '63%',
+                transform: 'translateX(-50%)',
+                zIndex: 3,
+                width: '500px'
+              }}>
+                Vicente Sotto Medical Memorial Medical Center (VSMMC) Blood Services Unit
+              </Button>
             </div>
+          </div>
 
           </div>
 
