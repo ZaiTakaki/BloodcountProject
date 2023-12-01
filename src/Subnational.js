@@ -161,7 +161,9 @@ const Subnational = () => {
 
           </div>
 
-          <Button variant="outlined" onClick={() => navigate("/Login")} style={{ color: '#000000', fontSize: 23, fontFamily: 'Poppins', fontWeight: '800', textTransform: 'capitalize', letterSpacing: 0.90, wordWrap: 'break-word', borderRadius: '10px',borderColor: '#ffe4e4',  background: '#ffe4e4', top: 1100, left: 310, height: 50, width:190}}>Proceed</Button>
+          <Button variant="outlined" onClick={() => {
+    window.location.href = 'https://www.google.com/maps/place/Subnational+Blood+Center+for+Visayas/@10.2624441,123.8708142,17z/data=!3m1!4b1!4m6!3m5!1s0x33a9994e3bd48605:0x32b9ab3f77fd9cb8!8m2!3d10.2624441!4d123.8733945!16s%2Fg%2F1pp2vkp0j?entry=ttu';
+  }} style={{ color: '#000000', fontSize: 23, fontFamily: 'Poppins', fontWeight: '800', textTransform: 'capitalize', letterSpacing: 0.90, wordWrap: 'break-word', borderRadius: '10px',borderColor: '#ffe4e4',  background: '#ffe4e4', top: 1100, left: 310, height: 50, width:190}}>Proceed</Button>
 
         </div>
 
