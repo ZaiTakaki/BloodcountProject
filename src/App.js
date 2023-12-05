@@ -16,7 +16,12 @@ import BloodbankDashboard from './Bloodbank_Dashboard';
 import DonorDashboard from './Donor_Dashboard';
 import Details from './Details';
 import HosInfo1 from './HosInfo1';
-import HospitalDashboard from './Hospital_Dashboard';
+import Admin_Homepage from './Admin_Homepage.tsx';
+import Admin_Donor from './Admin_Donor.tsx';
+import Donation_Request from './Donation_Request.tsx';
+import Recipient from './Recipient.tsx';
+import Request_History from './Request_History.tsx';
+import Reports from './Reports.tsx';
 
 const Box = () => {
   return (
@@ -104,10 +109,15 @@ function App() {
         <Route path="/Donor_Details" element={<DonorDetails />} />
         <Route path="/Details" element={<Details />} />
         <Route path="/HosInfo1" element={<HosInfo1 />} />
+        <Route path="/Admin_Homepage" element={<Admin_Homepage />} />
+        <Route path="/Admin_Donor" element={<Admin_Donor />} />
+        <Route path="/Donation_Request" element={<Donation_Request />} />
         <Route path="/Donor_Dashboard" element={<DonorDashboard />} />
+        <Route path="/Request_History" element={<Request_History />} />
+        <Route path="/Recipient" element={<Recipient />} />
+        <Route path="/Reports" element={<Reports />} />
         <Route path="/Register_User" element={<RegisterUser />} />
         <Route path="/Login_User" element={<LoginUser />} />
-        <Route path="/Hospital_Dashboard" element={<HospitalDashboard />} />
       </Routes>
     </Router>
   );
