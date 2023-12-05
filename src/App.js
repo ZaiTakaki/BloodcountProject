@@ -21,6 +21,7 @@ import Admin_Donor from './Admin_Donor.tsx';
 import Donation_Request from './Donation_Request.tsx';
 import Recipient from './Recipient.tsx';
 import Request_History from './Request_History.tsx';
+import Reports from './Reports.tsx';
 
 const Box = () => {
   return (
@@ -114,6 +115,7 @@ function App() {
         <Route path="/Donor_Dashboard" element={<DonorDashboard />} />
         <Route path="/Request_History" element={<Request_History />} />
         <Route path="/Recipient" element={<Recipient />} />
+        <Route path="/Reports" element={<Reports />} />
         <Route path="/Register_User" element={<RegisterUser />} />
         <Route path="/Login_User" element={<LoginUser />} />
       </Routes>
