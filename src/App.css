@@ -353,3 +353,22 @@
   left: 100px;
   top: 300px;
 }
+
+.blooddrop-image {
+  position: absolute;
+  top: 60%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+  max-width: 200%;
+  max-height: 200%;
+  animation: moveBlooddrop 2s infinite alternate; /* Add animation property */
+}
+
+@keyframes moveBlooddrop {
+  0% {
+    transform: translate(-50%, -50%) translateX(0);
+  }
+  100% {
+    transform: translate(-50%, -50%) translateX(-20px); /* Adjust the distance and direction of the animation */
+  }
+}
