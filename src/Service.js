@@ -77,7 +77,7 @@ const Service = () => {
           {/* Added "Donate Now" and "Blood Finder" buttons */}
           <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: '20px' }}>
             {/* Use the navigate function here */}
-            <Button variant="contained" onClick={() => navigate("/Donor_Details")} style={{ width: 317, height: 71, padding: 10, background: '#FF1515', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 44, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex', marginLeft: '50px' }}>
+            <Button variant="contained" onClick={() => navigate("/Donor_Details")} style={{ width: 317, height: 71, padding: 10, background: '#FF1515', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 44, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex', marginLeft: '50px', zIndex: 1 }}>
               Donate Now
             </Button>
             <Button variant="contained" onClick={() => navigate("/Recipient_Dashboard")}style={{ width: 317, height: 71, padding: 10, background: '#FF1515', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 44, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex', marginLeft: '50px' }}>

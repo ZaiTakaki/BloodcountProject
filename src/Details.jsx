@@ -10,6 +10,7 @@ import giftcardImage from './Giftcard.png';
 import cashImage from './Cash.png';
 import sendImage from './send.png';
 import giftImage from './gift.png';
+import polygonImage from './Polygon 1.svg'; 
 import './App.css';
 
 const Details = () => {
@@ -175,6 +176,9 @@ const Details = () => {
     return (
       <div className="box" style={{ position: 'absolute', left: 0 }}>
         <Label />
+        <div className="ellipse" style={{ backgroundColor: '#ff004c1f', borderRadius: '50%', filter: 'blur(200px)', height: '769px', width: '752px', position: 'fixed', bottom: -80, left: 60, zIndex: -1 }} />  
+      <img src={polygonImage.toString()} alt="Polygon Image" style={{ width: '200px', height: '200px', borderRadius: '50%', position: 'fixed',  left: 350, top: 90, zIndex: -1 }} />           
+
       </div>
     );
   };

@@ -73,24 +73,24 @@ const LoginUser = () => {
         {/* SignUp/Login Section */}
         <div style={{ textAlign: 'right', marginRight: 10 }}> {/* Updated margin-right */}
           {/* Login as Admin */}
-          <div onClick={handleNavigateToAdmin} className="LoginAsAdmin" style={{ marginLeft: 350, width: 125, color: '#FF1515', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', wordWrap: 'break-word' }}>
+          <div onClick={handleNavigateToAdmin} className="LoginAsAdmin" style={{ marginLeft: 350, width: 125, color: '#FF1515', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', wordWrap: 'break-word', cursor: 'pointer'  }}>
             Login as Admin
           </div>
 
           {/* Login */}
-          <div onClick={handleNavigateToRegister} className="Sign up" style={{ width: 199, height: 64, color: 'black', fontSize: 48, fontFamily: 'Poppins-Medium, Helvetica', fontWeight: '500', wordWrap: 'break-word' }}>
+          <div onClick={handleNavigateToRegister} className="Sign up" style={{ width: 199, height: 64, color: 'black', fontSize: 48, fontFamily: 'Poppins-Medium, Helvetica', fontWeight: '500', wordWrap: 'break-word', cursor: 'pointer'  }}>
             Sign up
           </div>
 
           {/* If You Already Have an Account Registered */}
-          <div className="IfYouAlreadyHaveAnAccountRegistered" style={{ width: 336.52, height: 22.75, color: 'black', fontSize: 16, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word' }}>
+          <div className="IfYouAlreadyHaveAnAccountRegistered" style={{ width: 336.52, height: 22.75, color: 'black', fontSize: 16, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word', cursor: 'pointer'  }}>
             If you already have an account registered
           </div>
 
           {/* You Can Register Here */}
           <div onClick={handleNavigateToRegister} className="YouCanRegisterHere" style={{ width: 312.19, height: 22.75, marginBottom: 20 }}>
             <span style={{ color: 'black', fontSize: 16, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word' }}>You can </span>
-            <span style={{ color: '#FF0000', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', wordWrap: 'break-word' }}>Register here!</span>
+            <span style={{ color: '#FF0000', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', wordWrap: 'break-word', cursor: 'pointer'  }}>Register here!</span>
           </div>
         </div>
 
@@ -110,16 +110,16 @@ const LoginUser = () => {
 
         {/* Forgot Password and Login as Hospital Personnel */}
         <div style={{ display: 'flex', flexDirection: 'column', width: '414.69px', marginRight: 20 }}>
-          <div className="ForgotPassword" style={{ width: 150.93, height: 25.70, color: '#FF1515', fontSize: 14, fontFamily: 'Poppins', fontWeight: '700', textDecoration: 'underline', wordWrap: 'break-word', textAlign: 'right', marginBottom: 10 }}>
+          <div className="ForgotPassword" style={{ width: 150.93, height: 25.70, color: '#FF1515', fontSize: 14, fontFamily: 'Poppins', fontWeight: '700', textDecoration: 'underline', wordWrap: 'break-word', textAlign: 'right', marginBottom: 10, cursor: 'pointer'  }}>
             forgot password
           </div>
-          <div onClick={handleNavigateToHospitalPersonnel} className="LoginAsHospitalPersonnel" style={{ width: 229, color: '#FF1515', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', textDecoration: 'underline', wordWrap: 'break-word', textAlign: 'right', marginBottom: 5 }}>
+          <div onClick={handleNavigateToHospitalPersonnel} className="LoginAsHospitalPersonnel" style={{ width: 229, color: '#FF1515', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', textDecoration: 'underline', wordWrap: 'break-word', textAlign: 'right', marginBottom: 5, cursor: 'pointer'  }}>
             Login as Hospital personnel
           </div>
         </div>
 
         {/* Login as Bloodbank Personnel */}
-        <div onClick={handleNavigateToBloodbankPersonnel} className="LoginAsBloodbankPersonnel" style={{ width: 245, color: '#FF1515', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', textDecoration: 'underline', wordWrap: 'break-word', textAlign: 'right', marginRight: 200, marginBottom: 20 }}>
+        <div onClick={handleNavigateToBloodbankPersonnel} className="LoginAsBloodbankPersonnel" style={{ width: 245, color: '#FF1515', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', textDecoration: 'underline', wordWrap: 'break-word', textAlign: 'right', marginRight: 200, marginBottom: 20, cursor: 'pointer'  }}>
           Login as Bloodbank personnel
         </div>
 

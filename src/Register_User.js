@@ -82,7 +82,7 @@ const RegisterUser = () => {
           </div>
           <div onClick={handleNavigateToLogin} className="YouCanLoginHere" style={{ width: 312.19, height: 22.75, marginBottom: 20 }}>
             <span style={{ color: 'black', fontSize: 16, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word' }}>You can </span>
-            <span style={{ color: '#FF0000', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', wordWrap: 'break-word' }}>Login here!</span>
+            <span style={{ color: '#FF0000', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', wordWrap: 'break-word', cursor: 'pointer'  }}>Login here!</span>
           </div>
         </div>
         <Box />

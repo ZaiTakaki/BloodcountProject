@@ -32,7 +32,7 @@ const RecipientDashboard = () => {
         <div className="Navigation" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', top: '20%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '20px' }}>
           <div className="Home" onClick={() => navigate('/')} style={{ color: '#FF0000', fontSize: 18, fontFamily: 'Poppins', fontWeight: '500', textTransform: 'capitalize', letterSpacing: 0.90, wordWrap: 'break-word' }}>home</div>
           <div className="Service">
-            <div className="AvailableDonors" style={{ color: 'black', fontSize: 18, fontFamily: 'Poppins', fontWeight: '500', textTransform: 'capitalize', letterSpacing: 0.90, wordWrap: 'break-word' }}>Available Donors</div>
+            <div className="AvailableDonors" onClick={() => navigate('/AvailableDonors')} style={{ color: 'black', fontSize: 18, fontFamily: 'Poppins', fontWeight: '500', textTransform: 'capitalize', letterSpacing: 0.90, wordWrap: 'break-word' }}>Available Donors</div>
           </div>
         </div>
 
