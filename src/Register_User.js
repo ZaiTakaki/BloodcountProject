@@ -4,24 +4,49 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField } from '@mui/material';
 import heroLogo from './Image Hero.svg';
 import circleWithBlood from './circlewithblood.png';
-
+ 
 const RegisterUser = () => {
   const navigate = useNavigate();
   const [openDialog, setOpenDialog] = useState(false);
-
+ 
   const handleNavigateToLogin = () => {
     navigate('/Login_User');
   };
-
-  const handleAcceptRequest = () => {
-    // Handle your logic for accepting the request
+ 
+  const handleAcceptRequest = async (firstName,lastName,email,password) => {
+   
+    try{
+        const response = await fetch("http://localhost:8081/user/insertUser", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body:JSON.stringify({
+                firstName,
+                lastName,
+                email,
+                password
+            }),
+        });
+       
+          if(response.status !== 200){
+            throw new Error(`Api returned status code ${response.status}`);
+          }else{
+            console.log("Account Created!");
+          }
+         
+    }catch(error){
+        console.log("Error");
+    }
+   
+ 
     setOpenDialog(true);
   };
-
+ 
   const handleCloseDialog = () => {
     setOpenDialog(false);
   };
-
+ 
   const Label = () => {
     return (
       <div className="label" style={{ position: 'absolute', left: 400 }}>
@@ -48,7 +73,7 @@ const RegisterUser = () => {
       </div>
     );
   };
-
+ 
   const Box = () => {
     return (
       <div className="box" style={{ position: 'absolute', left: 0 }}>
@@ -58,7 +83,7 @@ const RegisterUser = () => {
       </div>
     );
   };
-
+ 
   return (
     <div className="App">
       <div className="Header">
@@ -71,7 +96,7 @@ const RegisterUser = () => {
           </div>
         </div>
       </div>
-
+ 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginLeft: 900, marginRight: 20, flexDirection: 'column' }}>
         <div style={{ textAlign: 'right', marginRight: 10 }}>
           <div className="SignUp" style={{ width: 199, height: 64, color: 'black', fontSize: 48, fontFamily: 'Poppins-Medium, Helvetica', fontWeight: '500', wordWrap: 'break-word' }}>
@@ -87,28 +112,29 @@ const RegisterUser = () => {
         </div>
         <Box />
       </div>
-
+ 
+ 
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
         <div className="Rectangle51" style={{ width: 414.69, height: 56.97, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginRight: 20, marginBottom: 20 }}>
-          <TextField id="outlined-basic" label="First Name" variant="outlined" fullWidth />
+          <TextField id="firstName" label="First Name" variant="outlined" fullWidth />
         </div>
-
+ 
         <div className="Rectangle51" style={{ width: 414.69, height: 56.97, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginRight: 20, marginBottom: 20 }}>
-          <TextField id="outlined-basic" label="Last Name" variant="outlined" fullWidth />
+          <TextField id="lastName" label="Last Name" variant="outlined" fullWidth />
         </div>
-
+ 
         <div className="Rectangle51" style={{ width: 414.69, height: 56.97, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginRight: 20, marginBottom: 20 }}>
-          <TextField id="outlined-basic" label="Enter your Email" variant="outlined" fullWidth />
+          <TextField id="email" label="Enter your Email" variant="outlined"  fullWidth />
         </div>
-
+ 
         <div className="Rectangle51" style={{ width: 414.69, height: 56.97, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginRight: 20, marginBottom: 20 }}>
-          <TextField id="outlined-basic" label="Enter your Password" variant="outlined" fullWidth />
+          <TextField id="password" label="Enter your Password" variant="outlined" type="password" fullWidth />
         </div>
-
+ 
         <div className="Rectangle51" style={{ width: 414.69, height: 56.97, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginRight: 20, marginBottom: 20 }}>
-          <TextField id="outlined-basic" label="Confirm Password" variant="outlined" fullWidth />
+          <TextField id="pass" label="Confirm Password" variant="outlined" type="password" fullWidth />
         </div>
-
+ 
         <div className="ByCreatingAnAccountIAgreeWithBloodCountSPrivacyPolicyAndTermsOfService" style={{ width: 410.86, height: 56.97, marginRight: 20 }}>
           <span style={{ color: 'black', fontSize: 14, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word' }}>
             By creating an account, I agree with Blood Count’s
@@ -117,7 +143,7 @@ const RegisterUser = () => {
           <span style={{ color: 'black', fontSize: 14, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word' }}> and </span>
           <span style={{ color: 'black', fontSize: 14, fontFamily: 'Inter', fontWeight: '400', textDecoration: 'underline', wordWrap: 'break-word' }}>Terms of Service.</span>
         </div>
-
+ 
         <Button
           variant="contained"
           style={{
@@ -138,11 +164,18 @@ const RegisterUser = () => {
             marginRight: 20,
             marginTop: 20,
           }}
-          onClick={handleAcceptRequest}
+          onClick={() => {
+            const firstName = document.querySelector("#firstName").value;
+            const lastName = document.querySelector("#lastName").value;
+            const email = document.querySelector("#email").value;
+            const password = document.querySelector("#password").value;
+           
+            handleAcceptRequest(firstName,lastName,email,password);
+          }}
         >
           Register
         </Button>
-
+ 
         <Dialog open={openDialog} onClose={handleCloseDialog}>
           <DialogTitle id="alert-dialog-title">
             {"SUCCESS!"}
@@ -159,12 +192,12 @@ const RegisterUser = () => {
           </DialogActions>
         </Dialog>
       </div>
-
+ 
       <div className="Content">
         {/* Add your content specific to the Register page here */}
       </div>
     </div>
   );
 };
-
+ 
 export default RegisterUser;

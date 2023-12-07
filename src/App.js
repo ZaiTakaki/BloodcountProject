@@ -11,6 +11,17 @@ import LoginBloodbankPersonnel from './Login_BloodbankPersonnel';
 import LoginHospitalPersonnel from './Login_HospitalPersonnel';
 import Service from './Service';
 import DonorDetails from './Donor_Details';
+import AvailableDonor from './AvailableDonor';
+import AvailableDonors from './AvailableDonors';
+import Aplus from './Aplus';
+import Bplus from './Bplus';
+import ABplus from './ABplus';
+import Oplus from './Oplus';
+import Aminus from './Aminus';
+import Bminus from './Bminus';
+import ABminus from './ABminus';
+import Ominus from './Ominus';
+import BloodRequst from './BloodRequest';
 import RecipientDashboard from './Recipient_Dashboard';
 import BloodbankDashboard from './Bloodbank_Dashboard';
 import DonorDashboard from './Donor_Dashboard';
@@ -115,7 +126,18 @@ function App() {
         <Route path="/Subnational" element={<Subnational />} />
         <Route path="/VicenteSotto" element={<VicenteSotto />} />
         <Route path="/PhiRedCross" element={<PhiRedCross />} />
+        <Route path="/AvailableDonor" element={<AvailableDonor />} />
+        <Route path="/AvailableDonors" element={<AvailableDonors />} />
         <Route path="/Admin_Homepage" element={<Admin_Homepage />} />
+        <Route path="/Aplus" element={<Aplus />} />
+        <Route path="/Bplus" element={<Bplus />} />
+        <Route path="/ABplus" element={<ABplus />} />
+        <Route path="/Oplus" element={<Oplus />} />
+        <Route path="/Aminus" element={<Aminus />} />
+        <Route path="/Bminus" element={<Bminus />} />
+        <Route path="/ABminus" element={<ABminus />} />
+        <Route path="/Ominus" element={<Ominus />} />
+        <Route path="/BloodRequest" element={<BloodRequst />} />
         <Route path="/Admin_Donor" element={<Admin_Donor />} />
         <Route path="/Donation_Request" element={<Donation_Request />} />
         <Route path="/Donor_Dashboard" element={<DonorDashboard />} />

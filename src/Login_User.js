@@ -105,7 +105,7 @@ const LoginUser = () => {
         </div>
 
         <div className="Rectangle51" style={{ width: 414.69, height: 56.97, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginRight: 20, marginBottom: 20 }}>
-          <TextField id="outlined-basic" label="Enter your Password" variant="outlined" fullWidth />
+          <TextField id="outlined-basic" label="Enter your Password" variant="outlined" type="password" fullWidth />
         </div>
 
         {/* Forgot Password and Login as Hospital Personnel */}
@@ -125,7 +125,7 @@ const LoginUser = () => {
 
          {/* Sign in Button */}
          <Button
-          variant="contained"
+          variant="contained"  onClick={() => navigate('/Service')} 
           style={{
             width: 419,
             height: 43,

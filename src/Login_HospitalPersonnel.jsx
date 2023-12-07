@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import heroLogo from './Image Hero.svg';
@@ -27,6 +28,7 @@ const Box = () => {
 
 
 const LoginHospitalPersonnel = () => {
+  const navigate = useNavigate();
   const handleSignIn = () => {
     // Add your sign-in logic for Hospital Personnel
     // ...
@@ -90,7 +92,7 @@ const LoginHospitalPersonnel = () => {
             marginLeft: 20,
             marginBottom: 20,
           }}
-          onClick={handleSignIn}
+          onClick={() => navigate("/Recipient_Dashboard")}
         >
           Sign in
         </Button>
