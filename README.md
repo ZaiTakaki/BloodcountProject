@@ -1,5 +1,8 @@
 # Getting Started with Create React App
 
+<img width="916" alt="image" src="https://github.com/ZaiTakaki/BloodcountProject/assets/109122742/f8722652-b83d-48dc-843b-147561f65393">
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

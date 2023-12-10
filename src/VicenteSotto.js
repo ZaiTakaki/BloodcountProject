@@ -164,7 +164,9 @@ const VicenteSotto = () => {
 
           </div>
 
-          <Button variant="outlined" onClick={() => navigate("/Login")} style={{ color: '#000000', fontSize: 23, fontFamily: 'Poppins', fontWeight: '800', textTransform: 'capitalize', letterSpacing: 0.90, wordWrap: 'break-word', borderRadius: '10px',borderColor: '#ffe4e4',  background: '#ffe4e4', top: 1100, left: 310, height: 50, width:190}}>Proceed</Button>
+          <Button variant="outlined" onClick={() => {
+    window.location.href = 'https://www.google.com/maps/place/Vicente+Sotto+Memorial+Medical+Center+(VSMMC)/@10.3080071,123.8890113,17z/data=!3m1!4b1!4m6!3m5!1s0x33a9994e021e43e3:0x817aaa59653da96e!8m2!3d10.3080071!4d123.8915916!16s%2Fm%2F05f4yqv?entry=ttu';
+  }} style={{ color: '#000000', fontSize: 23, fontFamily: 'Poppins', fontWeight: '800', textTransform: 'capitalize', letterSpacing: 0.90, wordWrap: 'break-word', borderRadius: '10px',borderColor: '#ffe4e4',  background: '#ffe4e4', top: 1100, left: 310, height: 50, width:190}}>Proceed</Button>
 
         </div>
 

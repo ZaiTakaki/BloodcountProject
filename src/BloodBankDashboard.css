@@ -36,7 +36,7 @@
     left: 0px;
     border-radius: 20px;
     object-fit: cover;
-    position: absolute;
+    position: relative;
     top: 0px;
     width: 600px;
 }
@@ -47,23 +47,6 @@
     position: absolute;
     top: 0;
     width: 1224px;
-}
-
-.overlap-wrapper-hospi {
-    height: 145px;
-    left: 0;
-    position: absolute;
-    top: 179px;
-    width: 552px;
-}
-
-.subnational-blood-wrapper-hospi {
-    background-position: 50% 50%;
-    background-size: cover;
-    height: 148px;
-    left: -4px;
-    position: relative;
-    width: 558px;
 }
 
 .hospital2-group {
@@ -87,23 +70,6 @@
     width: 600px;
 }
 
-.group-1-hospi {
-    height: 140px;
-    left: 3px;
-    position: absolute;
-    top: 350px;
-    width: 752px;
-}
-  
-.redcross-wrapper-hospi {
-    background-position: 50% 50%;
-    background-size: cover;
-    height: 148px;
-    left: -4px;
-    position: relative;
-    width: 558px;
-}
-
 .hospital3-group {
     background-position: 50% 50%;
     background-color: #ffffff;
@@ -125,23 +91,6 @@
     width: 600px;
 }
 
-.group-2-hospi {
-    height: 140px;
-    left: 3px;
-    position: absolute;
-    top: 500px;
-    width: 552px;
-}
-
-.vicente-sotto-wrapper-hospi {
-    background-position: 50% 50%;
-    background-size: cover;
-    height: 148px;
-    left: -4px;
-    position: relative;
-    width: 558px;
-}
-
 .search-donor {
     border-radius: 20px;
     height: 58px;
@@ -150,4 +99,3 @@
     left: 70px;
     width: 500px;
 }
-

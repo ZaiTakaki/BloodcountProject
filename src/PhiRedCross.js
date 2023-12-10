@@ -162,7 +162,9 @@ const PhiRedCross = () => {
 
           </div>
 
-          <Button variant="outlined" onClick={() => navigate("/Login")} style={{ color: '#000000', fontSize: 23, fontFamily: 'Poppins', fontWeight: '800', textTransform: 'capitalize', letterSpacing: 0.90, wordWrap: 'break-word', borderRadius: '10px',borderColor: '#ffe4e4',  background: '#ffe4e4', top: 1100, left: 310, height: 50, width:190}}>Proceed</Button>
+          <Button variant="outlined" onClick={() => {
+    window.location.href = 'https://www.google.com/maps/place/Philippine+Red+Cross,+Cebu+Chapter/@10.3123873,123.8894028,17z/data=!3m1!4b1!4m6!3m5!1s0x33a9994ead32fa21:0xe2cc5671e3ea0312!8m2!3d10.3123873!4d123.8919831!16s%2Fg%2F1pp2vb9d3?entry=ttu';
+  }} style={{ color: '#000000', fontSize: 23, fontFamily: 'Poppins', fontWeight: '800', textTransform: 'capitalize', letterSpacing: 0.90, wordWrap: 'break-word', borderRadius: '10px',borderColor: '#ffe4e4',  background: '#ffe4e4', top: 1100, left: 310, height: 50, width:190}}>Proceed</Button>
 
         </div>
 

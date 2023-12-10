@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { useNavigate } from 'react-router-dom';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -18,6 +19,7 @@ const RegisterUser = () => {
   };
  
   const handleAcceptRequest = async (firstName,lastName,email,password,gender) => {
+  const handleAcceptRequest = async (firstName,lastName,email,password) => {
    
     try{
         const response = await fetch("http://localhost:8081/user/insertUser", {
@@ -31,6 +33,7 @@ const RegisterUser = () => {
                 email,
                 password,
                 gender
+                password
             }),
         });
        
@@ -139,6 +142,8 @@ const RegisterUser = () => {
           <FormControlLabel value="female" control={<Radio />} label="Female" />
         </RadioGroup>
         </div>
+        </div>
+ 
         <div className="Rectangle51" style={{ width: 414.69, height: 56.97, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginRight: 20, marginBottom: 20 }}>
           <TextField id="email" label="Enter your Email" variant="outlined"  fullWidth />
         </div>
@@ -217,4 +222,5 @@ const RegisterUser = () => {
   );
 };
  
+export default RegisterUser;
 export default RegisterUser;
