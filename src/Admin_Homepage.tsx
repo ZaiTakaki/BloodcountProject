@@ -26,15 +26,21 @@ const Admin_Homepage: React.FC = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:8080/user/getAllUsers');
-      const data = await response.json();
-      
-      // Count different user types
-    const totalDonors = data.filter((user) => user.userType === 'DONOR' && !user.deleted).length;
-    const totalRequests = data.filter(
-      (user) => (user.userType === 'HOSPITAL' || user.userType === 'BLOODBANK') && !user.deleted
-    ).length;
-    const activeUsers = data.filter((user) => !user.deleted).length;
+      const response = await fetch('http://localhost:8080/user/getAllUsers', {
+      method: 'GET',  // Change to 'POST' if needed
+      headers: {
+        'Content-Type': 'application/json',
+        // Add other headers if needed
+      },
+      credentials: 'include',
+    });
+    const data = await response.json();
+
+      const totalDonors = data.filter((user) => user.userType === 'DONOR' && !user.deleted).length;
+      const totalRequests = data.filter(
+        (user) => (user.userType === 'HOSPITAL' || user.userType === 'BLOODBANK') && !user.deleted
+      ).length;
+      const activeUsers = data.filter((user) => !user.deleted).length;
 
       setTotalDonors(totalDonors);
       setTotalRequests(totalRequests);
@@ -48,7 +54,6 @@ const Admin_Homepage: React.FC = () => {
         }
       });
       setBloodTypeCounts(bloodTypeCounts);
-
     } catch (error) {
       console.error('Error fetching data:', error);
     }
