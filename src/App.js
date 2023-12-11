@@ -4,6 +4,8 @@ import Button from '@mui/material/Button';
 import './App.css';
 import heroLogo from './Image Hero.svg';
 import bloodDropImage from './blooddrop.png';
+import IanImage from './Ian.png';
+import Facebook from './facebook.png';
 import RegisterUser from './Register_User';
 import LoginUser from './Login_User'; 
 import LoginAdmin from './Login_Admin';
@@ -41,7 +43,7 @@ const Box = () => {
   return (
     <div className="box">
       <Label />
-      <div className="ellipse" />
+      <div className="ellipse" style={{ backgroundColor: '#ff004c1f', borderRadius: '50%', filter: 'blur(200px)', height: '769px', width: '752px', position: 'fixed', bottom: -80, left: 60, zIndex: -1 }} /> 
       <img className="polygon-image" src={require('./Polygon 2.svg').default} alt="Polygon 2" />
     </div>
   );
@@ -102,7 +104,15 @@ function Home() {
 
       {/* Rest of the content */}
       <div className="Content">
+      <div className="Group10" style={{ width: 316, textAlign: 'center', color: '#333333', fontSize: 20, fontFamily: 'Poppins', fontWeight: '600', textTransform: 'capitalize', lineHeight: 50, letterSpacing: 1, wordWrap: 'break-word', position: 'absolute', top: '125%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+          Group 10
+        </div>
+        <div className="MeetOurTeam" style={{width: 632, textAlign: 'center', color: '#333333', fontSize: 40, fontFamily: 'Poppins', fontWeight: '600', textTransform: 'capitalize', lineHeight: 50, letterSpacing: 2, wordWrap: 'break-word', position: 'absolute', top: '135%', left: '50%', transform: 'translate(-50%, -50%)' }}>Meet our team</div>
+        <img className="Ian-image" src={IanImage} alt="Ian" style={{ width: '60%', maxWidth: 300, height: '508.95', position: 'absolute', top: '170%', left: '30%', transform: 'translate(-50%, -50%)', zIndex: 1  }} />
+        <div className="Rectangle17" style={{width: 260, height: 139, background: '#FFE4E4', borderRadius: 5, position: 'absolute', top: '195%', left: '30%', transform: 'translate(-50%, -50%)', zIndex: 1}} />
         
+      <div className="Rectangle11" style={{width: 1600, height: 883, background: 'rgba(215, 241, 246, 0.34)'}} />
+
       </div>
     </div>
   );

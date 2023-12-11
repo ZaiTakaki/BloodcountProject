@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
-import React, { useState } from 'react';
 import './App.css';
 import { useNavigate } from 'react-router-dom';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Radio from '@mui/material/Radio';
 import { Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField } from '@mui/material';
 import heroLogo from './Image Hero.svg';
 import circleWithBlood from './circlewithblood.png';
@@ -12,13 +8,11 @@ import circleWithBlood from './circlewithblood.png';
 const RegisterUser = () => {
   const navigate = useNavigate();
   const [openDialog, setOpenDialog] = useState(false);
-  const [gender, setGender] = useState("");
  
   const handleNavigateToLogin = () => {
     navigate('/Login_User');
   };
  
-  const handleAcceptRequest = async (firstName,lastName,email,password,gender) => {
   const handleAcceptRequest = async (firstName,lastName,email,password) => {
    
     try{
@@ -31,8 +25,6 @@ const RegisterUser = () => {
                 firstName,
                 lastName,
                 email,
-                password,
-                gender
                 password
             }),
         });
@@ -130,19 +122,6 @@ const RegisterUser = () => {
         <div className="Rectangle51" style={{ width: 414.69, height: 56.97, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginRight: 20, marginBottom: 20 }}>
           <TextField id="lastName" label="Last Name" variant="outlined" fullWidth />
         </div>
-        <div>
-        <RadioGroup
-          aria-label="gender"
-          name="gender"
-          value={gender}
-          onChange={(e) => setGender(e.target.value)}
-          style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: 20 }}
-        >
-          <FormControlLabel value="male" control={<Radio />} label="Male" />
-          <FormControlLabel value="female" control={<Radio />} label="Female" />
-        </RadioGroup>
-        </div>
-        </div>
  
         <div className="Rectangle51" style={{ width: 414.69, height: 56.97, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginRight: 20, marginBottom: 20 }}>
           <TextField id="email" label="Enter your Email" variant="outlined"  fullWidth />
@@ -188,7 +167,6 @@ const RegisterUser = () => {
           onClick={() => {
             const firstName = document.querySelector("#firstName").value;
             const lastName = document.querySelector("#lastName").value;
-            const gender = document.querySelector("#gender").value;
             const email = document.querySelector("#email").value;
             const password = document.querySelector("#password").value;
            
@@ -222,5 +200,4 @@ const RegisterUser = () => {
   );
 };
  
-export default RegisterUser;
 export default RegisterUser;

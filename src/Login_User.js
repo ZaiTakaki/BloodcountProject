@@ -34,7 +34,7 @@ const LoginUser = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://localhost:8081/user/getAllUsers', {
+      const response = await fetch('http://localhost:8081/user/insertUser', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ const LoginUser = () => {
         body: JSON.stringify({ email, password }),
         credentials: 'include',
       });
-
+  
       if (response.ok) {
         navigate('/Service');
       } else {
@@ -51,7 +51,7 @@ const LoginUser = () => {
     } catch (error) {
       console.error('Error during login:', error);
     }
-  };
+  };  
 
   const handleNavigateToAdmin = () => {
     navigate('/Login_Admin');

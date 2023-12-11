@@ -1,22 +1,33 @@
+// Example server code
 const express = require('express');
-const cors = require('cors');
+const bodyParser = require('body-parser');
+
 const app = express();
-const port = 8081;
+const PORT = 8081;
 
-// Enable CORS for all routes
-app.use(cors({ origin: '*', credentials: true }));
+app.use(bodyParser.json());
 
-// Your existing route handling code
-app.post('/user/getAllUsers', (req, res) => {
-  // Set CORS headers explicitly
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3001');
-  res.header('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
+// Example user data (replace this with your actual user data or database connection)
+const users = [
+  { id: 1, email: 'user@example.com', password: 'password123' },
+  // Add more users as needed
+];
 
-  // Your route logic here
+app.post('/user/login', (req, res) => {
+  const { email, password } = req.body;
+
+  // Simulate authentication (replace this with your actual authentication logic)
+  const user = users.find(u => u.email === email && u.password === password);
+
+  if (user) {
+    // Authentication successful
+    res.status(200).json({ success: true, message: 'Authentication successful' });
+  } else {
+    // Authentication failed
+    res.status(401).json({ success: false, message: 'Authentication failed' });
+  }
 });
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
