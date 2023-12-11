@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box, AppBar, Toolbar, IconButton, Typography, Button, MenuList, MenuItem, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -11,6 +11,8 @@ const Recipient: React.FC = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null); 
   const [openDialog, setOpenDialog] = useState(false);
+  const [rows, setRows] = useState([]);
+
 
 
   const handleMenuToggle = () => {
@@ -38,14 +40,34 @@ const Recipient: React.FC = () => {
     // setSelectedRow(row);
   }; 
 
-  const rows = [
-    createData('John Doe', 'O+', 'Cebu', '09123456789', 20),
-  ];
-
-  function createData(name, bloodGroup, address, mobile, age) {
-    return { name, bloodGroup, address, mobile, age };
-  }
-
+  const fetchUsers = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/users/getAllUsers', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer YOUR_AUTH_TOKEN`,
+        },
+        credentials: 'include',
+      });
+  
+      if (!response.ok) {
+        const errorMessage = await response.text();
+        console.error(`Request failed with status: ${response.status}, Message: ${errorMessage}`);
+        throw new Error(`Request failed with status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      setRows(data);
+    } catch (error) {
+      console.error('Error fetching user details:', error);
+    }
+  };
+  
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+  
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ backgroundColor: '#FFE4E4' }}>
@@ -126,9 +148,9 @@ const Recipient: React.FC = () => {
         }}
       >
         <MenuItem onClick={() => navigate("/Admin_Homepage")} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Dashboard</MenuItem>
-        <MenuItem onClick={() => navigate("/Admin_Donor")} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Donor</MenuItem>
-        <MenuItem onClick={() => navigate("/Donation_Request")} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Donation</MenuItem>
-        <MenuItem onClick={() => navigate("/Recipient")}  style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Recipient</MenuItem>
+        <MenuItem onClick={() => navigate("/Admin_Donor")} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Donors</MenuItem>
+        <MenuItem onClick={() => navigate("/Donation_Request")} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Blood Requests</MenuItem>
+        <MenuItem onClick={() => navigate("/Recipient")}  style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Active Users</MenuItem>
         <MenuItem onClick={() => navigate("/Request_History")} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Request History</MenuItem>
         <MenuItem onClick={() => navigate("/Reports")} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Reports</MenuItem>
       </MenuList>
@@ -174,38 +196,33 @@ const Recipient: React.FC = () => {
       <img src={polygonImage.toString()} alt="Polygon Image" style={{ width: '200px', height: '200px', borderRadius: '50%', position: 'fixed',  left: 900, bottom: 180, zIndex: -1 }} />       
       <img src={circleWithBlood.toString()} style={{ width: '438px', height: '438px', borderRadius: '50%', position: 'fixed',  left: 1290, bottom: -40, zIndex: -1 }} />
 
-      {isMenuOpen && (
-      <><TableContainer component={Paper} style={{ marginTop: -160, marginLeft: 280, marginRight: 20, marginBottom: 20, maxWidth: '50%' }}>
+      <><TableContainer component={Paper} style={{ position: 'fixed', top: 200, left: 280, marginRight: 20, marginBottom: 20, maxWidth: '50%' }}>
           <Table>
             <TableHead>
               <TableRow style={{ backgroundColor: '#861530' }}>
                 <TableCell style={{ textAlign: 'center', color: 'white', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80 }}>
-                  Donor Name
+                  Name
                 </TableCell>
                 <TableCell style={{ textAlign: 'center', color: 'white', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80 }}>
-                  Blood Group
+                  Gender
                 </TableCell>
                 <TableCell style={{ textAlign: 'center', color: 'white', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80 }}>
-                  Address
+                  Email
                 </TableCell>
                 <TableCell style={{ textAlign: 'center', color: 'white', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80 }}>
-                  Mobile
-                </TableCell>
-                <TableCell style={{ textAlign: 'center', color: 'white', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80 }}>
-                  Age
+                  User Type
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {rows.map((row) => (
-                <TableRow key={row.name} style={{ padding: '8px 0', justifyContent: 'center', alignItems: 'center', color: '#E8CFCF' }}>
-                  <TableCell style={{ textAlign: 'center', color: '#861530', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80, wordWrap: 'break-word' }}>{row.name}</TableCell>
-                  <TableCell style={{ textAlign: 'center', color: '#861530', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80, wordWrap: 'break-word' }}>{row.bloodGroup}</TableCell>
-                  <TableCell style={{ textAlign: 'center', color: '#861530', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80, wordWrap: 'break-word' }}>{row.address}</TableCell>
-                  <TableCell style={{ textAlign: 'center', color: '#861530', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80, wordWrap: 'break-word' }}>{row.mobile}</TableCell>
-                  <TableCell style={{ width: 40, textAlign: 'center', color: '#861530', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80, wordWrap: 'break-word' }}>{row.age}</TableCell>
-                  <Button variant="text" style={{ color: 'black', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>
-                    Edit
+                <TableRow key={row.userId} style={{ padding: '8px 0', justifyContent: 'center', alignItems: 'center', color: '#E8CFCF' }}>
+                <TableCell style={{ textAlign: 'center', color: '#861530', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80, wordWrap: 'break-word' }}>{row.firstName} {row.lastName}</TableCell>
+                <TableCell style={{ textAlign: 'center', color: '#861530', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80, wordWrap: 'break-word' }}>{row.gender}</TableCell>
+                <TableCell style={{ textAlign: 'center', color: '#861530', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80, wordWrap: 'break-word' }}>{row.email}</TableCell>
+                <TableCell style={{ textAlign: 'center', color: '#861530', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80, wordWrap: 'break-word' }}>{row.userType}</TableCell>
+                <Button variant="text" style={{ color: 'black', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>
+                  Edit
                   </Button>
                   <Button variant="contained" style={{ width: 83, height: 47, padding: 10, background: '#F63636', borderRadius: 70, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex' }} onClick={handleDeleteButtonClick}>
                     <div className="Delete" style={{ textAlign: 'center', color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>
@@ -261,9 +278,8 @@ const Recipient: React.FC = () => {
                 YES
               </Button>
             </DialogActions>
-          </Dialog></>
-          )}
-          </Box>
+      </Dialog></>
+      </Box>
   );
 };
 

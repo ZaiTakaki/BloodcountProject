@@ -15,6 +15,8 @@
     "confusing-browser-globals": "^1.0.11",
     "cors": "^2.8.5",
     "eslint": "^8.53.0",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.18.0",

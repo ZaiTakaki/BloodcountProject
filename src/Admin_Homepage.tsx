@@ -144,7 +144,7 @@ const Admin_Homepage: React.FC = () => {
         }}
       >
         <MenuItem onClick={() => handleMenuItemClick('/Admin_Homepage')}style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Dashboard</MenuItem>
-        <MenuItem onClick={() => handleMenuItemClick('/Admin_Donor')} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Donor</MenuItem>
+        <MenuItem onClick={() => handleMenuItemClick('/Admin_Donor')} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Donors</MenuItem>
         <MenuItem onClick={() => handleMenuItemClick('/Donation_Request')} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Blood Requests</MenuItem>
         <MenuItem onClick={() => handleMenuItemClick('/Recipient')} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Active Users</MenuItem>
         <MenuItem onClick={() => handleMenuItemClick('/Request_History')} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Request History</MenuItem>
