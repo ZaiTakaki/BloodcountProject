@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -30,9 +29,29 @@ const Box = () => {
 const LoginAdmin = () => {
   const navigate = useNavigate();
 
-  const handleSignIn = () => {
-    // Add your sign-in logic for admin
-    // ...
+  const handleAcceptRequest = async (email, password) => {
+    try {
+      const response = await fetch("http://localhost:8081/user/insertUser", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password
+        }),
+      });
+
+      if (response.status !== 200) {
+        throw new Error(`Api returned status code ${response.status}`);
+      } else {
+        console.log("Sign in Successful!");
+        navigate('/Admin_Homepage');
+      }
+
+    } catch (error) {
+      console.log("Error");
+    }
   };
 
   return (
@@ -54,7 +73,7 @@ const LoginAdmin = () => {
         <div style={{ textAlign: 'right', marginRight: 10 }}>
           {/* Login */}
           <div className="SignInAsAdmin" style={{ textAlign: 'center', color: 'black', fontSize: 40, fontFamily: 'Poppins', fontWeight: '500', wordWrap: 'break-word' }}>
-          Sign in as Admin
+            Sign in as Admin
           </div>
         </div>
 
@@ -65,11 +84,11 @@ const LoginAdmin = () => {
       {/* Additional TextFields */}
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
         <div className="Rectangle51" style={{ width: 414.69, height: 56.97, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginRight: 20, marginBottom: 20, marginTop: 20 }}>
-          <TextField id="outlined-basic" label="Username" variant="outlined" fullWidth />
+          <TextField id="email" label="Username" variant="outlined" fullWidth />
         </div>
 
         <div className="Rectangle51" style={{ width: 414.69, height: 56.97, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginRight: 20, marginBottom: 20 }}>
-          <TextField id="outlined-basic" label="Password" variant="outlined" fullWidth />
+          <TextField id="password" label="Password" type="password" variant="outlined" fullWidth />
         </div>
 
         {/* Sign in Button */}
@@ -93,7 +112,18 @@ const LoginAdmin = () => {
             marginLeft: 20,
             marginBottom: 20,
           }}
-          onClick={() => navigate("/Admin_Homepage")}
+          onClick={() => {
+            const emailInput = document.querySelector("#email");
+            const passwordInput = document.querySelector("#password");
+
+            if (emailInput && passwordInput) {
+              const email = emailInput.value;
+              const password = passwordInput.value;
+              handleAcceptRequest(email, password);
+            } else {
+              console.error("Email or password input not found");
+            }
+          }}
         >
           Sign in
         </Button>

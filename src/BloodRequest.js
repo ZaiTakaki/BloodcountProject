@@ -1,4 +1,4 @@
-import React, {  } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import heroLogo from './Image Hero.svg';
 import circleWithBlood from './circlewithblood.png';
@@ -31,7 +31,7 @@ const BloodRequst = () => {
 
         {/* Buttons with increased marginRight */}
         <div className="Buttons" style={{ gap: '30px', marginRight: '50px', marginTop: '5px' }}>
-          <Button variant="outlined" onClick={() => navigate("/BloodBank")} style={{ color: '#ffffff', fontSize: 28, fontFamily: 'Poppins', fontWeight: '800', textTransform: 'capitalize', letterSpacing: 0.90, wordWrap: 'break-word', borderRadius: '50px', border: '2px solid #000000', backgroundColor: '#ef1212' }}>X</Button>
+          <Button variant="outlined" onClick={() => navigate("/Hospital_Dashboard")} style={{ color: '#ffffff', fontSize: 28, fontFamily: 'Poppins', fontWeight: '800', textTransform: 'capitalize', letterSpacing: 0.90, wordWrap: 'break-word', borderRadius: '50px', border: '2px solid #000000', backgroundColor: '#ef1212' }}>X</Button>
         </div>
       </div>
     );
@@ -55,6 +55,33 @@ const BloodRequst = () => {
        <img className="polygon-image" src={require('./Polygon 2.svg').default} alt="Polygon 2" />
      </div>
    );
+ };
+
+ // State to manage patient data
+ const [patientData, setPatientData] = useState({
+   patientName: '',
+   contactNumber: '',
+   patientAge: '',
+   reason: '',
+   BloodTypeDropdown: '',
+   unit: '',
+ });
+
+ // Handle changes in patient data input fields
+ const handlePatientDataChange = (field, value) => {
+   setPatientData((prevData) => ({
+     ...prevData,
+     [field]: value,
+   }));
+ };
+
+ // Handle blood request
+ const handleRequest = () => {
+   // Store patient data in local storage
+   localStorage.setItem('patientData', JSON.stringify(patientData));
+
+   // Navigate to home page or another destination
+   navigate('/');
  };
 
   return (
@@ -94,96 +121,42 @@ const BloodRequst = () => {
            <div className='patient-unit-br'>
               <span style={{ color: '#ffffff', fontSize: 30, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>Unit</span>
            </div>
-           <div className='patient-date-br'>
+            {/*<div className='patient-date-br'>
               <span style={{ color: '#ffffff', fontSize: 30, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>Date</span>
-           </div>
+           </div>*/}
            <div className='patient-contactnumber-br'>
               <span style={{ color: '#ffffff', fontSize: 30, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>Contact Number</span>
            </div>
-           <div className='patient-status-br'>
+           {/*<div className='patient-status-br'>
               <span style={{ color: '#ffffff', fontSize: 30, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>Status</span>
-           </div>
+           </div>*/}
         </div>
 
         <div className='white1-boxes-br'>
-           <div className='w-patient-name-br'>
-              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>User1</span>
-           </div>
-           <div className='w-patient-age-br'>
-              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>18</span>
-           </div>
-           <div className='w-patient-reason-br'>
-              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>Fever</span>
-           </div>
-           <div className='w-patient-bloodgroup-br'>
-              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>A+</span>
-           </div>
-           <div className='w-patient-unit-br'>
-              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>2</span>
-           </div>
-           <div className='w-patient-date-br'>
+        <div className='w-patient-name-br'>
+              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>{localStorage.getItem('patientName')}</span>
+            </div>
+            <div className='w-patient-age-br'>
+              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>{localStorage.getItem('patientAge')}</span>
+            </div>
+            <div className='w-patient-reason-br'>
+              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>{localStorage.getItem('reason')}</span>
+            </div>
+            <div className='w-patient-bloodgroup-br'>
+              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>{localStorage.getItem('BloodTypeDropdown')}</span>
+            </div>
+            <div className='w-patient-unit-br'>
+              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>{localStorage.getItem('unit')}</span>
+            </div>
+            {/*<div className='w-patient-date-br'>
               <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>Nov. 5 2023</span>
-           </div>
-           <div className='w-patient-contactnumber-br'>
-              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>+639235672102</span>
-           </div>
-           <div className='w-patient-status-br'>
+  </div>*/}
+            <div className='w-patient-contactnumber-br'>
+              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>{localStorage.getItem('contactInfo')}</span>
+            </div>
+            {/*<div className='w-patient-status-br'>
               <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>Pending</span>
-           </div>
-        </div>
-
-        <div className='white2-boxes-br'>
-           <div className='w-patient-name-br'>
-              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>User2</span>
-           </div>
-           <div className='w-patient-age-br'>
-              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>19</span>
-           </div>
-           <div className='w-patient-reason-br'>
-              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>Anemic</span>
-           </div>
-           <div className='w-patient-bloodgroup-br'>
-              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>O+</span>
-           </div>
-           <div className='w-patient-unit-br'>
-              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>50</span>
-           </div>
-           <div className='w-patient-date-br'>
-              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>Dec. 8 2023</span>
-           </div>
-           <div className='w-patient-contactnumber-br'>
-              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>+639562214201</span>
-           </div>
-           <div className='w-patient-status-br'>
-              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>Approved</span>
-           </div>
-        </div>
-
-        <div className='white3-boxes-br'>
-           <div className='w-patient-name-br'>
-              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>User3</span>
-           </div>
-           <div className='w-patient-age-br'>
-              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>20</span>
-           </div>
-           <div className='w-patient-reason-br'>
-              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>Emergency</span>
-           </div>
-           <div className='w-patient-bloodgroup-br'>
-              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>AB+</span>
-           </div>
-           <div className='w-patient-unit-br'>
-              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>10</span>
-           </div>
-           <div className='w-patient-date-br'>
-              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>Dec. 9 2023</span>
-           </div>
-           <div className='w-patient-contactnumber-br'>
-              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>+639944329012</span>
-           </div>
-           <div className='w-patient-status-br'>
-              <span style={{ color: '#4b3c3c', fontSize: 25, fontFamily: 'sans-serif', fontWeight: '700', letterSpacing: 1, wordWrap: 'break-word' }}>Approved</span>
-           </div>
+            </div>*/}
         </div>
 
         </div>

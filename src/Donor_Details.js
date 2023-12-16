@@ -21,6 +21,12 @@ const DonorDetails = () => {
   const [selectedBloodType, setSelectedBloodType] = useState(null);
   const [isSliderMounted, setIsSliderMounted] = useState(false);
   const weightSliderLabelRef = useRef(null);
+  const [dontKnowButtonClicked, setDontKnowButtonClicked] = useState(false);
+
+  const handleDontKnowButtonClick = () => {
+  setDontKnowButtonClicked((prevClicked) => !prevClicked);
+  // Add any other logic you want to perform when the button is clicked
+};
 
   useEffect(() => {
     // Update isSliderMounted after the component mounts
@@ -61,15 +67,20 @@ const handleSave = () => {
 };
 
 const handleBloodTypeButtonClick = (bloodType) => {
-  setSelectedBloodType((prevSelectedBloodType) =>
-    prevSelectedBloodType === bloodType ? null : bloodType
-  );
+  setSelectedBloodType((prevSelectedBloodType) => {
+    if (prevSelectedBloodType === bloodType) {
+      return null; // Deselect if already selected
+    } else {
+      return bloodType;
+    }
+  });
 };
 
   // Function to check if a blood type button is selected
   const isBloodTypeSelected = (bloodType) => {
     return selectedBloodType === bloodType;
   };
+
 
   const Header = () => {
     return (
@@ -180,7 +191,7 @@ const handleBloodTypeButtonClick = (bloodType) => {
 <div style={{ marginTop: '180px', marginLeft: '-95%' }}>
 <iframe
   title="Google Maps"
-  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10059.34168333988!2d123.89265019607821!3d10.314041652498826!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99f6c8585830f%3A0xe0a7d4c233b8657c!2sCebu%20City%2C%206000%20Cebu!5e0!3m2!1sen!2sph!4v1700622557666!5m2!1sen!2sph"
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d251170.20390927076!2d123.68147563978938!3d10.379060195097757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a999258dcd2dfd%3A0x4c34030cdbd33507!2sCebu%20City%2C%206000%20Cebu!5e0!3m2!1sen!2sph!4v1702373123638!5m2!1sen!2sph"
   width="500"
   height="230"
   style={{ border: 0, boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 20 }}
@@ -261,26 +272,27 @@ const handleBloodTypeButtonClick = (bloodType) => {
       </div>
 
             <Button
-              variant="contained"
-              sx={{
-                width: 200,
-                height: 36,
-                marginBottom: '20px',
-                background: '#FFE4E4',
-                color: '#861530',
-                fontSize: 14,
-                fontFamily: 'Inter',
-                fontWeight: '600',
-                lineHeight: 20,
-                position: 'absolute',
-                left: '16%',
-                top: '360px',
-                transform: 'translateX(-50%)',
-              }}
-            >
-              <div className="Circle" style={{ width: 20, height: 20, borderRadius: '50%', border: '1px solid #861530', position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)' }} />
-              I don't know
-            </Button>
+  variant="contained"
+  onClick={handleDontKnowButtonClick}
+  style={{
+    width: 200,
+    height: 36,
+    marginBottom: '20px',
+    background: '#FFE4E4',
+    color: '#861530',
+    fontSize: 14,
+    fontFamily: 'Inter',
+    fontWeight: '600',
+    lineHeight: 20,
+    position: 'absolute',
+    left: '16%',
+    top: '360px',
+    transform: 'translateX(-50%)',
+  }}
+>
+  <div className="Circle" style={{ width: 20, height: 20, borderRadius: '50%', border: '1px solid #861530', position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', backgroundColor: dontKnowButtonClicked ? '#FF1C1C' : 'transparent' }} />
+  I don't know
+</Button>
 
             <div style={{ position: 'absolute', top: 450, left: '15%', transform: 'translateX(-50%)', display: 'flex', alignItems: 'center' }}>
               <img src={profileIcon} alt="Profile Icon" style={{ width: 24, height: 24, marginRight: '10px' }} />

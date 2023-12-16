@@ -28,6 +28,31 @@ const Box = () => {
 
 const LoginBloodbankPersonnel = () => {
   const navigate = useNavigate();
+
+  const handleAcceptRequest = async (email, password) => {
+    try {
+      const response = await fetch("http://localhost:8081/user/insertUser", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password
+        }),
+      });
+
+      if (response.status !== 200) {
+        throw new Error(`Api returned status code ${response.status}`);
+      } else {
+        console.log("Sign in Successful!");
+        navigate('/Hospital_Dashboard');
+      }
+
+    } catch (error) {
+      console.log("Error");
+    }
+  };
  
   return (
     <div className="App">
@@ -59,11 +84,11 @@ const LoginBloodbankPersonnel = () => {
       {/* Additional TextFields */}
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
         <div className="Rectangle51" style={{ width: 414.69, height: 56.97, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginRight: 20, marginBottom: 20, marginTop: 20 }}>
-          <TextField id="outlined-basic" label="Username" variant="outlined" fullWidth />
+          <TextField id="outlined-basic-email" label="Username" variant="outlined" fullWidth />
         </div>
 
         <div className="Rectangle51" style={{ width: 414.69, height: 56.97, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginRight: 20, marginBottom: 20 }}>
-          <TextField id="outlined-basic" label="Password" variant="outlined" fullWidth />
+          <TextField id="outlined-basic-password" label="Password" variant="outlined" type="password" fullWidth />
         </div>
 
         {/* Sign in Button */}
@@ -87,7 +112,19 @@ const LoginBloodbankPersonnel = () => {
             marginLeft: 20,
             marginBottom: 20,
           }}
-          onClick={() => navigate("/Hospital_Dashboard")}
+          onClick={() => {
+            const emailInput = document.querySelector("#outlined-basic-email");
+            const passwordInput = document.querySelector("#outlined-basic-password");
+
+            if (emailInput && passwordInput) {
+              const email = emailInput.value;
+              const password = passwordInput.value;
+
+              handleAcceptRequest(email, password);
+            } else {
+              console.error("Email or password input not found in the DOM");
+            }
+          }}
         >
           Sign in
         </Button>

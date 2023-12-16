@@ -26,12 +26,32 @@ const Box = () => {
   );
 };
 
-
 const LoginHospitalPersonnel = () => {
   const navigate = useNavigate();
-  const handleSignIn = () => {
-    // Add your sign-in logic for Hospital Personnel
-    // ...
+
+  const handleAcceptRequest = async (email, password) => {
+    try {
+      const response = await fetch("http://localhost:8081/user/insertUser", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password
+        }),
+      });
+
+      if (response.status !== 200) {
+        throw new Error(`Api returned status code ${response.status}`);
+      } else {
+        console.log("Sign in Successful!");
+        navigate('/Recipient_Dashboard');
+      }
+
+    } catch (error) {
+      console.log("Error", error);
+    }
   };
 
   return (
@@ -53,7 +73,7 @@ const LoginHospitalPersonnel = () => {
         <div style={{ textAlign: 'right', marginRight: 10 }}>
           {/* Login */}
           <div className="HospitalPersonnel" style={{ textAlign: 'center', color: 'black', fontSize: 40, fontFamily: 'Poppins', fontWeight: '500', wordWrap: 'break-word' }}>
-          Hospital personnel
+            Hospital personnel
           </div>
         </div>
 
@@ -64,11 +84,11 @@ const LoginHospitalPersonnel = () => {
       {/* Additional TextFields */}
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
         <div className="Rectangle51" style={{ width: 414.69, height: 56.97, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginRight: 20, marginBottom: 20, marginTop: 20 }}>
-          <TextField id="outlined-basic" label="Username" variant="outlined" fullWidth />
+          <TextField id="email" label="Username" variant="outlined" fullWidth />
         </div>
 
         <div className="Rectangle51" style={{ width: 414.69, height: 56.97, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginRight: 20, marginBottom: 20 }}>
-          <TextField id="outlined-basic" label="Password" variant="outlined" fullWidth />
+          <TextField id="password" label="Password" variant="outlined" type="password" fullWidth />
         </div>
 
         {/* Sign in Button */}
@@ -92,7 +112,12 @@ const LoginHospitalPersonnel = () => {
             marginLeft: 20,
             marginBottom: 20,
           }}
-          onClick={() => navigate("/Recipient_Dashboard")}
+          onClick={() => {
+            const email = document.querySelector("#email").value;
+            const password = document.querySelector("#password").value;
+
+            handleAcceptRequest(email, password);
+          }}
         >
           Sign in
         </Button>
