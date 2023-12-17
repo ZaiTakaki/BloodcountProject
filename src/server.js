@@ -1,45 +1,33 @@
+// Example server code
 const express = require('express');
-const cors = require('cors');
-const jwt = require('jsonwebtoken');
+const bodyParser = require('body-parser');
+
 const app = express();
+const PORT = 8081;
 
-const corsOptions = {
-  origin: 'http://localhost:3000', // Replace with your client's origin
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-  optionsSuccessStatus: 204,
-};
+app.use(bodyParser.json());
 
-app.use(cors(corsOptions));
+// Example user data (replace this with your actual user data or database connection)
+const users = [
+  { id: 1, email: 'user@example.com', password: 'password123' },
+  // Add more users as needed
+];
 
-// Example secret key for JWT (replace this with your actual secret)
-const JWT_SECRET_KEY = 'your-secret-key';
+app.post('/user/login', (req, res) => {
+  const { email, password } = req.body;
 
-// Middleware to check for authentication using JWT
-const authenticateJWT = (req, res, next) => {
-  const token = req.headers.authorization;
+  // Simulate authentication (replace this with your actual authentication logic)
+  const user = users.find(u => u.email === email && u.password === password);
 
-  if (!token) {
-    return res.status(401).json({ message: 'Unauthorized' });
+  if (user) {
+    // Authentication successful
+    res.status(200).json({ success: true, message: 'Authentication successful' });
+  } else {
+    // Authentication failed
+    res.status(401).json({ success: false, message: 'Authentication failed' });
   }
-
-  jwt.verify(token, JWT_SECRET_KEY, (err, user) => {
-    if (err) {
-      return res.status(403).json({ message: 'Forbidden' });
-    }
-
-    req.user = user;
-    next();
-  });
-};
-
-// Protected route requiring authentication
-app.get('/users/getAllUsers', authenticateJWT, (req, res) => {
-  // Your logic here, user is available as req.user
-  res.json({ message: 'Authenticated response' });
 });
 
-const PORT = 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

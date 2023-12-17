@@ -4,6 +4,13 @@ import Button from '@mui/material/Button';
 import './App.css';
 import heroLogo from './Image Hero.svg';
 import bloodDropImage from './blooddrop.png';
+import IanImage from './Ian.png';
+import LanzImage from './Lanz.png';
+import FacebookImage from './facebook.png';
+import PinterestAltImage from './bxl_pinterest-alt.png';
+import DribbbleOutlinedImage from './ant-design_dribbble-outlined.png';
+import InstagramOutlinedImage from './ant-design_instagram-outlined.png';
+import ZaiImage from './Zai.png';
 import RegisterUser from './Register_User';
 import LoginUser from './Login_User'; 
 import LoginAdmin from './Login_Admin';
@@ -27,6 +34,7 @@ import BloodbankDashboard from './Bloodbank_Dashboard';
 import DonorDashboard from './Donor_Dashboard';
 import Details from './Details';
 import HosInfo1 from './HosInfo1';
+import HospitalDashboard from './Hospital_Dashboard';
 import Subnational from './Subnational';
 import VicenteSotto from './VicenteSotto';
 import PhiRedCross from './PhiRedCross';
@@ -41,7 +49,7 @@ const Box = () => {
   return (
     <div className="box">
       <Label />
-      <div className="ellipse" />
+      <div className="ellipse" style={{ backgroundColor: '#ff004c1f', borderRadius: '50%', filter: 'blur(200px)', height: '769px', width: '752px', position: 'fixed', bottom: -80, left: 60, zIndex: -1 }} /> 
       <img className="polygon-image" src={require('./Polygon 2.svg').default} alt="Polygon 2" />
     </div>
   );
@@ -65,6 +73,7 @@ const Label = () => {
 
 function Home() {
   const navigate = useNavigate();
+  
 
   return (
     <div className="App">
@@ -102,7 +111,65 @@ function Home() {
 
       {/* Rest of the content */}
       <div className="Content">
-        
+        <div className="Group10" style={{ width: 316, textAlign: 'center', color: '#333333', fontSize: 20, fontFamily: 'Poppins', fontWeight: '600', textTransform: 'capitalize', lineHeight: 50, letterSpacing: 1, wordWrap: 'break-word', position: 'absolute', top: '125%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+          Group 10
+        </div>
+        <div className="MeetOurTeam" style={{ width: 632, textAlign: 'center', color: '#333333', fontSize: 40, fontFamily: 'Poppins', fontWeight: '600', textTransform: 'capitalize', lineHeight: 50, letterSpacing: 2, wordWrap: 'break-word', position: 'absolute', top: '135%', left: '50%', transform: 'translate(-50%, -50%)' }}>Meet our team</div>
+        <img className="Ian-image" src={IanImage} alt="Ian" style={{ width: '60%', maxWidth: 300, height: '508.95', position: 'absolute', top: '170%', left: '30%', transform: 'translate(-50%, -50%)', zIndex: 1 }} />
+        <img className="Zai-image" src={ZaiImage} alt="Zai" style={{ width: '60%', maxWidth: 300, height: '508.95', position: 'absolute', top: '170%', left: '52%', transform: 'translate(-50%, -50%)', zIndex: 1 }} />
+        <img className="Lanz-image" src={LanzImage} alt="Ian" style={{ width: '60%', maxWidth: 300, height: '508.95', position: 'absolute', top: '170%', left: '73%', transform: 'translate(-50%, -50%)', zIndex: 1  }} /> 
+        <div className="Rectangle17" style={{ width: 260, height: 139, background: '#FFE4E4', borderRadius: 5, position: 'absolute', top: '195%', left: '30%', transform: 'translate(-50%, -50%)', zIndex: 1 }}>
+          <div className="EiScFacebook" style={{ width: 16, height: 16, position: 'absolute', top: '20%', left: '20%', transform: 'translate(-50%, -50%)' }}>
+            <img src={FacebookImage} alt="Facebook" style={{ width: '100%', height: '100%', borderRadius: '50%' }} />
+          </div>
+          <div className="BxlPinterestAlt" style={{ width: 16, height: 16, position: 'absolute', top: '20%', left: '30%', transform: 'translate(-50%, -50%)' }}>
+            <img src={PinterestAltImage} alt="Pinterest Alt" style={{ width: '100%', height: '100%', borderRadius: '50%' }} />
+          </div>
+          <div className="AntDesignDribbbleOutlined" style={{ width: 16, height: 16, position: 'absolute', top: '20%', left: '40%', transform: 'translate(-50%, -50%)' }}>
+            <img src={DribbbleOutlinedImage} alt="Dribbble Outlined" style={{ width: '100%', height: '100%', borderRadius: '50%' }} />
+          </div>
+          <div className="AntDesignInstagramOutlined" style={{ width: 16, height: 16, position: 'absolute', top: '20%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+            <img src={InstagramOutlinedImage} alt="Instagram Outlined" style={{ width: '100%', height: '100%', borderRadius: '50%' }} />
+          </div>
+          <div className="KurtIanBernaldez" style={{ width: 240, color: '#333333', fontSize: 20, fontFamily: 'Poppins', fontWeight: '700', textTransform: 'capitalize', lineHeight: 26.50, letterSpacing: 1, wordWrap: 'break-word', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+            Kurt Ian Bernaldez
+          </div>
+        </div>
+        <div className="Rectangle17" style={{ width: 260, height: 139, background: '#FFE4E4', borderRadius: 5, position: 'absolute', top: '195%', left: '52%', transform: 'translate(-50%, -50%)', zIndex: 1 }}>
+          <div className="EiScFacebook" style={{ width: 16, height: 16, position: 'absolute', top: '20%', left: '20%', transform: 'translate(-50%, -50%)' }}>
+            <img src={FacebookImage} alt="Facebook" style={{ width: '100%', height: '100%', borderRadius: '50%' }} />
+          </div>
+          <div className="BxlPinterestAlt" style={{ width: 16, height: 16, position: 'absolute', top: '20%', left: '30%', transform: 'translate(-50%, -50%)' }}>
+            <img src={PinterestAltImage} alt="Pinterest Alt" style={{ width: '100%', height: '100%', borderRadius: '50%' }} />
+          </div>
+          <div className="AntDesignDribbbleOutlined" style={{ width: 16, height: 16, position: 'absolute', top: '20%', left: '40%', transform: 'translate(-50%, -50%)' }}>
+            <img src={DribbbleOutlinedImage} alt="Dribbble Outlined" style={{ width: '100%', height: '100%', borderRadius: '50%' }} />
+          </div>
+          <div className="AntDesignInstagramOutlined" style={{ width: 16, height: 16, position: 'absolute', top: '20%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+            <img src={InstagramOutlinedImage} alt="Instagram Outlined" style={{ width: '100%', height: '100%', borderRadius: '50%' }} />
+          </div>
+          <div className="ZairenMaeNiOfranco" style={{ width: 240, color: '#333333', fontSize: 20, fontFamily: 'Poppins', fontWeight: '700', textTransform: 'capitalize', lineHeight: 26.50, letterSpacing: 1, wordWrap: 'break-word', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+            Zairen Mae Niñofranco
+          </div>
+        </div>
+        <div className="Rectangle17" style={{ width: 260, height: 139, background: '#FFE4E4', borderRadius: 5, position: 'absolute', top: '195%', left: '73%', transform: 'translate(-50%, -50%)', zIndex: 1 }}>
+          <div className="EiScFacebook" style={{ width: 16, height: 16, position: 'absolute', top: '20%', left: '20%', transform: 'translate(-50%, -50%)' }}>
+            <img src={FacebookImage} alt="Facebook" style={{ width: '100%', height: '100%', borderRadius: '50%' }} />
+          </div>
+          <div className="BxlPinterestAlt" style={{ width: 16, height: 16, position: 'absolute', top: '20%', left: '30%', transform: 'translate(-50%, -50%)' }}>
+            <img src={PinterestAltImage} alt="Pinterest Alt" style={{ width: '100%', height: '100%', borderRadius: '50%' }} />
+          </div>
+          <div className="AntDesignDribbbleOutlined" style={{ width: 16, height: 16, position: 'absolute', top: '20%', left: '40%', transform: 'translate(-50%, -50%)' }}>
+            <img src={DribbbleOutlinedImage} alt="Dribbble Outlined" style={{ width: '100%', height: '100%', borderRadius: '50%' }} />
+          </div>
+          <div className="AntDesignInstagramOutlined" style={{ width: 16, height: 16, position: 'absolute', top: '20%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+            <img src={InstagramOutlinedImage} alt="Instagram Outlined" style={{ width: '100%', height: '100%', borderRadius: '50%' }} />
+          </div>
+          <div className="DavidlanzMasendo" style={{ width: 240, color: '#333333', fontSize: 20, fontFamily: 'Poppins', fontWeight: '700', textTransform: 'capitalize', lineHeight: 26.50, letterSpacing: 1, wordWrap: 'break-word', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+          DavidlanzMasendo
+          </div>
+          </div>
+        <div className="Rectangle11" style={{ width: 1600, height: 883, background: 'rgba(215, 241, 246, 0.34)' }} />
       </div>
     </div>
   );
@@ -118,6 +185,7 @@ function App() {
         <Route path="/Login_BloodbankPersonnel" element={<LoginBloodbankPersonnel />} />
         <Route path="/Login_HospitalPersonnel" element={<LoginHospitalPersonnel />} />
         <Route path="/Service" element={<Service />} />
+        <Route path="/Hospital_Dashboard" element={<HospitalDashboard />} />
         <Route path="/Recipient_Dashboard" element={<RecipientDashboard />} />
         <Route path="/Bloodbank_Dashboard" element={<BloodbankDashboard />} />
         <Route path="/Donor_Details" element={<DonorDetails />} />

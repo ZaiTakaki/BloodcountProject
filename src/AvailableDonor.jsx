@@ -7,7 +7,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import './AvailableDonor.css';
 
 
-const AvailableDonors = () => {
+const AvailableDonor = () => {
   const navigate = useNavigate();
   const [content, setContent] = useState('');
 
@@ -28,8 +28,9 @@ const AvailableDonors = () => {
 
         {/* Navigation with increased marginRight and aligned to circle-with-blood */}
         <div className="Navigation" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', top: '20%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <Button color="secondary" onClick={() => navigate("/Recipient_Dashboard")} style={{ color: '#000000', fontSize: 28, fontFamily: 'Poppins', fontWeight: '500', textTransform: 'capitalize', letterSpacing: 0.90, wordWrap: 'break-word' }}>Home</Button>
-          <Button color="secondary" onClick={() => navigate("/AvailableDonors")} style={{ color: '#ef1212', fontSize: 28, fontFamily: 'Poppins', fontWeight: '500', textTransform: 'capitalize', letterSpacing: 0.90, wordWrap: 'break-word' }}>Available Donors</Button>
+          <Button color="secondary"  onClick={() => navigate("/")} style={{ color: '#000000', fontSize: 28, fontFamily: 'Poppins', fontWeight: '500', textTransform: 'capitalize', letterSpacing: 0.90, wordWrap: 'break-word' }}>Home</Button>
+          <Button color="secondary" onClick={() => navigate("/AvailableDonor")} style={{ color: '#ef1212', fontSize: 28, fontFamily: 'Poppins', fontWeight: '500', textTransform: 'capitalize', letterSpacing: 0.90, wordWrap: 'break-word' }}>Available Donors</Button>
+          <Button color="secondary" onClick={() => navigate("/BloodRequest")} style={{ color: '#000000', fontSize: 28, fontFamily: 'Poppins', fontWeight: '500', textTransform: 'capitalize', letterSpacing: 0.90, wordWrap: 'break-word' }}>Blood Request</Button>
         </div>
 
         {/* Buttons with increased marginRight */}
@@ -197,4 +198,4 @@ const AvailableDonors = () => {
   );
 };
 
-export default AvailableDonors;
+export default AvailableDonor;
