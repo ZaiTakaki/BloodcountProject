@@ -13,7 +13,6 @@ const Admin_Donor: React.FC = () => {
   const [selectedRow, setSelectedRow] = useState(null); 
   const [openDialog, setOpenDialog] = useState(false);
 
-
   const handleMenuToggle = () => {
     setMenuOpen(!isMenuOpen);
   };
