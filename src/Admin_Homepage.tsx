@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Route, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Box, AppBar, Toolbar, IconButton, Typography, Button, MenuList, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import heroLogo from './Image Hero.svg';
 import polygonImage from './Polygon 1.svg'; 
 import circleWithBlood from './circlewithblood.png';
-
 
 
 const Admin_Homepage: React.FC = () => {
@@ -144,7 +143,7 @@ const Admin_Homepage: React.FC = () => {
         }}
       >
         <MenuItem onClick={() => handleMenuItemClick('/Admin_Homepage')}style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Dashboard</MenuItem>
-        <MenuItem onClick={() => handleMenuItemClick('/Admin_Donor')} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Donors</MenuItem>
+        <MenuItem onClick={() => handleMenuItemClick('/Admin_Donor')} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Donor</MenuItem>
         <MenuItem onClick={() => handleMenuItemClick('/Donation_Request')} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Blood Requests</MenuItem>
         <MenuItem onClick={() => handleMenuItemClick('/Recipient')} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Active Users</MenuItem>
         <MenuItem onClick={() => handleMenuItemClick('/Request_History')} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Request History</MenuItem>
@@ -291,3 +290,6 @@ Active Users
 };
 
 export default Admin_Homepage;
+
+
+

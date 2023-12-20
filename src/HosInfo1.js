@@ -1,17 +1,54 @@
 import React from 'react';
-import { Button, Input, } from '@mui/material';
+import { Button, Input } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import heroLogo from './Image Hero.svg';
 import circleWithBlood from './circlewithblood.png';
 import Frame1469 from './Frame 1469.png';
-import image7 from'./image 7.png';
-
+import image7 from './image 7.png';
 
 const CebuDocHospitalInformation = () => {
   const navigate = useNavigate();
 
+  const handleAcceptRequest = async (patientName, contactInfo, patientAge, reason, BloodTypeDropdown, unit) => {
+    try {
+      const response = await fetch("http://localhost:8081/bloodrequest/insertBloodRequest", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          patientName,
+          contactInfo,
+          patientAge,
+          reason,
+          BloodTypeDropdown,
+          unit
+        }),
+      });
 
+      if (response.status !== 200) {
+        throw new Error(`Api returned status code ${response.status}`);
+      } else {
+        console.log("Request Sent!");
+        console.log("Blood group is " + BloodTypeDropdown);
+        console.log("Reason group is " + reason);
+        console.log("Unit group is " + unit);
+        console.log("Patient name is " + patientName);
+        console.log("Patient age is " + patientAge);
 
+        // Store values in localStorage
+      localStorage.setItem("patientName", patientName);
+      localStorage.setItem("contactInfo", contactInfo);
+      localStorage.setItem("patientAge", patientAge);
+      localStorage.setItem("reason", reason);
+      localStorage.setItem("BloodTypeDropdown", BloodTypeDropdown);
+      localStorage.setItem("unit", unit);
+      }
+
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  };
 
   const Header = () => {
     return (
@@ -43,8 +80,6 @@ const CebuDocHospitalInformation = () => {
     );
   };
 
-  
-
   const Label = () => {
     return (
       <div className="label" style={{marginRight: 20, marginTop: 50, marginLeft: -300, position: 'absolute', left: '100%', top: '40%', transform: 'translate(-50%, -50%)', textAlign: 'center', zIndex: -1 }}>
@@ -58,7 +93,6 @@ const CebuDocHospitalInformation = () => {
     );
   };
 
-
   const Box = () => {
     return (
       <div className="box" style={{ position: 'absolute', left: 0 }}>
@@ -69,11 +103,19 @@ const CebuDocHospitalInformation = () => {
         <div className="MakeABloodRequest" style={{width: 277, height: 42, textAlign: 'right', color: '#FF0000', fontSize: 24, fontFamily: 'Poppins', fontWeight: '700', wordWrap: 'break-word', marginRight: 20, marginLeft: 865, width: 489, height: 501, marginTop: -470}}>Make a Blood Request</div>
         <div className="PatientName" style={{color: 'black', fontSize: 20, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word',marginRight: 20, marginLeft: 850, width: 489, height: 501, marginTop: -430}}>Patient name</div>
         <div className="Rectangle51" style={{width: 231, height: 33, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginRight: 20, marginLeft: 1200, marginTop: -500}}>
-        <Input id="outlined-basic" label="Patient Name" variant="outlined" fullWidth />
+        <Input id="patientName" label="Patient Name" variant="outlined" fullWidth />
         </div>
+        {/* Patient Contact Info */}
+<div className="PatientContact" style={{ color: 'black', fontSize: 20, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word', marginRight: 50, marginLeft: 843, width: 489, height: 501, marginTop: 20 }}>
+  Contact Info
+</div>
+<div className="Rectangle58" style={{ width: 231, height: 33, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginRight: 20, marginLeft: 1200, marginTop: -500 }}>
+  <Input id="contactInfo" label="Contact Info" variant="outlined" fullWidth />
+</div>
         <div className="PatientAge" style={{color: 'black', fontSize: 20, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word',marginRight: 20, marginLeft: 840, width: 489, height: 501, marginTop: 20}}>Patient age</div>
         <div className="Rectangle56" style={{width: 231, height: 33, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginRight: 20, marginLeft: 1200, marginTop: -500}}>
         <input
+        id="patientAge"
       type="number"
       className="Rectangle61Input"
       style={{ width: 237, height: 31, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', position: 'absolute', marginTop: '17px', left: '175%', transform: 'translate(-50%, -50%)', textAlign: 'center' }}
@@ -81,22 +123,35 @@ const CebuDocHospitalInformation = () => {
         </div>
         <div className="Reason" style={{color: 'black', fontSize: 20, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word', marginRight: 20, marginLeft: 825, width: 489, height: 501, marginTop: 20}}>Reason</div>
         <div className="Rectangle57" style={{width: 231, height: 33, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginRight: 20, marginLeft: 1200, marginTop: -500}} >
-        <Input id="outlined-basic" label="Reason" variant="outlined" fullWidth />
+        <Input id="reason" label="Reason" variant="outlined" fullWidth />
         </div>
-        <div className="BloodGroup" style={{color: 'black', fontSize: 20, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word', marginRight: 20, marginLeft: 847, width: 489, height: 501, marginTop: 20}}>Blood Group</div>
+        <div className="BloodGroup" id="bloodGroup" style={{color: 'black', fontSize: 20, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word', marginRight: 20, marginLeft: 847, width: 489, height: 501, marginTop: 20}}>Blood Group</div>
         
 
         <div>
           <div>
-          <div className="Frame1198" style={{position: 'absolute',zIndex: 2, width: 166, height: 33, padding: 10, background: '#FF1515', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex', marginTop: -360,marginLeft: 900, cursor: 'pointer' }} onClick={() => alert('SUCCESS! Request to make a Blood request has been confirmed!')}>
-          <div className="Request" style={{ textAlign: 'center', color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Request</div>
+          <div className="Frame1198" style={{position: 'absolute',zIndex: 2, width: 166, height: 33, padding: 10, background: '#FF1515', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex', marginTop: -387,marginLeft: 900, cursor: 'pointer' }} onClick={() => alert('SUCCESS! Request to make a Blood request has been confirmed!')}>
+          <div className="Request" style={{ textAlign: 'center', color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word'
+           }}
+           onClick={() => {
+            const patientName = document.querySelector("#patientName").value;
+            const contactInfo = document.querySelector("#contactInfo").value;
+            const patientAge = document.querySelector("#patientAge").value;
+            const reason = document.querySelector("#reason").value;
+            const BloodTypeDropdown = document.querySelector("#BloodTypeDropdown").value;
+            const unit = document.querySelector("#unit").value;
+          
+            handleAcceptRequest(patientName, contactInfo, patientAge, reason, BloodTypeDropdown, unit);
+          }}
+          
+          >Request</div>
           </div>
     
 
         
         <div className="CombinedBloodTypeRectangle" style={{position: 'absolute', width: 250, height: 25, background: '#FFFBFB', display: 'flex', marginTop: -500, marginLeft: '175%', transform: 'translate(-50%, 0%)' }}>
           {/* Blood Types Dropdown */}
-          <select className="BloodTypeDropdown" style={{ flex: '1', border: 'none', background: 'transparent', outline: 'none', fontSize: 16, fontFamily: 'Poppins', fontWeight: '400', borderRadius: '5px' }}>
+          <select className="BloodTypeDropdown" id="BloodTypeDropdown"  style={{ flex: '1', border: 'none', background: 'transparent', outline: 'none', fontSize: 16, fontFamily: 'Poppins', fontWeight: '400', borderRadius: '5px' }}>
             <option value="">Select Blood Type</option>
             <option value="A+">A+</option>
             <option value="A-">A-</option>
@@ -109,8 +164,8 @@ const CebuDocHospitalInformation = () => {
           </select>
         </div>
 
-        {/* Unit (in ml) */}
-        <div className="UnitInMl" style={{ width: 128, height: 29, color: 'black', fontSize: 20, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word', position: 'absolute', top: '45%', left: '144%', transform: 'translate(-50%, -50%)' }}>
+         {/* Unit (in ml) */}
+         <div className="UnitInMl" style={{ width: 128, height: 29, color: 'black', fontSize: 20, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word', position: 'absolute', top: '52%', left: '144%', transform: 'translate(-50%, -50%)' }}>
           Unit (in ml)
         </div>
       </div>
@@ -118,6 +173,7 @@ const CebuDocHospitalInformation = () => {
 
     <input
       type="number"
+      id="unit"
       className="Rectangle61Input"
       style={{ width: 237, height: 31, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', position: 'absolute', marginTop: '-428px', left: '175%', transform: 'translate(-50%, -50%)', textAlign: 'center' }}
     />
@@ -135,7 +191,6 @@ const CebuDocHospitalInformation = () => {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginLeft: 900, marginRight: 20, flexDirection: 'column' }}>
         <div style={{ textAlign: 'right', marginRight: 10 }}>
           {/* Your Bloodbank Dashboard content can go here */}
-
         </div>
 
         {/* Circle with Label */}
@@ -158,12 +213,14 @@ const CebuDocHospitalInformation = () => {
         marginBottom: 10,
       }}
     />
-    
       </div>
+
+      {/* Information Details */}
       <div className="InformationDetails" style={{ color: '#861530', fontSize: 16, fontFamily: 'Poppins', fontWeight: '700', wordWrap: 'break-word', marginLeft: '-80%', marginTop: 10 }}>
-    Information Details:
-  </div>
-  <div className="AddressOsmeABoulevardCebuCityCebu" style={{ marginLeft: '-70%', marginTop: 10 }}>
+        Information Details:
+      </div>
+
+      <div className="AddressOsmeABoulevardCebuCityCebu" style={{ marginLeft: '-70%', marginTop: 10 }}>
     <span style={{ color: 'black', fontSize: 16, fontFamily: 'Inter', fontWeight: '700', wordWrap: 'break-word' }}>Address: </span>
     <span style={{ color: 'black', fontSize: 16, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word' }}>Osmeña Boulevard, Cebu City, Cebu</span>
   </div>
@@ -258,11 +315,8 @@ const CebuDocHospitalInformation = () => {
     Proceed
   </div>
 </button>
-</div>
-
-
+    </div>
   );
 };
-
 
 export default CebuDocHospitalInformation;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, TextField } from '@mui/material';
+import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import heroLogo from './Image Hero.svg';
 import circleWithBlood from './circlewithblood.png';
@@ -20,25 +20,44 @@ const Service = () => {
             </div>
           </div>
 
-          {/* TextField with increased marginRight */}
-          <TextField
-            id="outlined-basic"
-            label="Search"
-            variant="outlined"
-            style={{ width: 288, height: 55, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginLeft: 20, marginRight: 20 }}
-          />
-        </div>
+          {/* Rectangle style input */}
+          <div style={{
+            width: 288,
+            height: 55,
+            background: 'white',
+            borderRadius: 100,
+            border: '3px #FFC3C3 solid',
+            marginLeft: 20,
+            marginRight: 20,
+            display: 'flex',
+            alignItems: 'center',
+            paddingLeft: 15,
+          }}>
+            <input
+              type="text"
+              placeholder="Search"
+              style={{
+                width: '100%',
+                height: '100%',
+                border: 'none',
+                outline: 'none',
+                borderRadius: 100,
+                paddingLeft: 15,
+              }}
+            />
+          </div>
 
-        {/* Navigation with increased marginRight and aligned to circle-with-blood */}
-        <div className="Navigation" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', top: '20%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '20px' }}>
-          <div className="Home">Home</div>
-          <div className="Service">Service</div>
-          <div className="About">About</div>
-        </div>
+          {/* Navigation with increased marginRight and aligned to circle-with-blood */}
+          <div className="Navigation" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', top: '20%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '20px' }}>
+            <div className="Home" onClick={() => navigate("/")}>Home</div>
+            <div className="Service">Service</div>
+            <div className="About" onClick={() => navigate("/About")}>About</div>
+          </div>
 
-        {/* Buttons with increased marginRight */}
-        <div className="Buttons" style={{ gap: '30px', marginRight: '50px', marginTop: '5px' }}>
-          <Button variant="outlined" onClick={() => navigate("/Register_User")} style={{ color: '#861530', fontSize: 18, fontFamily: 'Poppins', fontWeight: '800', textTransform: 'capitalize', letterSpacing: 0.90, wordWrap: 'break-word', borderRadius: '10px', border: '2px solid #861530' }}>Logout</Button>
+          {/* Buttons with increased marginRight */}
+          <div className="Buttons" style={{ gap: '30px', marginLeft: '600px', marginTop: '5px' }}>
+            <Button variant="outlined" onClick={() => navigate("/Register_User")} style={{ color: '#861530', fontSize: 18, fontFamily: 'Poppins', fontWeight: '800', textTransform: 'capitalize', letterSpacing: 0.90, wordWrap: 'break-word', borderRadius: '10px', border: '2px solid #861530' }}>Logout</Button>
+          </div>
         </div>
       </div>
     );
@@ -58,7 +77,7 @@ const Service = () => {
           {/* Added "Donate Now" and "Blood Finder" buttons */}
           <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: '20px' }}>
             {/* Use the navigate function here */}
-            <Button variant="contained" onClick={() => navigate("/Donor_Details")} style={{ width: 317, height: 71, padding: 10, background: '#FF1515', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 44, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex', marginLeft: '50px' }}>
+            <Button variant="contained" onClick={() => navigate("/Donor_Details")} style={{ width: 317, height: 71, padding: 10, background: '#FF1515', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 44, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex', marginLeft: '50px', zIndex: 1 }}>
               Donate Now
             </Button>
             <Button variant="contained" onClick={() => navigate("/Recipient_Dashboard")}style={{ width: 317, height: 71, padding: 10, background: '#FF1515', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 44, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex', marginLeft: '50px' }}>

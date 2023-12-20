@@ -6,7 +6,6 @@ import TextField from '@mui/material/TextField';
 import heroLogo from './Image Hero.svg';
 import circleWithBlood from './circlewithblood.png';
 
-
 const Label = () => {
   return (
     <div className="label" style={{ position: 'absolute', left: 400 }}>
@@ -33,6 +32,39 @@ const Box = () => {
 
 const LoginUser = () => {
   const navigate = useNavigate();
+
+  const handleAcceptRequest = async (email, password) => {
+    try {
+      const response = await fetch("http://localhost:8081/user/insertUser", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password
+        }),
+      });
+
+      if (response.status !== 200) {
+        throw new Error(`Api returned status code ${response.status}`);
+      } else {
+        console.log("Login Successful!");
+        // Retrieve existing emails from localStorage or initialize an empty array
+        const existingEmails = JSON.parse(localStorage.getItem('emails')) || [];
+
+        // Append the new email to the array
+        const updatedEmails = [...existingEmails, email];
+
+        // Save the updated array back to localStorage
+        localStorage.setItem('emails', JSON.stringify(updatedEmails));
+        navigate('/Service');
+      }
+
+    } catch (error) {
+      console.log("Error");
+    }
+  };
 
   const handleNavigateToAdmin = () => {
     navigate('/Login_Admin');
@@ -73,24 +105,24 @@ const LoginUser = () => {
         {/* SignUp/Login Section */}
         <div style={{ textAlign: 'right', marginRight: 10 }}> {/* Updated margin-right */}
           {/* Login as Admin */}
-          <div onClick={handleNavigateToAdmin} className="LoginAsAdmin" style={{ marginLeft: 350, width: 125, color: '#FF1515', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', wordWrap: 'break-word', cursor: 'pointer'  }}>
+          <div onClick={handleNavigateToAdmin} className="LoginAsAdmin" style={{ marginLeft: 350, width: 125, color: '#FF1515', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', wordWrap: 'break-word', cursor: 'pointer' }}>
             Login as Admin
           </div>
 
           {/* Login */}
-          <div onClick={handleNavigateToRegister} className="Sign up" style={{ width: 199, height: 64, color: 'black', fontSize: 48, fontFamily: 'Poppins-Medium, Helvetica', fontWeight: '500', wordWrap: 'break-word', cursor: 'pointer'  }}>
+          <div onClick={handleNavigateToRegister} className="Sign up" style={{ width: 199, height: 64, color: 'black', fontSize: 48, fontFamily: 'Poppins-Medium, Helvetica', fontWeight: '500', wordWrap: 'break-word', cursor: 'pointer' }}>
             Sign up
           </div>
 
           {/* If You Already Have an Account Registered */}
-          <div className="IfYouAlreadyHaveAnAccountRegistered" style={{ width: 336.52, height: 22.75, color: 'black', fontSize: 16, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word', cursor: 'pointer'  }}>
+          <div className="IfYouAlreadyHaveAnAccountRegistered" style={{ width: 336.52, height: 22.75, color: 'black', fontSize: 16, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word', cursor: 'pointer' }}>
             If you already have an account registered
           </div>
 
           {/* You Can Register Here */}
           <div onClick={handleNavigateToRegister} className="YouCanRegisterHere" style={{ width: 312.19, height: 22.75, marginBottom: 20 }}>
             <span style={{ color: 'black', fontSize: 16, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word' }}>You can </span>
-            <span style={{ color: '#FF0000', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', wordWrap: 'break-word', cursor: 'pointer'  }}>Register here!</span>
+            <span style={{ color: '#FF0000', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', wordWrap: 'break-word', cursor: 'pointer' }}>Register here!</span>
           </div>
         </div>
 
@@ -101,30 +133,30 @@ const LoginUser = () => {
       {/* Additional TextFields */}
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
         <div className="Rectangle51" style={{ width: 414.69, height: 56.97, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginRight: 20, marginBottom: 20 }}>
-          <TextField id="outlined-basic" label="Enter your Email" variant="outlined" fullWidth />
+          <TextField id="email" label="Enter your Email" variant="outlined" fullWidth />
         </div>
 
         <div className="Rectangle51" style={{ width: 414.69, height: 56.97, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginRight: 20, marginBottom: 20 }}>
-          <TextField id="outlined-basic" label="Enter your Password" variant="outlined" fullWidth />
+          <TextField id="password" label="Enter your Password" variant="outlined" type="password" fullWidth />
         </div>
 
         {/* Forgot Password and Login as Hospital Personnel */}
         <div style={{ display: 'flex', flexDirection: 'column', width: '414.69px', marginRight: 20 }}>
-          <div className="ForgotPassword" style={{ width: 150.93, height: 25.70, color: '#FF1515', fontSize: 14, fontFamily: 'Poppins', fontWeight: '700', textDecoration: 'underline', wordWrap: 'break-word', textAlign: 'right', marginBottom: 10, cursor: 'pointer'  }}>
+          <div className="ForgotPassword" style={{ width: 150.93, height: 25.70, color: '#FF1515', fontSize: 14, fontFamily: 'Poppins', fontWeight: '700', textDecoration: 'underline', wordWrap: 'break-word', textAlign: 'right', marginBottom: 10, cursor: 'pointer' }}>
             forgot password
           </div>
-          <div onClick={handleNavigateToHospitalPersonnel} className="LoginAsHospitalPersonnel" style={{ width: 229, color: '#FF1515', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', textDecoration: 'underline', wordWrap: 'break-word', textAlign: 'right', marginBottom: 5, cursor: 'pointer'  }}>
+          <div onClick={handleNavigateToHospitalPersonnel} className="LoginAsHospitalPersonnel" style={{ width: 229, color: '#FF1515', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', textDecoration: 'underline', wordWrap: 'break-word', textAlign: 'right', marginBottom: 5, cursor: 'pointer' }}>
             Login as Hospital personnel
           </div>
         </div>
 
         {/* Login as Bloodbank Personnel */}
-        <div onClick={handleNavigateToBloodbankPersonnel} className="LoginAsBloodbankPersonnel" style={{ width: 245, color: '#FF1515', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', textDecoration: 'underline', wordWrap: 'break-word', textAlign: 'right', marginRight: 200, marginBottom: 20, cursor: 'pointer'  }}>
+        <div onClick={handleNavigateToBloodbankPersonnel} className="LoginAsBloodbankPersonnel" style={{ width: 245, color: '#FF1515', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', textDecoration: 'underline', wordWrap: 'break-word', textAlign: 'right', marginRight: 200, marginBottom: 20, cursor: 'pointer' }}>
           Login as Bloodbank personnel
         </div>
 
-         {/* Sign in Button */}
-         <Button
+        {/* Sign in Button */}
+        <Button
           variant="contained"
           style={{
             width: 419,
@@ -143,6 +175,12 @@ const LoginUser = () => {
             display: 'inline-flex',
             marginRight: 20,
             marginTop: 20,
+          }}
+          onClick={() => {
+            const email = document.querySelector("#email").value;
+            const password = document.querySelector("#password").value;
+
+            handleAcceptRequest(email, password);
           }}
         >
           Sign in
