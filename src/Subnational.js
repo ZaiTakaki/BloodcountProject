@@ -24,14 +24,35 @@ const Subnational = () => {
     setOpenConfirmation(true);
   };
 
-  const handleRequestProceed = () => {
+  const handleRequestProceed = async () => {
+    try {
+      // Make a POST request to the backend
+      const response = await fetch('http://localhost:8081/bloodrequest/insertBloodRequest', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          bloodType: selectedBloodTypes.length === 1 ? selectedBloodTypes[0] : null,
+          quantity: content,
+        }),
+      });
 
-    alert('SUCCESS!');
+      if (response.ok) {
+        alert('Request sent successfully!');
+        navigate('/Hospital_Dashboard');
+        console.log("Request Sent!");
+        console.log("Blood group is " + selectedBloodTypes.join(', '));
+        console.log("Unit group is " + content);
+      } else {
+        alert('Error sending the request. Please try again.');
+      }
 
-    navigate('/BloodBank');
-
-    setOpenConfirmation(false);
-    navigate("/BloodBank");
+      setOpenConfirmation(false);
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred. Please try again.');
+    }
   };
 
   const handleRequestCancel = () => {
@@ -42,6 +63,7 @@ const Subnational = () => {
     options: bloodType,
     getOptionLabel: (option) => option,
   };
+
 
 
   const Header = () => {
@@ -177,11 +199,11 @@ const Subnational = () => {
             </div>
         </div>
 
-        <div className='choose-blood'>
+        <div className='choose-blood' id="bloodType">
         <Stack spacing={1} sx={{width: 220}}>
             <Autocomplete
               {...defaultProps}
-              id="clear-on-escape"
+              id="bloodType"
               clearOnEscape
               multiple 
               value={selectedBloodTypes}
@@ -239,6 +261,7 @@ const Subnational = () => {
         
       <div className="enter-unit" style={{display: 'flex', marginRight: 20  }}>
                 <Input
+                    id="quantity"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                     placeholder="0"

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './App.css';
 import Button from '@mui/material/Button';
@@ -32,6 +32,8 @@ const Box = () => {
 
 const LoginUser = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState(""); // Add this line
+  const [password, setPassword] = useState("");
 
   const handleAcceptRequest = async (email, password) => {
     try {
@@ -42,29 +44,56 @@ const LoginUser = () => {
         },
         body: JSON.stringify({
           email,
-          password
+          password,
         }),
       });
 
       if (response.status !== 200) {
-        throw new Error(`Api returned status code ${response.status}`);
-      } else {
-        console.log("Login Successful!");
-        // Retrieve existing emails from localStorage or initialize an empty array
-        const existingEmails = JSON.parse(localStorage.getItem('emails')) || [];
-
-        // Append the new email to the array
-        const updatedEmails = [...existingEmails, email];
-
-        // Save the updated array back to localStorage
-        localStorage.setItem('emails', JSON.stringify(updatedEmails));
-        navigate('/Service');
+        throw new Error(`API returned status code ${response.status}`);
       }
 
+      const responseData = await response.json();
+
+      if (responseData && responseData.userType) {
+        const fetchedUserType = responseData.userType;
+
+        // Handle roles based on the fetched user type
+        handleRoleRedirect(fetchedUserType);
+      } else {
+        console.log("Invalid response data format or user type not found in the response!");
+        // Handle the case where the response data format is unexpected or user type is not found
+      }
     } catch (error) {
-      console.log("Error");
+      console.log("Error:", error);
+      // Handle other error scenarios
     }
   };
+
+  // Handle role-based redirection
+  const handleRoleRedirect = (userType) => {
+    console.log("User Type:", userType);
+    switch (userType) {
+      case "USER":
+        console.log("Login Successful!");
+        navigate("/Service");
+        break;
+      case "DONOR":
+        console.log("Login as Donor!");
+        navigate("/Donor_Details");
+        break;
+      case "HOSPITAL":
+        console.log("Login as Hospital!");
+        navigate("/Recipient_Dashboard");
+        break;
+      case "ADMIN":
+        console.log("Login as Admin!");
+        navigate("/Admin_Homepage");
+        break;
+      default:
+        console.log("Unknown user type or role!");
+        // Handle other user types or show an error
+    }
+  };   
 
   const handleNavigateToAdmin = () => {
     navigate('/Login_Admin');
@@ -133,11 +162,11 @@ const LoginUser = () => {
       {/* Additional TextFields */}
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
         <div className="Rectangle51" style={{ width: 414.69, height: 56.97, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginRight: 20, marginBottom: 20 }}>
-          <TextField id="email" label="Enter your Email" variant="outlined" fullWidth />
+          <TextField id="email" label="Enter your Email" variant="outlined" fullWidth value={email}  onChange={(e) => setEmail(e.target.value)} />
         </div>
 
         <div className="Rectangle51" style={{ width: 414.69, height: 56.97, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', marginRight: 20, marginBottom: 20 }}>
-          <TextField id="password" label="Enter your Password" variant="outlined" type="password" fullWidth />
+          <TextField id="password" label="Enter your Password" variant="outlined" type="password" fullWidth value={password} onChange={(e) => setPassword(e.target.value)}/>
         </div>
 
         {/* Forgot Password and Login as Hospital Personnel */}

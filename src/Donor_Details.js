@@ -58,15 +58,43 @@ const handleAlertClose = (event, reason) => {
   navigate("/Donor_Dashboard");
 };
 
-const handleSave = () => {
-  // Add logic to save the location (e.g., send it to the server)
-  console.log('Location saved:', location);
+const handleSave = async () => {
+  try {
+    // Log the values before making the request
+    console.log('Location saved:', location);
+    console.log('Selected Blood Type:', selectedBloodType);
+    console.log('Weight:', weight);
+    console.log('Dont Know Button Clicked:', dontKnowButtonClicked);
 
-  // Show the alert
-  setOpenAlert(true);
+    // Make a POST request to the backend
+    const response = await fetch('http://localhost:8081/donor/insertDonor', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        location,
+        selectedBloodType,
+        weight,
+        dontKnowButtonClicked,
+      }),
+    });
+
+    if (response.ok) {
+      setOpenAlert(true);
+    } else {
+      const errorMessage = await response.text();
+      alert(`Error: ${response.status} - ${errorMessage}`);
+      return;
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('An error occurred. Please try again.');
+  }
 };
 
 const handleBloodTypeButtonClick = (bloodType) => {
+  console.log('Selected Blood Type:', selectedBloodType);
   setSelectedBloodType((prevSelectedBloodType) => {
     if (prevSelectedBloodType === bloodType) {
       return null; // Deselect if already selected
@@ -97,9 +125,9 @@ const handleBloodTypeButtonClick = (bloodType) => {
         </div>
 
         <div className="Navigation" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', top: '20%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '20px' }}>
-          <div className="Home" onClick={() => navigate("/")}>Home</div>
-          <div className="Service" onClick={() => navigate("/Service")}>Service</div>
-          <div className="About" onClick={() => navigate("/About")}>About</div>
+          <div className="Home" onClick={() => navigate("/")} style={{ cursor: 'pointer' }} >Home</div>
+          <div className="Service" onClick={() => navigate("/Service")} style={{ cursor: 'pointer' }} >Service</div>
+          <div className="About" onClick={() => navigate("/")} style={{ cursor: 'pointer' }} >About</div>
         </div>
 
         <div className="Buttons" style={{ gap: '30px', marginRight: '50px', marginTop: '5px' }}>

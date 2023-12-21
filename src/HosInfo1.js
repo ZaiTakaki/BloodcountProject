@@ -9,7 +9,7 @@ import image7 from './image 7.png';
 const CebuDocHospitalInformation = () => {
   const navigate = useNavigate();
 
-  const handleAcceptRequest = async (patientName, contactInfo, patientAge, reason, BloodTypeDropdown, unit) => {
+  const handleAcceptRequest = async (patientName, contactInfo, patientAge, reason, bloodType, quantity) => {
     try {
       const response = await fetch("http://localhost:8081/bloodrequest/insertBloodRequest", {
         method: "POST",
@@ -21,34 +21,35 @@ const CebuDocHospitalInformation = () => {
           contactInfo,
           patientAge,
           reason,
-          BloodTypeDropdown,
-          unit
+          bloodType,  
+          quantity
         }),
       });
-
+  
       if (response.status !== 200) {
         throw new Error(`Api returned status code ${response.status}`);
       } else {
         console.log("Request Sent!");
-        console.log("Blood group is " + BloodTypeDropdown);
+        console.log("Blood group is " + bloodType);
         console.log("Reason group is " + reason);
-        console.log("Unit group is " + unit);
+        console.log("Unit group is " + quantity);
         console.log("Patient name is " + patientName);
         console.log("Patient age is " + patientAge);
-
+  
         // Store values in localStorage
-      localStorage.setItem("patientName", patientName);
-      localStorage.setItem("contactInfo", contactInfo);
-      localStorage.setItem("patientAge", patientAge);
-      localStorage.setItem("reason", reason);
-      localStorage.setItem("BloodTypeDropdown", BloodTypeDropdown);
-      localStorage.setItem("unit", unit);
+        localStorage.setItem("patientName", patientName);
+        localStorage.setItem("contactInfo", contactInfo);
+        localStorage.setItem("patientAge", patientAge);
+        localStorage.setItem("reason", reason);
+        localStorage.setItem("bloodType", bloodType);  
+        localStorage.setItem("quantity", quantity);
       }
-
+  
     } catch (error) {
       console.log("Error:", error);
     }
   };
+  
 
   const Header = () => {
     return (
@@ -138,10 +139,10 @@ const CebuDocHospitalInformation = () => {
             const contactInfo = document.querySelector("#contactInfo").value;
             const patientAge = document.querySelector("#patientAge").value;
             const reason = document.querySelector("#reason").value;
-            const BloodTypeDropdown = document.querySelector("#BloodTypeDropdown").value;
-            const unit = document.querySelector("#unit").value;
+            const bloodType = document.querySelector("#bloodType").value;
+            const quantity = document.querySelector("#quantity").value;
           
-            handleAcceptRequest(patientName, contactInfo, patientAge, reason, BloodTypeDropdown, unit);
+            handleAcceptRequest(patientName, contactInfo, patientAge, reason, bloodType, quantity);
           }}
           
           >Request</div>
@@ -151,7 +152,7 @@ const CebuDocHospitalInformation = () => {
         
         <div className="CombinedBloodTypeRectangle" style={{position: 'absolute', width: 250, height: 25, background: '#FFFBFB', display: 'flex', marginTop: -500, marginLeft: '175%', transform: 'translate(-50%, 0%)' }}>
           {/* Blood Types Dropdown */}
-          <select className="BloodTypeDropdown" id="BloodTypeDropdown"  style={{ flex: '1', border: 'none', background: 'transparent', outline: 'none', fontSize: 16, fontFamily: 'Poppins', fontWeight: '400', borderRadius: '5px' }}>
+          <select className="BloodTypeDropdown" id="bloodType"  style={{ flex: '1', border: 'none', background: 'transparent', outline: 'none', fontSize: 16, fontFamily: 'Poppins', fontWeight: '400', borderRadius: '5px' }}>
             <option value="">Select Blood Type</option>
             <option value="A+">A+</option>
             <option value="A-">A-</option>
@@ -173,7 +174,7 @@ const CebuDocHospitalInformation = () => {
 
     <input
       type="number"
-      id="unit"
+      id="quantity"
       className="Rectangle61Input"
       style={{ width: 237, height: 31, background: 'white', borderRadius: 100, border: '1px #FFC3C3 solid', position: 'absolute', marginTop: '-428px', left: '175%', transform: 'translate(-50%, -50%)', textAlign: 'center' }}
     />
