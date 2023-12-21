@@ -94,9 +94,9 @@ function Home() {
 
         {/* Navigation */}
         <div className="Navigation">
-          <div className="Home"  onClick={() => navigate("/")} style={{ cursor: 'pointer' }} >Home</div>
-          <div className="Service" onClick={() => navigate("/Service")} style={{ cursor: 'pointer' }} >Service</div>
-          <div className="Abou" style={{ cursor: 'pointer' }} >About</div>
+          <div className="Home">Home</div>
+          <div className="Service" onClick={() => navigate("/Service")}>Service</div>
+          <div className="About">About</div>
         </div>
 
         {/* Buttons */}
@@ -149,7 +149,7 @@ function Home() {
           <div className="AntDesignInstagramOutlined" style={{ width: 16, height: 16, position: 'absolute', top: '20%', left: '50%', transform: 'translate(-50%, -50%)' }}>
             <img src={InstagramOutlinedImage} alt="Instagram Outlined" style={{ width: '100%', height: '100%', borderRadius: '50%' }} />
           </div>
-          <div className="ZairenMaeNiOfranco" style={{ width: 240, color: '#333333', fontSize: 20, fontFamily: 'Poppins', fontWeight: '700', textTransform: 'capitalize', lineHeight: 26.50, letterSpacing: 1, wordWrap: 'break-word', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+          <div className="ZairenMaeNiOfranco" style={{ width: 240, color: '#333333', fontSize: 20, fontFamily: 'Poppins', fontWeight: '700', textTransform: 'capitalize', lineHeight: 26.50, letterSpacing: 1, wordWrap: 'break-word', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',  }}>
             Zairen Mae Niñofranco
           </div>
           <div className="BeARainbowInSomeoneElseSCloud" style={{width: 240, height: 32.63, textAlign: 'center', color: 'rgba(68, 68, 68, 0.75)', fontSize: 12, fontFamily: 'Poppins', fontWeight: '700', textTransform: 'capitalize', lineHeight: 26.50, letterSpacing: 0.50, wordWrap: 'break-word', marginTop: '-20%', marginLeft: '6%'}}>“Be a rainbow in someone else's cloud.”</div>
