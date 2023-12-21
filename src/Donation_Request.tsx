@@ -215,6 +215,9 @@ const Donation_Request: React.FC = () => {
                 <TableCell style={{ textAlign: 'center', color: 'white', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80 }}>
                   User Id
                 </TableCell>
+                <TableCell style={{ textAlign: 'center', color: 'white', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80 }}>
+                    Actions
+                  </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -227,15 +230,17 @@ const Donation_Request: React.FC = () => {
                 <TableCell style={{ textAlign: 'center', color: '#861530', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80, wordWrap: 'break-word' }}>{row.quantity}</TableCell>
                 <TableCell style={{ textAlign: 'center', color: '#861530', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80, wordWrap: 'break-word' }}>{row.requestDate}</TableCell>
                 <TableCell style={{ width: 40, textAlign: 'center', color: '#861530', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80, wordWrap: 'break-word' }}>{row.user ? row.user.userId : 'N/A'}</TableCell>
-                <Button variant="text" style={{ color: 'black', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>
-                  Accept
-                  </Button>
-                  <Button variant="contained" style={{ width: 83, height: 47, padding: 10, background: '#F63636', borderRadius: 70, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex' }} onClick={handleDeleteButtonClick}>
-                    <div className="Reject" style={{ textAlign: 'center', color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>
-                      Reject
-                    </div>
-                  </Button>
-                </TableRow>
+                <TableCell style={{ textAlign: 'center' }}>
+                      <Button variant="text" style={{ color: 'black', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>
+                        Accept
+                      </Button>
+                      <Button variant="contained" style={{ width: 83, height: 47, padding: 10, background: '#F63636', borderRadius: 70, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex' }} onClick={() => handleDeleteButtonClick(rows)}>
+                        <div className="Delete" style={{ textAlign: 'center', color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>
+                          Delete
+                        </div>
+                      </Button>
+                    </TableCell>
+                  </TableRow>
               ))}
             </TableBody>
           </Table>
