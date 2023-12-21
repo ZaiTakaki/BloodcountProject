@@ -8,6 +8,7 @@ import circleWithBlood from './circlewithblood.png';
 const RegisterUser = () => {
   const navigate = useNavigate();
   const [openDialog, setOpenDialog] = useState(false);
+  const apiUrl = "http://localhost:8081"; 
  
   const handleNavigateToLogin = () => {
     navigate('/Login_User');
@@ -16,7 +17,7 @@ const RegisterUser = () => {
   const handleAcceptRequest = async (firstName,lastName,email,password) => {
    
     try{
-        const response = await fetch("http://localhost:8080/user/insertUser", {
+        const response = await fetch("http://localhost:8081/user/insertUser", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

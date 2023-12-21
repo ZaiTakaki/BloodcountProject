@@ -64,7 +64,7 @@ const BloodRequst = () => {
    patientAge: '',
    reason: '',
    BloodTypeDropdown: '',
-   unit: '',
+   quantity: '',
  });
 
  // Handle changes in patient data input fields

@@ -49,9 +49,9 @@ const Service = () => {
 
           {/* Navigation with increased marginRight and aligned to circle-with-blood */}
           <div className="Navigation" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', top: '20%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '20px' }}>
-            <div className="Home" onClick={() => navigate("/")}>Home</div>
-            <div className="Service">Service</div>
-            <div className="About" onClick={() => navigate("/About")}>About</div>
+            <div className="Home" onClick={() => navigate("/")}style={{ cursor: 'pointer' }}>Home</div>
+            <div className="Service"style={{ cursor: 'pointer' }}>Service</div>
+            <div className="About" onClick={() => navigate("/")}style={{ cursor: 'pointer' }}>About</div>
           </div>
 
           {/* Buttons with increased marginRight */}

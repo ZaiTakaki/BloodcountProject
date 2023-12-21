@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, AppBar, Toolbar, IconButton, Typography, Button, MenuList, MenuItem } from '@mui/material';
+import { Box, AppBar, Toolbar, IconButton, Typography, Button, MenuList, MenuItem, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import heroLogo from './Image Hero.svg';
 import polygonImage from './Polygon 1.svg'; 
 import circleWithBlood from './circlewithblood.png';
-import smallIcon from './smallIcon.png'; 
-import evaArrowUpwardFill from './eva_arrow-ios-upward-fill.png';
+import xImage from './x.png';
 
-const Reports: React.FC = () => {
+const Request_History: React.FC = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [selectedRow, setSelectedRow] = useState(null); 
+  const [openDialog, setOpenDialog] = useState(false);
 
-  const data = {
-    name: 'Stephen Yustiono',
-    // other properties...
-  };
 
   const handleMenuToggle = () => {
     setMenuOpen(!isMenuOpen);
@@ -23,8 +20,34 @@ const Reports: React.FC = () => {
 
   const handleMenuItemClick = () => {
     setMenuOpen(false);
+
   };
-  
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+    setSelectedRow(null);
+  };
+
+  const handleDeleteConfirmed = () => {
+    // Perform deletion logic here using the selectedRow
+    setOpenDialog(false);
+    setSelectedRow(null);
+  };
+
+  const handleDeleteButtonClick = () => {
+    setOpenDialog(true);
+    // Optionally, you can set the selected row here if needed
+    // setSelectedRow(row);
+  }; 
+
+  const rows = [
+    createData('John Doe', 'O+', 'Cebu', '11/11/2023 9:53PM', 20),
+    createData('John Doe', 'O+', 'Cebu', '11/11/2023 9:53PM', 24),
+  ];  
+
+  function createData(name, bloodGroup, address, mobile, age) {
+    return { name, bloodGroup, address, mobile, age };
+  }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -105,200 +128,153 @@ const Reports: React.FC = () => {
           alignItems: 'center',
         }}
       >
-        <MenuItem onClick={() => navigate("/Admin_Homepage")} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Dashboard</MenuItem>
-        <MenuItem onClick={() => navigate("/Admin_Donor")} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Donor</MenuItem>
-        <MenuItem onClick={() => navigate("/Donation_Request")} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Blood Requests</MenuItem>
-        <MenuItem onClick={() => navigate("/Recipient")} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Active Users</MenuItem>
-        <MenuItem onClick={() => navigate("/Request_History")} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Request History</MenuItem>
-        <MenuItem onClick={() => navigate("/Reports")} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Reports</MenuItem>
+        <MenuItem onClick={() => handleMenuItemClick('/Admin_Homepage')}style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Dashboard</MenuItem>
+        <MenuItem onClick={() => handleMenuItemClick('/Admin_Donor')} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Donor</MenuItem>
+        <MenuItem onClick={() => handleMenuItemClick('/Donation_Request')} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Blood Requests</MenuItem>
+        <MenuItem onClick={() => handleMenuItemClick('/Recipient')} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Active Users</MenuItem>
+        <MenuItem onClick={() => handleMenuItemClick('/Request_History')} style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Request History</MenuItem>
+        <MenuItem onClick={() => handleMenuItemClick('/Report')}  style={{ color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Reports</MenuItem>
       </MenuList>
       
-      <div className="Hospital" style={{ width: 396, height: 70, position: 'absolute',  top: 70,  left: 280,  }}>
-        <span style={{
-          color: '#FF0000',
-          fontSize: 40,
-          fontFamily: 'Poppins',
-          fontWeight: '700',
-          letterSpacing: 2,
-          wordWrap: 'break-word',
-        }}
-        >
-          Reports
-        </span>
-        <span
-          style={{
-            color: 'black',
-            fontSize: 40,
-            fontFamily: 'Poppins',
-            fontWeight: '700',
-            letterSpacing: 2,
-            wordWrap: 'break-word',
-          }}
-        >
-        </span>
-      </div>
+      <div className="Hospital" style={{ width: 396, height: 70, position: 'absolute',  top: 70,  left: 280,  }}><span style={{
+      color: '#FF0000',
+      fontSize: 40,
+      fontFamily: 'Poppins',
+      fontWeight: '700',
+      letterSpacing: 2,
+      wordWrap: 'break-word',
+    }}
+  >
+    Request
+  </span>
+  <span
+    style={{
+      color: 'black',
+      fontSize: 40,
+      fontFamily: 'Poppins',
+      fontWeight: '700',
+      letterSpacing: 2,
+      wordWrap: 'break-word',
+    }}
+  >
+    {' '}
+  </span>
+  <span
+    style={{
+      color: '#861530',
+      fontSize: 40,
+      fontFamily: 'Poppins',
+      fontWeight: '700',
+      letterSpacing: 2,
+      wordWrap: 'break-word',
+    }}
+  >
+    History
+  </span>
+</div>
 
       <div className="ellipse" style={{ backgroundColor: '#ff004c1f', borderRadius: '50%', filter: 'blur(200px)', height: '769px', width: '752px', position: 'fixed', bottom: -80, left: 800, zIndex: -1 }} />  
       <img src={polygonImage.toString()} alt="Polygon Image" style={{ width: '200px', height: '200px', borderRadius: '50%', position: 'fixed',  left: 900, bottom: 180, zIndex: -1 }} />       
       <img src={circleWithBlood.toString()} style={{ width: '438px', height: '438px', borderRadius: '50%', position: 'fixed',  left: 1290, bottom: -40, zIndex: -1 }} />
-      
-      {/* New Component Below Reports */}
-      <div className="Component5" style={{width: 290, height: 82, paddingLeft: 14, paddingRight: 14, paddingTop: 14, paddingBottom: 0, background: 'rgba(255, 255, 255, 0.88)', borderRadius: 20, overflow: 'hidden', border: '1px black solid', backdropFilter: 'blur(10px)', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex', position: 'absolute', top: 160, left: 280}}>
-  <div className="Frame1194" style={{height: 54, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 12, display: 'flex'}}>
-    <div className="Frame1185" style={{width: 308, justifyContent: 'flex-end', alignItems: 'center', gap: 16, display: 'inline-flex'}}>
-      <div className="Frame1157" style={{height: 22, justifyContent: 'flex-start', alignItems: 'center', gap: 6, display: 'flex'}}>
-        <div className="Smallicon" style={{width: 16, height: 16, position: 'relative'}}>
-        <img src={smallIcon} alt="Small Icon" style={{ width: 16, height: 16, marginRight: 20 }} />
-        </div>
-        <div className="Appname" style={{justifyContent: 'flex-start', alignItems: 'flex-start', gap: 10, display: 'flex'}}>
-          <div className="Hangouts" style={{color: '#FF0000', fontSize: 17, fontFamily: 'Mulish', fontStyle: 'italic', fontWeight: '200', lineHeight: 22, wordWrap: 'break-word', marginRight: 20}}>Stephen Yustiono</div>
-        </div>
-        <div className="D" style={{color: '#595959', fontSize: 12, fontFamily: 'Roboto', fontWeight: '400', lineHeight: 16, wordWrap: 'break-word', marginRight: 30}}>Today 22:02 pm</div>
-      </div>
-      <div className="EvaArrowIosUpwardFill" style={{ width: 16, height: 16, position: 'relative' }}>
-  <img
-    src={evaArrowUpwardFill}
-    alt="Arrow Upward"
-    style={{ width: 16, height: 16, marginTop: 10, marginLeft: -20, transform: 'rotate(180deg)' }}
-  />
+
+      {isMenuOpen && (
+      <><TableContainer component={Paper} style={{ marginTop: -160, marginLeft: 280, marginRight: 20, marginBottom: 20, maxWidth: '50%' }}>
+          <Table>
+            <TableHead>
+              <TableRow style={{ backgroundColor: '#861530' }}>
+                <TableCell style={{ textAlign: 'center', color: 'white', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80 }}>
+                  Donor Name
+                </TableCell>
+                <TableCell style={{ textAlign: 'center', color: 'white', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80 }}>
+                  Blood Group
+                </TableCell>
+                <TableCell style={{ textAlign: 'center', color: 'white', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80 }}>
+                  Address
+                </TableCell>
+                <TableCell style={{ textAlign: 'center', color: 'white', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80 }}>
+                  Date/Time
+                </TableCell>
+                <TableCell style={{ textAlign: 'center', color: 'white', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80 }}>
+                  Age
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => (
+                <TableRow key={row.name} style={{ padding: '8px 0', justifyContent: 'center', alignItems: 'center', color: '#E8CFCF' }}>
+                  <TableCell style={{ textAlign: 'center', color: '#861530', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80, wordWrap: 'break-word' }}>{row.name}</TableCell>
+                  <TableCell style={{ textAlign: 'center', color: '#861530', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80, wordWrap: 'break-word' }}>{row.bloodGroup}</TableCell>
+                  <TableCell style={{ textAlign: 'center', color: '#861530', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80, wordWrap: 'break-word' }}>{row.address}</TableCell>
+                  <TableCell style={{ textAlign: 'center', color: '#861530', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80, wordWrap: 'break-word' }}>{row.mobile}</TableCell>
+                  <TableCell style={{ width: 40, textAlign: 'center', color: '#861530', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80, wordWrap: 'break-word' }}>{row.age}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <div className="Recipient" style={{ textAlign: 'center', color: '#00FF19', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word', marginLeft: 700, marginTop: -120 }}>
+  Recipient
+  <img src={xImage} alt="X Image" style={{ width: '20px', height: '20px', marginLeft: '5px' }} />
 </div>
-
+<div className="Donor" style={{textAlign: 'center', color: '#00FF19', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word', marginLeft: 690, marginTop: 30}}>
+  Donor
+  <img src={xImage} alt="X Image" style={{ width: '20px', height: '20px', marginLeft: '5px' }} />
 </div>
-<div className="New" style={{ width: 306, color: 'black', fontSize: 14, fontFamily: 'Be Vietnam Pro', fontWeight: '600', wordWrap: 'break-word' }}>
-  Reported “there is a problem on my profile...
-</div>
+<Button variant="contained" style={{ width: 124, height: 47, padding: 10, background: '#F63636', borderRadius: 70, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex', position: 'fixed', right: 20, top: 120 }}>
+            <div className="ClearAll" style={{ textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>Clear All</div>
+          </Button>
 
-</div>
-    <div className="Frame1183" style={{height: 20, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 4, display: 'flex'}}>
-      <div className="Contenttext" style={{width: 328, height: 20}} />
-    </div>
-  </div>
-
-<div className="Frame2" style={{width: 320, height: 27, paddingLeft: 12, paddingRight: 12, background: '#FCFCFC', borderRadius: 15, border: '1px black solid', backdropFilter: 'blur(10px)', justifyContent: 'center', alignItems: 'center', display: 'inline-flex', position: 'absolute', top: 230, left: 265}}>
-  <div className="Frame2" style={{flex: '1 1 0', height: 56, paddingLeft: 12, paddingRight: 12, paddingTop: 18, paddingBottom: 18, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'flex'}}>
-    <div className="Chat" style={{width: 41, textAlign: 'center', color: '#F42633', fontSize: 16, fontFamily: 'Roboto', fontWeight: '400', textTransform: 'capitalize', lineHeight: 20, wordWrap: 'break-word'}}>Chat</div>
-  </div>
-  <div className="Line1" style={{width: 26, height: 0, transform: 'rotate(90deg)', transformOrigin: '0 0', opacity: 0.20, border: '1px #665BEB solid', marginTop: -24}}></div>
-  <div className="Frame2" style={{flex: '1 1 0', height: 56, paddingLeft: 12, paddingRight: 12, paddingTop: 18, paddingBottom: 18, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'flex'}}>
-    <div className="Check" style={{color: '#F42633', fontSize: 16, fontFamily: 'Roboto', fontWeight: '400', textTransform: 'capitalize', lineHeight: 20, wordWrap: 'break-word'}}>Check</div>
-  </div>
-</div>
-
-
-<div className="Component5" style={{width: 290, height: 82, paddingLeft: 14, paddingRight: 14, paddingTop: 14, paddingBottom: 0, background: 'rgba(255, 255, 255, 0.88)', borderRadius: 20, overflow: 'hidden', border: '1px black solid', backdropFilter: 'blur(10px)', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex', position: 'absolute', top: 270, left: 280}}>
-  <div className="Frame1194" style={{height: 54, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 12, display: 'flex'}}>
-    <div className="Frame1185" style={{width: 308, justifyContent: 'flex-end', alignItems: 'center', gap: 16, display: 'inline-flex'}}>
-      <div className="Frame1157" style={{height: 22, justifyContent: 'flex-start', alignItems: 'center', gap: 6, display: 'flex'}}>
-        <div className="Smallicon" style={{width: 16, height: 16, position: 'relative'}}>
-        <img src={smallIcon} alt="Small Icon" style={{ width: 16, height: 16, marginRight: 20 }} />
-        </div>
-        <div className="Appname" style={{justifyContent: 'flex-start', alignItems: 'flex-start', gap: 10, display: 'flex'}}>
-          <div className="Hangouts" style={{color: '#FF0000', fontSize: 17, fontFamily: 'Mulish', fontStyle: 'italic', fontWeight: '200', lineHeight: 22, wordWrap: 'break-word', marginRight: 20}}>Stephen Yustiono</div>
-        </div>
-        <div className="D" style={{color: '#595959', fontSize: 12, fontFamily: 'Roboto', fontWeight: '400', lineHeight: 16, wordWrap: 'break-word', marginRight: 30}}>Today 22:02 pm</div>
-      </div>
-      <div className="EvaArrowIosUpwardFill" style={{ width: 16, height: 16, position: 'relative' }}>
-  <img
-    src={evaArrowUpwardFill}
-    alt="Arrow Upward"
-    style={{ width: 16, height: 16, marginTop: 10, marginLeft: -20, transform: 'rotate(180deg)' }}
-  />
-</div>
-
-</div>
-<div className="New" style={{ width: 306, color: 'black', fontSize: 14, fontFamily: 'Be Vietnam Pro', fontWeight: '600', wordWrap: 'break-word' }}>
-  Reported MAGUSA HOSPITAL of not all...
-</div>
-
-</div>
-    <div className="Frame1183" style={{height: 20, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 4, display: 'flex'}}>
-      <div className="Contenttext" style={{width: 328, height: 20}} />
-    </div>
-  </div>
-
-<div className="Frame2" style={{width: 320, height: 27, paddingLeft: 12, paddingRight: 12, background: '#FCFCFC', borderRadius: 15, border: '1px black solid', backdropFilter: 'blur(10px)', justifyContent: 'center', alignItems: 'center', display: 'inline-flex', position: 'absolute', top: 340, left: 265}}>
-  <div className="Frame2" style={{flex: '1 1 0', height: 56, paddingLeft: 12, paddingRight: 12, paddingTop: 18, paddingBottom: 18, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'flex'}}>
-    <div className="Chat" style={{width: 41, textAlign: 'center', color: '#F42633', fontSize: 16, fontFamily: 'Roboto', fontWeight: '400', textTransform: 'capitalize', lineHeight: 20, wordWrap: 'break-word'}}>Chat</div>
-  </div>
-  <div className="Line1" style={{width: 26, height: 0, transform: 'rotate(90deg)', transformOrigin: '0 0', opacity: 0.20, border: '1px #665BEB solid', marginTop: -24}}></div>
-  <div className="Frame2" style={{flex: '1 1 0', height: 56, paddingLeft: 12, paddingRight: 12, paddingTop: 18, paddingBottom: 18, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'flex'}}>
-    <div className="Check" style={{color: '#F42633', fontSize: 16, fontFamily: 'Roboto', fontWeight: '400', textTransform: 'capitalize', lineHeight: 20, wordWrap: 'break-word'}}>Check</div>
-  </div>
-</div>
-
-<div className="Hospital" style={{ width: 396, height: 70, color: '#861530', fontSize: 40, fontFamily: 'Poppins', fontWeight: '700', letterSpacing: 2, wordWrap: 'break-word', marginTop: 150, marginLeft: 280 }}>
-  Feedback
-</div>
-
-
-<div className="Component5" style={{width: 290, height: 60, paddingLeft: 14, paddingRight: 14, paddingTop: 14, paddingBottom: 0, background: 'rgba(255, 255, 255, 0.88)', borderRadius: 20, overflow: 'hidden', border: '1px black solid', backdropFilter: 'blur(10px)', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex', position: 'absolute', top: 520, left: 280}}>
-  <div className="Frame1194" style={{height: 54, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 12, display: 'flex'}}>
-    <div className="Frame1185" style={{width: 308, justifyContent: 'flex-end', alignItems: 'center', gap: 16, display: 'inline-flex'}}>
-      <div className="Frame1157" style={{height: 22, justifyContent: 'flex-start', alignItems: 'center', gap: 6, display: 'flex'}}>
-        <div className="Smallicon" style={{width: 16, height: 16, position: 'relative'}}>
-        <img src={smallIcon} alt="Small Icon" style={{ width: 16, height: 16, marginRight: 20 }} />
-        </div>
-        <div className="Appname" style={{justifyContent: 'flex-start', alignItems: 'flex-start', gap: 10, display: 'flex'}}>
-          <div className="Hangouts" style={{color: '#FF0000', fontSize: 17, fontFamily: 'Mulish', fontStyle: 'italic', fontWeight: '200', lineHeight: 22, wordWrap: 'break-word', marginRight: 60}}>Erin Steed</div>
-        </div>
-        <div className="D" style={{color: '#595959', fontSize: 12, fontFamily: 'Roboto', fontWeight: '400', lineHeight: 16, wordWrap: 'break-word', marginRight: 30}}>Today 16:02 pm</div>
-      </div>
-      <div className="EvaArrowIosUpwardFill" style={{ width: 16, height: 16, position: 'relative' }}>
-  <img
-    src={evaArrowUpwardFill}
-    alt="Arrow Upward"
-    style={{ width: 16, height: 16, marginTop: 10, marginLeft: -20, transform: 'rotate(180deg)' }}
-  />
-</div>
-
-
-</div>
-<div className="New" style={{ width: 306, color: '#686868', fontSize: 14, fontFamily: 'Be Vietnam Pro', fontWeight: '400', wordWrap: 'break-word' }}>
-the app is so good and well organized
-</div>
-
-</div>
-    <div className="Frame1183" style={{height: 20, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 4, display: 'flex'}}>
-      <div className="Contenttext" style={{width: 328, height: 20}} />
-    </div>
-  </div>
-
-
-  <div className="Component5" style={{width: 290, height: 60, paddingLeft: 14, paddingRight: 14, paddingTop: 14, paddingBottom: 0, background: 'rgba(255, 255, 255, 0.88)', borderRadius: 20, overflow: 'hidden', border: '1px black solid', backdropFilter: 'blur(10px)', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex', position: 'absolute', top: 620, left: 280}}>
-  <div className="Frame1194" style={{height: 54, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 12, display: 'flex'}}>
-    <div className="Frame1185" style={{width: 308, justifyContent: 'flex-end', alignItems: 'center', gap: 16, display: 'inline-flex'}}>
-      <div className="Frame1157" style={{height: 22, justifyContent: 'flex-start', alignItems: 'center', gap: 6, display: 'flex'}}>
-        <div className="Smallicon" style={{width: 16, height: 16, position: 'relative'}}>
-        <img src={smallIcon} alt="Small Icon" style={{ width: 16, height: 16, marginRight: 20 }} />
-        </div>
-        <div className="Appname" style={{justifyContent: 'flex-start', alignItems: 'flex-start', gap: 10, display: 'flex'}}>
-          <div className="Hangouts" style={{color: '#FF0000', fontSize: 17, fontFamily: 'Mulish', fontStyle: 'italic', fontWeight: '200', lineHeight: 22, wordWrap: 'break-word', marginRight: 10}}>ILIASS BAHTAINE</div>
-        </div>
-        <div className="D" style={{color: '#595959', fontSize: 12, fontFamily: 'Roboto', fontWeight: '400', lineHeight: 16, wordWrap: 'break-word', marginRight: 10}}>Yesterday 10:02 am</div>
-      </div>
-      <div className="EvaArrowIosUpwardFill" style={{ width: 16, height: 16, position: 'relative' }}>
-  <img
-    src={evaArrowUpwardFill}
-    alt="Arrow Upward"
-    style={{ width: 16, height: 16, marginTop: 10, marginLeft: -20, transform: 'rotate(180deg)' }}
-  />
-</div>
-
-
-</div>
-<div className="New" style={{ width: 306, color: '#686868', fontSize: 14, fontFamily: 'Be Vietnam Pro', fontWeight: '400', wordWrap: 'break-word' }}>
-AYAYAYA  YA Gabriel , this up is unbelivable
-</div>
-
-</div>
-    <div className="Frame1183" style={{height: 20, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 4, display: 'flex'}}>
-      <div className="Contenttext" style={{width: 328, height: 20}} />
-    </div>
-  </div>
-
-
-    </Box>
+        <Dialog open={openDialog} onClose={handleCloseDialog}>
+            <DialogTitle id="alert-dialog-title">{"WARNING!"}</DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                Are you sure to delete this row?
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button
+                variant="contained"
+                onClick={handleCloseDialog}
+                style={{
+                  width: 54,
+                  height: 18,
+                  padding: 10,
+                  background: '#FFE4E4',
+                  boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  gap: 10,
+                  display: 'inline-flex',
+                }}
+              >
+                NO
+              </Button>
+              <Button
+                variant="contained"
+                color="error"
+                style={{
+                  width: 54,
+                  height: 18,
+                  padding: 10,
+                  background: '#FFE4E4',
+                  boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  gap: 10,
+                  display: 'inline-flex',
+                }}
+                onClick={handleDeleteConfirmed}
+                autoFocus
+              >
+                YES
+              </Button>
+            </DialogActions>
+          </Dialog></>
+          )}
+          </Box>
   );
 };
 
-export default Reports;
+export default Request_History;
+
+

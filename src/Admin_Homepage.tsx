@@ -26,7 +26,7 @@ const Admin_Homepage: React.FC = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:8080/user/getAllUsers', {
+      const response = await fetch('http://localhost:8081/user/getAllUsers', {
       method: 'GET',  // Change to 'POST' if needed
       headers: {
         'Content-Type': 'application/json',
