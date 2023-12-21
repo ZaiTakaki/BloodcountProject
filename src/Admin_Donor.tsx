@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, AppBar, Toolbar, IconButton, Typography, Button, MenuList, MenuItem, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, } from '@mui/material';
+import { Box, AppBar, Toolbar, IconButton, Typography, Button, MenuList, MenuItem, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import heroLogo from './Image Hero.svg';
 import polygonImage from './Polygon 1.svg'; 
@@ -11,6 +11,32 @@ const Admin_Donor: React.FC = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [donors, setDonors] = useState([]);
   const [selectedRow, setSelectedRow] = useState(null); 
+  const [openEditDialog, setOpenEditDialog] = useState(false); 
+  const [openDeleteDialog, setOpenDeleteDialog] = useState(false); 
+  const [editedBloodType, setEditedBloodType] = useState('');
+  const [editedContactInfo, setEditedContactInfo] = useState('');
+
+  const fetchDonors = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/donor/getAllDonors', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Failed to fetch donors. Status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      setDonors(data);
+    } catch (error) {
+      console.error('Error fetching donor details:', error.message);
+    }
+  };
+
   const [openDialog, setOpenDialog] = useState(false);
 
 
@@ -23,6 +49,93 @@ const Admin_Donor: React.FC = () => {
   };
 
   const handleCloseDialog = () => {
+    setOpenDeleteDialog(false);
+    setSelectedRow(null);
+  };
+
+  const handleDeleteButtonClick = () => {
+    setOpenDeleteDialog(true);
+    // Optionally, you can set the selected row here if needed
+    // setSelectedRow(row);
+  };
+  const handleDeleteConfirmed = async () => {
+    if (selectedRow) {
+      const userId = selectedRow.userId;
+      try {
+        const response = await fetch(`http://localhost:8080/user/deleteUser/${userId}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+        });
+  
+        if (response.ok) {
+          // Recipient successfully deleted, fetch updated recipients
+          fetchUsers();
+          setOpenDeleteDialog(false);
+          setSelectedRow(null);
+        } else {
+          // Handle error
+          console.error('Error deleting recipient:', response.statusText);
+          // Optionally, you can display an error message or take other actions
+        }
+      } catch (error) {
+        console.error('Error deleting recipient:', error);
+        // Optionally, you can display an error message or take other actions
+      }
+    }
+  };
+
+ 
+  const handleEditButtonClick = (donor: Donor) => {
+    setSelectedRow(donor);
+    setEditedBloodType(donor.bloodType);
+    setEditedContactInfo(donor.contactInfo);
+    setOpenEditDialog(true);
+  };
+
+  const handleCloseEditDialog = () => {
+    setOpenEditDialog(false);
+    setSelectedRow(null);
+  };
+
+  const handleSaveEdit = () => {
+    if (!selectedRow) {
+      console.error('No selected donor for editing.');
+      return;
+    }
+
+    handleUpdateDonor(selectedRow.donorId, {
+      bloodType: editedBloodType,
+      contactInfo: editedContactInfo,
+    });
+  };
+
+  const handleUpdateDonor = async (donorId, updatedDonorDetails) => {
+    try {
+      const response = await fetch(`http://localhost:8080/donor/updateDonor/${donorId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json', // Add the Content-Type header
+        },
+        body: JSON.stringify(updatedDonorDetails),
+        credentials: 'include',
+      });
+
+      if (response.ok) {
+        // Donor successfully updated, close the dialog and fetch updated donors
+        setOpenEditDialog(false);
+        fetchDonors();
+      } else {
+        // Handle error
+        console.error('Error updating donor:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error updating donor:', error);
+    }
+  };
+
     setOpenDialog(false);
     setSelectedRow(null);
   };
@@ -56,7 +169,6 @@ const Admin_Donor: React.FC = () => {
       }
     };
 
-  
   useEffect(() => {  
     fetchDonors();
   }, []); 
@@ -205,6 +317,10 @@ const Admin_Donor: React.FC = () => {
                 <TableCell style={{ textAlign: 'center', color: 'white', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80 }}>
                   Address
                 </TableCell>
+                <TableCell style={{ textAlign: 'center', color: 'white', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80 }}>
+                    Actions
+                  </TableCell>
+
               </TableRow>
             </TableHead>
             <TableBody>
@@ -214,6 +330,67 @@ const Admin_Donor: React.FC = () => {
                 <TableCell style={{ textAlign: 'center', color: '#861530', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80, wordWrap: 'break-word' }}>{donor.bloodType}</TableCell>
                 <TableCell style={{ textAlign: 'center', color: '#861530', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80, wordWrap: 'break-word' }}>{donor.contactInfo}</TableCell>
                 <TableCell style={{ textAlign: 'center', color: '#861530', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80, wordWrap: 'break-word' }}>{donor.location}</TableCell>
+                <TableCell style={{ textAlign: 'center' }}>
+                      <Button variant="text" style={{ color: 'black', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}onClick={() => handleEditButtonClick(donor)}>
+                        Edit
+                      </Button>
+                      <Button variant="contained" style={{ width: 83, height: 47, padding: 10, background: '#F63636', borderRadius: 70, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex' }} onClick={() => handleDeleteButtonClick(donor)}>
+                        <div className="Delete" style={{ textAlign: 'center', color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>
+                          Delete
+                        </div>
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        
+        <Dialog open={openEditDialog} onClose={handleCloseEditDialog}>
+        <DialogTitle>Edit Donor</DialogTitle>
+        <DialogContent>
+          <TextField
+            label="Blood Type"
+            variant="outlined"
+            fullWidth
+            value={editedBloodType}
+            onChange={(e) => setEditedBloodType(e.target.value)}
+            sx={{
+              marginTop: 2,
+              marginBottom: '12px',
+              '& label': { color: '#FF0000'},
+              '& .MuiOutlinedInput-root': {
+                '& fieldset': {
+                  borderColor: '#FF0000',
+                },
+              },
+            }}
+          />
+          <TextField
+            label="Contact Info"
+            variant="outlined"
+            fullWidth
+            value={editedContactInfo}
+            onChange={(e) => setEditedContactInfo(e.target.value)}
+            sx={{
+              marginBottom: '12px',
+              '& label': { color: '#FF0000'},
+              '& .MuiOutlinedInput-root': {
+                '& fieldset': {
+                  borderColor: '#FF0000',
+                },
+              },
+            }}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseEditDialog}>Cancel</Button>
+          <Button onClick={() => handleSaveEdit(selectedRow)}>Save</Button>
+        </DialogActions>
+      </Dialog>
+
+        <Dialog open={openDeleteDialog} onClose={handleCloseDialog}>
+
                   <Button variant="text" style={{ color: 'black', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>
                     Edit
                   </Button>
@@ -227,6 +404,7 @@ const Admin_Donor: React.FC = () => {
             </TableBody>
           </Table>
         </TableContainer><Dialog open={openDialog} onClose={handleCloseDialog}>
+
             <DialogTitle id="alert-dialog-title">{"WARNING!"}</DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
