@@ -40,9 +40,18 @@ const Recipient: React.FC = () => {
       console.error('Error fetching recipient details:', error);
     }
   };
+
+  const [selectedRow, setSelectedRow] = useState(null);
+  const [openDialog, setOpenDialog] = useState(false);
+  const [emails, setEmails] = useState<string[]>(() => {
+    const storedEmails = localStorage.getItem('emails');
+    return storedEmails ? JSON.parse(storedEmails) : [];
+  });
+
   const handleMenuToggle = () => {
     setMenuOpen(!isMenuOpen);
   };
+
 
   const handleMenuItemClick = () => {
     setMenuOpen(false);
@@ -61,10 +70,26 @@ const Recipient: React.FC = () => {
       const userId = selectedRow.userId;
       try {
         const response = await fetch(`http://localhost:8080/user/deleteUser/${userId}`, {
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+    setSelectedRow(null);
+  };
+
+  const handleDeleteConfirmed = async () => {
+    try {
+      const emailToDelete = selectedRow?.email;
+
+      if (emailToDelete) {
+        console.log('Deleting user with email:', emailToDelete);
+
+        const response = await fetch('http://localhost:8081/user/deleteUser', {
+
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
           },
+
           credentials: 'include',
         });
 
@@ -137,6 +162,40 @@ const Recipient: React.FC = () => {
   useEffect(() => {
     fetchUsers();
   }, []);
+
+          body: JSON.stringify({ email: emailToDelete }),
+        });
+
+        if (response.ok) {
+          console.log('User deleted successfully.');
+          setEmails((prevEmails) => {
+            const updatedEmails = prevEmails.filter((email) => email !== emailToDelete);
+            localStorage.setItem('emails', JSON.stringify(updatedEmails));
+            return updatedEmails;
+          });
+          setSelectedRow(null);
+        } else {
+          console.error('Error deleting user:', response.statusText);
+        }
+      }
+    } catch (error) {
+      console.error('Error deleting user:', error.message);
+    } finally {
+      setOpenDialog(false);
+    }
+  };
+
+  const handleDeleteButtonClick = (row) => {
+    setOpenDialog(true);
+    setSelectedRow(row);
+  };
+
+  function createData(email, role) {
+    return { email, role };
+  }
+
+  const rows = emails.map((email) => createData(email, 'user'));
+
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -293,9 +352,15 @@ const Recipient: React.FC = () => {
       <img src={polygonImage.toString()} alt="Polygon Image" style={{ width: '200px', height: '200px', borderRadius: '50%', position: 'fixed', left: 900, bottom: 180, zIndex: -1 }} />
       <img src={circleWithBlood.toString()} style={{ width: '438px', height: '438px', borderRadius: '50%', position: 'fixed', left: 1290, bottom: -40, zIndex: -1 }} />
 
+
       
         <>
           <TableContainer component={Paper} style={{ position: 'fixed', top: 200, left: 280, marginRight: 20, marginBottom: 20, maxWidth: '50%' }}>
+
+      {isMenuOpen && (
+        <>
+          <TableContainer component={Paper} style={{ marginTop: -160, marginLeft: 280, marginRight: 20, marginBottom: 20, maxWidth: '50%' }}>
+
             <Table>
               <TableHead>
                 <TableRow style={{ backgroundColor: '#861530' }}>
@@ -311,6 +376,7 @@ const Recipient: React.FC = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
+
                 {users.map((user) => (
                   <TableRow key={user.userId} style={{ padding: '8px 0', justifyContent: 'center', alignItems: 'center', color: '#E8CFCF' }}>
                     <TableCell style={{ textAlign: 'center', color: '#861530', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80, wordWrap: 'break-word' }}>{user.email}</TableCell>
@@ -320,6 +386,17 @@ const Recipient: React.FC = () => {
                         Edit
                       </Button>
                       <Button variant="contained" style={{ width: 83, height: 47, padding: 10, background: '#F63636', borderRadius: 70, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex' }} onClick={() => handleDeleteButtonClick(user)}>
+
+                {rows.map((row) => (
+                  <TableRow key={row.email} style={{ padding: '8px 0', justifyContent: 'center', alignItems: 'center', color: '#E8CFCF' }}>
+                    <TableCell style={{ textAlign: 'center', color: '#861530', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80, wordWrap: 'break-word' }}>{row.email}</TableCell>
+                    <TableCell style={{ textAlign: 'center', color: '#861530', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80, wordWrap: 'break-word' }}>{row.role}</TableCell>
+                    <TableCell style={{ textAlign: 'center' }}>
+                      <Button variant="text" style={{ color: 'black', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>
+                        Edit
+                      </Button>
+                      <Button variant="contained" style={{ width: 83, height: 47, padding: 10, background: '#F63636', borderRadius: 70, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex' }} onClick={() => handleDeleteButtonClick(row)}>
+
                         <div className="Delete" style={{ textAlign: 'center', color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>
                           Delete
                         </div>
@@ -331,7 +408,6 @@ const Recipient: React.FC = () => {
             </Table>
           </TableContainer>
           
-
         <Dialog open={openEditDialog} onClose={handleCloseDialog}>
         <DialogTitle>Edit User</DialogTitle>
         <DialogContent>
@@ -377,6 +453,9 @@ const Recipient: React.FC = () => {
       </Dialog>
 
           <Dialog open={openDeleteDialog} onClose={handleCloseDialog}>
+
+          <Dialog open={openDialog} onClose={handleCloseDialog}>
+
             <DialogTitle id="alert-dialog-title">{"WARNING!"}</DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
@@ -423,6 +502,7 @@ const Recipient: React.FC = () => {
             </DialogActions>
           </Dialog>
         </>
+      )}
     </Box>
   );
 };

@@ -37,6 +37,8 @@ const Admin_Donor: React.FC = () => {
     }
   };
 
+  const [openDialog, setOpenDialog] = useState(false);
+
 
   const handleMenuToggle = () => {
     setMenuOpen(!isMenuOpen);
@@ -134,7 +136,39 @@ const Admin_Donor: React.FC = () => {
     }
   };
 
-    
+    setOpenDialog(false);
+    setSelectedRow(null);
+  };
+
+  const handleDeleteConfirmed = () => {
+    // Perform deletion logic here using the selectedRow
+    setOpenDialog(false);
+    setSelectedRow(null);
+  };
+
+  const handleDeleteButtonClick = () => {
+    setOpenDialog(true);
+    // Optionally, you can set the selected row here if needed
+    // setSelectedRow(row);
+  }; 
+
+    // Fetch donor details when the component mounts
+    const fetchDonors = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/donor/getAllDonors', { // Replace with your actual endpoint
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include'
+        });  
+        const data = await response.json();
+        setDonors(data);
+      } catch (error) {
+        console.error('Error fetching donor details:', error);
+      }
+    };
+
   useEffect(() => {  
     fetchDonors();
   }, []); 
@@ -286,6 +320,7 @@ const Admin_Donor: React.FC = () => {
                 <TableCell style={{ textAlign: 'center', color: 'white', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.80 }}>
                     Actions
                   </TableCell>
+
               </TableRow>
             </TableHead>
             <TableBody>
@@ -355,6 +390,21 @@ const Admin_Donor: React.FC = () => {
       </Dialog>
 
         <Dialog open={openDeleteDialog} onClose={handleCloseDialog}>
+
+                  <Button variant="text" style={{ color: 'black', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>
+                    Edit
+                  </Button>
+                  <Button variant="contained" style={{ width: 83, height: 47, padding: 10, background: '#F63636', borderRadius: 70, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex' }} onClick={handleDeleteButtonClick}>
+                    <div className="Delete" style={{ textAlign: 'center', color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>
+                      Delete
+                    </div>
+                  </Button>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer><Dialog open={openDialog} onClose={handleCloseDialog}>
+
             <DialogTitle id="alert-dialog-title">{"WARNING!"}</DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description">

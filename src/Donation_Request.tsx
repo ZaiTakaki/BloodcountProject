@@ -241,6 +241,15 @@ const Donation_Request: React.FC = () => {
                       </Button>
                     </TableCell>
                   </TableRow>
+                <Button variant="text" style={{ color: 'black', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>
+                  Accept
+                  </Button>
+                  <Button variant="contained" style={{ width: 83, height: 47, padding: 10, background: '#F63636', borderRadius: 70, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex' }} onClick={handleDeleteButtonClick}>
+                    <div className="Reject" style={{ textAlign: 'center', color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '600', letterSpacing: 0.90, wordWrap: 'break-word' }}>
+                      Reject
+                    </div>
+                  </Button>
+                </TableRow>
               ))}
             </TableBody>
           </Table>
